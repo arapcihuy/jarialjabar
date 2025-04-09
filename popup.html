@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="fkeBgTCilAGfIw9vdmRVbk4t2CXCLpiKdoEcO3oGhNQ" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Form</title>
+  <link rel="stylesheet" href="popup.css">
+  <!-- Add these lines inside the <head> section of each HTML file -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<script src="mobile-fixes.js" defer></script>
+</head>
+<body>
+  <!-- Popup -->
+  <div id="popupForm" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <span id="closePopup" class="close-btn">&times;</span>
+      <div class="popup-header">
+        <h2>Coba Kelas Gratis!</h2>
+        <p>Isi formulir di bawah ini untuk mencoba kelas gratis bersama Jari Aljabar.</p>
+      </div>
+      <div class="popup-body">
+        <img src="images/maskot.png" alt="Mascot" class="popup-image">
+        <form class="popup-form">
+          <input type="text" placeholder="Nama" required>
+          <input type="text" placeholder="Isi Nomor Anda" required>
+          <select required>
+            <option value="" disabled selected>Kota</option>
+            <option value="Jakarta">Jakarta</option>
+            <option value="Bandung">Bandung</option>
+          </select>
+          <button type="submit">Daftar Sekarang</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

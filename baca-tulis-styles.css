@@ -1,0 +1,912 @@
+/* Critical fixes for stage numbers and positioning */
+html, body, * {
+  scroll-behavior: auto !important;
+  overflow-anchor: none !important;
+}
+
+/* Base styling for Baca Tulis page - Simplified, cleaner approach */
+:root {
+  /* Simplified color palette with more focused tones */
+  --primary: #FF6B6B;
+  --primary-dark: #E95252;
+  --secondary: #4EA5D9;
+  --secondary-dark: #3A8BC0;
+  --accent: #FFD700;
+  --accent-dark: #E6C200;
+  --green: #66CC99;
+  --green-dark: #4DAA7D;
+  
+  /* Clean, simple gradients */
+  --primary-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --secondary-gradient: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+  --accent-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  --green-gradient: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  
+  /* Add lighter shades for waves */
+  --primary-light: #FF9999;
+  --secondary-light: #7DBFE8;
+}
+
+/* Clean body styling */
+body.baca-tulis-page {
+  font-family: 'Nunito', 'Roboto', sans-serif;
+  color: #333;
+  background-color: #FAFAFA;
+  overflow-x: hidden;
+}
+
+/* Subtle background pattern */
+body.baca-tulis-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 107, 107, 0.03) 0%, transparent 15%),
+    radial-gradient(circle at 80% 30%, rgba(78, 165, 217, 0.03) 0%, transparent 15%),
+    radial-gradient(circle at 30% 70%, rgba(102, 204, 153, 0.03) 0%, transparent 15%),
+    radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 15%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hero section with cleaner design */
+.reading-hero {
+  background: var(--primary-gradient);
+  min-height: 80vh;
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple, elegant floating letters */
+.floating-letters {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.letter-symbol {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  animation: floatLetter 12s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+/* Softer, slower floating animation */
+@keyframes floatLetter {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -15px); }
+}
+
+/* Position letters with more breathing space */
+.letter1 { top: 15%; left: 10%; animation-delay: 0s; }
+.letter2 { top: 25%; left: 40%; animation-delay: 1s; }
+.letter3 { top: 10%; right: 15%; animation-delay: 2s; }
+.letter4 { top: 40%; left: 20%; animation-delay: 3s; }
+.letter5 { top: 35%; right: 10%; animation-delay: 4s; }
+.letter6 { top: 60%; left: 15%; animation-delay: 5s; }
+.letter7 { top: 65%; right: 25%; animation-delay: 6s; }
+.letter8 { top: 75%; left: 30%; animation-delay: 7s; }
+.letter9 { top: 80%; right: 15%; animation-delay: 8s; }
+.letter10 { top: 20%; left: 70%; animation-delay: 9s; }
+.letter11 { top: 50%; left: 45%; animation-delay: 10s; }
+.letter12 { top: 70%; left: 55%; animation-delay: 11s; }
+.letter13 { top: 30%; right: 40%; animation-delay: 12s; }
+
+/* Clean hero content styling */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Simple badge with subtle animation */
+.hero-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  display: inline-block;
+  backdrop-filter: blur(5px);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: subtle-pulse 3s infinite ease-in-out;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Elegant title animation handled in JS */
+.animated-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Clean, simple benefit cards */
+.benefit-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.benefit-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  border-radius: 15px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card-icon {
+  margin-bottom: 15px;
+  font-size: 36px;
+}
+
+.benefit-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.benefit-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+/* Simple, clean CTA button */
+.hero-cta {
+  background: white;
+  color: var(--primary);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Simple ripple effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 107, 107, 0.3);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+}
+
+@keyframes ripple-effect {
+  to { transform: scale(2.5); opacity: 0; }
+}
+
+/* Clean learning stages section */
+.learning-stages {
+  padding: 80px 20px;
+  background: white;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  border-radius: 3px;
+  opacity: 0.3;
+}
+
+.section-title.blue {
+  color: var(--secondary);
+}
+
+.section-title.red {
+  color: var(--primary);
+}
+
+.section-title.yellow {
+  color: var(--accent);
+}
+
+.section-title.green {
+  color: var(--green);
+}
+
+.section-line {
+  height: 4px;
+  width: 80px;
+  margin: 15px auto;
+  border-radius: 2px;
+}
+
+.section-title.blue + .section-line {
+  background: var(--secondary-gradient);
+}
+
+.section-title.red + .section-line {
+  background: var(--primary-gradient);
+}
+
+.section-title.yellow + .section-line {
+  background: var(--accent-gradient);
+}
+
+.section-title.green + .section-line {
+  background: var(--green-gradient);
+}
+
+/* Clean stages grid */
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  row-gap: 60px; /* Increased row gap to separate the two rows */
+  column-gap: 30px; /* Keep the same column gap as before */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Simple stage card design */
+.stage-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  position: relative;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  height: 100%;
+}
+
+.stage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Simple numbered circles */
+.stage-card .stage-number {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.stage-card:nth-child(1) .stage-number {
+  background: var(--primary-gradient);
+}
+
+.stage-card:nth-child(2) .stage-number {
+  background: var(--secondary-gradient);
+}
+
+.stage-card:nth-child(3) .stage-number {
+  background: var(--accent-gradient);
+}
+
+.stage-card:nth-child(4) .stage-number {
+  background: var(--green-gradient);
+}
+
+.stage-card:nth-child(5) .stage-number {
+  background: var(--primary-gradient);
+}
+
+.stage-card:nth-child(6) .stage-number {
+  background: var(--secondary-gradient);
+}
+
+.stage-card:nth-child(7) .stage-number {
+  background: var(--accent-gradient);
+}
+
+.stage-card:nth-child(8) .stage-number {
+  background: var(--green-gradient);
+}
+
+.stage-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.stage-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Simple alphabet section */
+.alphabet-section {
+  padding: 80px 20px;
+  background: #f8fbff;
+}
+
+.alphabet-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px 0;
+}
+
+/* Clean letter display */
+.alphabet-letter {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  color: var(--primary);
+  cursor: pointer;
+  position: relative;
+}
+
+.alphabet-letter:hover {
+  transform: translateY(-5px);
+  color: white;
+  background: var(--primary-gradient);
+  box-shadow: 0 8px 20px rgba(255,107,107,0.2);
+}
+
+.alphabet-letter .cantol {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  background: white;
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: #333;
+  font-weight: normal;
+  opacity: 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.alphabet-letter:hover .cantol {
+  opacity: 1;
+  bottom: -30px;
+}
+
+/* Clean method cards */
+.methods-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.method-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.method-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.method-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.method-card:hover img {
+  transform: scale(1.05);
+}
+
+.method-card h3 {
+  padding: 20px 20px 10px;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.method-card .method-content {
+  padding: 0 20px 20px;
+}
+
+.method-card .method-content p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Simple registration section */
+.registration-section {
+  padding: 80px 20px;
+  background: #f9fbff;
+}
+
+.registration-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  border-left: 5px solid var(--green);
+  height: 100%;
+}
+
+.info-card h3 {
+  color: var(--green);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.info-card ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.info-card ul li {
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.info-card ul li i {
+  color: var(--green);
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+.registration-form {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+  outline: none;
+}
+
+.submit-btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(255,107,107,0.2);
+}
+
+/* Clean back to top button */
+.back-to-top {
+  background: var(--primary-gradient);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateY(100px);
+  opacity: 0;
+  z-index: 99;
+}
+
+.back-to-top.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Fix page navigation positioning and wave colors */
+
+/* Reposition "Kembali ke Beranda" to the top-left corner */
+.page-navigation {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100; /* Ensure it's above other elements */
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back-home {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.back-home:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.back-home i {
+  margin-right: 8px;
+}
+
+/* Change wave colors from black to themed colors */
+.wave-divider svg path {
+  fill: var(--primary-light); /* Use primary light color instead of black */
+  opacity: 0.5;
+}
+
+.wave-divider svg path:nth-child(2) {
+  fill: var(--primary-light);
+  opacity: 0.3;
+}
+
+.wave-divider svg path:nth-child(3) {
+  fill: var(--primary-light);
+  opacity: 0.2;
+}
+
+.wave-separator svg .wave1 {
+  fill: var(--secondary-light);
+  opacity: 0.5;
+}
+
+.wave-separator svg .wave2 {
+  fill: var(--secondary-light);
+  opacity: 0.3;
+}
+
+.wave-separator svg .wave3 {
+  fill: var(--secondary-light);
+  opacity: 0.2;
+}
+
+/* Responsive styling */
+@media (max-width: 992px) {
+  .stages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    row-gap: 50px; /* Slightly reduced for tablet view */
+  }
+  
+  .registration-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefit-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .methods-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .stages-grid {
+    gap: 40px;
+  }
+  
+  .animated-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .stages-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, auto);
+    row-gap: 40px; /* Further reduced for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .alphabet-letter {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .hero-badge {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+  
+  .animated-title {
+    font-size: 2.2rem;
+  }
+  
+  .stage-card .stage-number {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile-specific optimizations - Add at end of file */
+
+@media (max-width: 768px) {
+  /* Letter symbols positioning adjustment */
+  .letter-symbol {
+    font-size: 2rem; /* Smaller size */
+    opacity: 0.3; /* More subtle */
+  }
+  
+  /* Better positioned letters */
+  .letter1 { top: 5%; left: 10%; }
+  .letter2 { top: 15%; left: 30%; }
+  .letter3 { top: 8%; right: 15%; }
+  .letter4 { top: 25%; left: 20%; }
+  .letter5 { top: 20%; right: 10%; }
+  .letter6 { top: 40%; left: 15%; }
+  .letter7 { top: 35%; right: 25%; }
+  .letter8 { top: 55%; left: 30%; }
+  .letter9 { top: 60%; right: 15%; }
+  .letter10 { top: 15%; left: 70%; }
+  .letter11 { top: 70%; left: 45%; }
+  .letter12 { top: 50%; left: 55%; }
+  .letter13 { top: 30%; right: 40%; }
+  
+  /* Fix hero content */
+  .animated-title {
+    font-size: 2.6rem !important;
+    margin-bottom: 10px;
+  }
+  
+  .hero-line {
+    margin: 10px auto;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 20px;
+  }
+  
+  /* Stack benefit cards */
+  .benefit-cards {
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .benefit-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  /* Learning stages section */
+  .learning-stages {
+    padding: 40px 15px;
+  }
+  
+  .stages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+  
+  .stage-card {
+    padding: 25px 15px 20px;
+  }
+  
+  /* Alphabet section */
+  .alphabet-container {
+    gap: 10px;
+  }
+  
+  .alphabet-letter {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  /* Methods section */
+  .methods-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  
+  .method-card {
+    margin-bottom: 15px;
+  }
+  
+  /* Registration section */
+  .registration-container {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .info-card {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+  }
+  
+  .registration-form {
+    padding: 20px 15px;
+  }
+  
+  /* Navigation positioning */
+  .page-navigation {
+    left: 10px;
+    top: 10px;
+  }
+  
+  .back-home {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  /* Make waves more subtle */
+  .wave-separator,
+  .wave-divider {
+    height: 40px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .animated-title {
+    font-size: 2.2rem !important;
+  }
+  
+  .benefit-card {
+    padding: 15px;
+    min-height: auto;
+  }
+  
+  .alphabet-letter {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+/* Fix notch/dynamic island issues on iPhone */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .page-navigation {
+    padding-top: calc(20px + env(safe-area-inset-top));
+    padding-left: calc(20px + env(safe-area-inset-left));
+  }
+  
+  .back-to-top {
+    bottom: calc(30px + env(safe-area-inset-bottom));
+    right: calc(30px + env(safe-area-inset-right));
+  }
+}
+
