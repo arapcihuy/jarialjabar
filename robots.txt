@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rumahbelajardirgantara.com/sitemap.xml
+Sitemap: https://jari-aljabar.web.app/sitemap.xml
