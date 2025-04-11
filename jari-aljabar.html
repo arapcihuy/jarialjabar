@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Jari Aljabar - Metode Berhitung dengan Jari</title>
   
+  <!-- Added main favicon for consistency across all pages -->
+  <link rel="icon" type="image/png" href="images/Cropped_Image.png">
+  
   <!-- Favicon and Browser Icon Support -->
   <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
@@ -18,6 +21,22 @@
   <!-- Add these lines inside the <head> section of each HTML file -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <script src="mobile-fixes.js" defer></script>
+  
+  <!-- Preload the logo to ensure it's always available -->
+  <link rel="preload" href="images/logo-jari-aljabar.jpeg" as="image">
+  
+  <!-- Add cache control for better logo persistence -->
+  <meta http-equiv="Cache-Control" content="max-age=86400">
+  
+  <!-- Add structured data for consistent SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://jarialjabar.com/",
+    "logo": "https://jarialjabar.com/images/logo-jari-aljabar.jpeg"
+  }
+  </script>
   
   <!-- Regular stylesheets -->
   <link rel="stylesheet" href="style.css">
