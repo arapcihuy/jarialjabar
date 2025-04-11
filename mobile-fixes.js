@@ -378,4 +378,50 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
+
+  // Logo visibility handling for mobile devices
+
+  const logoImg = document.querySelector('.logo-container img');
+  
+  if (logoImg) {
+    // Force image loading check
+    if (logoImg.complete) {
+      if (logoImg.naturalHeight === 0) {
+        // Logo failed to load - reload it
+        reloadLogo(logoImg);
+      }
+    } else {
+      // Add load event listener
+      logoImg.addEventListener('load', function() {
+        // Logo loaded successfully
+        console.log('Logo loaded successfully');
+      });
+      
+      // Add error event listener
+      logoImg.addEventListener('error', function() {
+        // Logo failed to load - reload it
+        reloadLogo(logoImg);
+      });
+    }
+  }
+  
+  // Function to reload the logo image
+  function reloadLogo(imgElement) {
+    console.log('Reloading logo image');
+    const originalSrc = imgElement.src;
+    imgElement.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // Blank image
+    setTimeout(function() {
+      imgElement.src = originalSrc + '?reload=' + new Date().getTime(); // Add cache-busting parameter
+    }, 50);
+  }
+  
+  // Add visibility check on page visibility change
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible' && logoImg) {
+      // User has returned to the page - check logo visibility
+      if (logoImg.naturalHeight === 0) {
+        reloadLogo(logoImg);
+      }
+    }
+  });
 });
