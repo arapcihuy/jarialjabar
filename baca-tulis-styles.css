@@ -30,7 +30,7 @@ html, body, * {
 /* Clean body styling */
 body.baca-tulis-page {
   font-family: 'Nunito', 'Roboto', sans-serif;
-  color: #333;
+  color: #222;
   background-color: #FAFAFA;
   overflow-x: hidden;
 }
@@ -147,7 +147,7 @@ body.baca-tulis-page::before {
 }
 
 .hero-subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
   font-size: 1.2rem;
   margin-bottom: 40px;
   max-width: 600px;
@@ -245,11 +245,11 @@ body.baca-tulis-page::before {
 }
 
 .section-title {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 40px;
+  text-align: center;
   font-weight: 700;
-  margin-bottom: 15px;
-  position: relative;
-  display: inline-block;
 }
 
 .section-title::after {
@@ -388,9 +388,11 @@ body.baca-tulis-page::before {
 }
 
 .stage-card p {
-  font-size: 14px;
-  color: #666;
+  font-size: 15px;
+  color: #444;
   line-height: 1.6;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 /* Simple alphabet section */
@@ -499,9 +501,10 @@ body.baca-tulis-page::before {
 }
 
 .method-card .method-content p {
-  color: #666;
+  font-size: 16px;
+  color: #333;
   line-height: 1.6;
-  font-size: 14px;
+  text-align: center;
 }
 
 /* Simple registration section */
@@ -539,9 +542,12 @@ body.baca-tulis-page::before {
 }
 
 .info-card ul li {
-  margin-bottom: 10px;
-  padding-left: 25px;
-  position: relative;
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .info-card ul li i {
