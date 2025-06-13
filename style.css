@@ -1814,7 +1814,7 @@ footer {
 .program-method-section {
   position: relative;
   padding: 80px 0;
-  margin-top: 0;
+  margin-top: 50px; /* Added margin to create space from the section above */
   background: #fff;
   z-index: 20;
 }
@@ -2708,10 +2708,11 @@ html, body {
 
 /* ====== TAMPILAN MAKSUD DAN TUJUAN RUMBEL REVISI ====== */
 .purpose-section {
-  padding: 0; /* Removed padding to eliminate white space from top */
+  padding: 50px 0; /* Added padding to top and bottom */
   background: #e8f5e9; /* Light green background to match the image */
   position: relative;
   overflow: hidden;
+  margin-bottom: 50px; /* Increased space below this section */
 }
 
 .purpose-section::before {
@@ -2816,7 +2817,8 @@ html, body {
 
 @media (max-width: 768px) {
   .purpose-section {
-    padding: 0 20px; /* Adjusted padding for mobile, removed top padding */
+    padding: 30px 20px; /* Adjusted padding for mobile, added top and bottom padding */
+    margin-bottom: 30px; /* Increased space below this section for mobile */
   }
   
   .purpose-section .section-title {
@@ -3160,5 +3162,12 @@ html, body {
     min-height: 200px; /* Adjust minimum height for mobile */
     margin-top: 20px;
     margin-bottom: 0; /* Removed space to the section below for mobile */
+  }
+}
+
+/* Adjust program-method-section for mobile */
+@media (max-width: 768px) {
+  .program-method-section {
+    margin-top: 30px; /* Added margin for mobile to create space */
   }
 }
