@@ -105,22 +105,18 @@ header .logo-container {
   align-items: center;
   z-index: 1001;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-header .logo-container:hover {
-  transform: scale(1.05);
-}
-
-header .logo-container:active {
-  transform: scale(0.98); /* Add pressed effect */
 }
 
 header .logo-container img {
-  height: 300px;
+  height: 110px; /* Further increased size for better visibility */
   width: auto;
   object-fit: contain;
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header .logo-container img:hover {
+  transform: scale(1.15);
 }
 
 header .contact-nav {
@@ -333,12 +329,27 @@ a {
   overflow: hidden;
 }
 
-.background-container .background-image {
-  background-image: url('./images/your-background.jpg'); /* Pastikan path benar */
+.background-container .background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100; /* Send to back */
+  transform: translateX(-50%) translateY(-50%);
   background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
+}
+
+.background-container .background-image {
+  /* Hide the old background image now that we have a video */
+  display: none;
+  /* background-image: url('./images/your-background.jpg'); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* width: 100%; */
+  /* height: 100%; */
 }
 
 /* Navbar */
@@ -375,9 +386,9 @@ a {
 }
 
 .logo-container img {
-  height: 50px; /* Tinggi logo sesuai header */
+  height: 60px; /* Adjusted to fit navbar-container */
   width: auto;
-  transition: transform 0.3s ease;
+  object-fit: contain;
   cursor: pointer;
 }
 
@@ -386,10 +397,6 @@ a {
   width: auto;
   object-fit: contain;
   cursor: pointer;
-}
-
-.logo-container img:hover {
-  transform: scale(1.1);
 }
 
 .navbar-nav .nav-link {
@@ -1082,16 +1089,9 @@ a {
 }
 
 .learning-description li {
-  margin: 15px 0;
-  padding-left: 25px;
+  margin-bottom: 10px;
   position: relative;
-}
-
-.learning-description li:before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #37A19A;
+  padding-left: 0; /* Remove left padding since we're removing the checkmark */
 }
 
 /* Responsive Styles */
@@ -1443,6 +1443,7 @@ footer {
 
   .background-container {
     height: auto; /* Kurangi tinggi untuk layar kecil */
+    min-height: 250px; /* Ensure video is visible on mobile */
   }
 
   .kelas-grid {
@@ -1626,10 +1627,33 @@ footer {
 /* Hero Section */
 .hero-section {
   position: relative;
-  margin-top: 70px; /* Match new header height */
-  padding: 100px 0;
+  margin-top: 0px; /* Adjusted to move section higher */
+  padding: 20px 0; /* Adjusted padding for better spacing */
   background: #f8f9fc;
   z-index: 10;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px; /* Increased padding */
+  max-width: 900px; /* Increased max-width */
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem; /* Increased from default */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.4rem; /* Increased from default */
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 .hero-background {
@@ -1643,18 +1667,23 @@ footer {
   background-position: center;
 }
 
-.hero-content {
-  position: relative;
-  text-align: center;
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 @media (max-width: 768px) {
   .hero-section {
-    margin-top: 60px;
-    padding: 60px 0;
+    margin-top: 0px; /* Adjusted for mobile */
+    padding: 10px 0; /* Reduced padding for mobile */
+  }
+
+  .hero-content {
+    padding: 40px 20px; /* Reduced padding for mobile */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjusted for mobile */
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem; /* Adjusted for mobile */
   }
 
   .free-demo-section {
@@ -1946,12 +1975,18 @@ footer {
 
 .facility-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow on hover */
 }
 
 .facility-card i {
   font-size: 3rem;
   color: #37A19A;
   margin-bottom: 20px;
+  transition: transform 0.3s ease; /* Ensure smooth transition for pulse */
+}
+
+.facility-card:hover i {
+  animation: pulse 0.7s infinite; /* Apply pulse animation on hover */
 }
 
 @media (max-width: 768px) {
@@ -1990,7 +2025,8 @@ footer {
   transition: all 0.3s ease;
 }
 
-.contact-toggle:hover {
+.contact-toggle:hover,
+header .contact-toggle.active {
   background: rgba(0,0,0,0.05);
 }
 
@@ -2009,16 +2045,10 @@ footer {
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 .contact-item:hover {
   background: #f5f5f5;
-}
-
-.contact-toggle.active {
-  background: rgba(0,0,0,0.05);
 }
 
 .contact-item i {
@@ -2026,2709 +2056,19 @@ footer {
   font-size: 20px;
 }
 
-.contact-nav {
-  position: relative;
-  justify-self: end;
-}
-
-.contact-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: none;
-  padding: 15px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  min-width: 250px;
-  z-index: 1000;
-}
-
-.contact-dropdown.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  display: block !important;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  color: #333;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.contact-item:hover {
-  background: #f5f5f5;
-}
-
-.contact-toggle {
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 15px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.contact-toggle.active {
-  background: rgba(0,0,0,0.05);
-}
-
-.contact-registration-section {
-  padding: 100px 0;
-  background: #f8f9fc;
-}
-
-.contact-registration-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.contact-info h3,
-.registration-form h3 {
-  margin-bottom: 30px;
-  color: #333;
-  font-size: 24px;
-}
-
-.contact-cards {
-  display: grid;
-  gap: 20px;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #333;
-  transition: transform 0.3s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-5px);
-}
-
-.contact-card i {
-  font-size: 24px;
-  color: #25D366;
-}
-
-.contact-card div {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-card strong {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.registration-form {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: none;
-}
-
-@media (max-width: 768px) {
-  .contact-registration-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.maps-section {
-  padding: 80px 0;
-  background: #fff;
-}
-
-.maps-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.maps-info {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.maps-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: #37A19A;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.maps-button:hover {
-  background: #2a8c86;
-}
-
-.maps-embed {
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .maps-container {
-    padding: 0 15px;
-  }
-  
-  .maps-embed iframe {
-    height: 300px;
-  }
-}
-
-.program-detail {
-  padding-top: 100px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 100px 20px 40px;
-}
-
-.program-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.program-header h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.feature-item {
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.schedule-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.schedule-item {
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-}
-
-@media (max-width: 768px) {
-  .features-grid,
-  .schedule-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.program-hero {
-  height: 100vh;
-  background: linear-gradient(135deg, #37A19A, #C5D69E);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding-top: 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-content {
-  max-width: 1200px;
-  padding: 0 20px;
-}
-
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  font-weight: 900;
-}
-
-.hero-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 50px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
-
-.hero-card .number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.feature-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 40px 20px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  background: #37A19A;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.timeline-content {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: calc(50% - 30px);
-  position: relative;
-}
-
-.faq-section {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.faq-item {
-  background: white;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  position: relative;
-}
-
-.faq-answer {
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .hero-cards,
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .timeline::before {
-    left: 0;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 30px);
-    margin-left: 30px;
-  }
-}
-
-.floating-shapes .shape {
-  position: absolute;
-  font-size: 40px;
-  color: rgba(255, 255, 255, 0.2);
-  animation: float 6s infinite;
-  font-weight: bold;
-}
-
-/* Original shapes positions */
-.shape1 { top: 20%; left: 10%; animation-delay: 0s; }
-.shape2 { top: 40%; right: 15%; animation-delay: 1s; }
-.shape3 { bottom: 30%; left: 20%; animation-delay: 2s; }
-.shape4 { bottom: 20%; right: 10%; animation-delay: 3s; }
-
-/* New shapes positions */
-.shape5 { top: 15%; left: 30%; animation-delay: 0.5s; }
-.shape6 { top: 60%; right: 25%; animation-delay: 1.5s; }
-.shape7 { bottom: 40%; left: 40%; animation-delay: 2.5s; }
-.shape8 { top: 35%; right: 35%; animation-delay: 3.5s; }
-.shape9 { bottom: 15%; left: 15%; animation-delay: 4s; }
-.shape10 { top: 45%; right: 45%; animation-delay: 4.5s; }
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  background: #37A19A;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.timeline-item {
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.timeline-content {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  width: calc(50% - 30px);
-  position: relative;
-}
-
-.faq-section {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.faq-item {
-  background: white;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  position: relative;
-}
-
-.faq-answer {
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .hero-cards,
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .timeline::before {
-    left: 0;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 30px);
-    margin-left: 30px;
-  }
-}
-
-.floating-shapes .shape {
-  position: absolute;
-  font-size: 40px;
-  color: rgba(255, 255, 255, 0.2);
-  animation: float 6s infinite;
-  font-weight: bold;
-}
-
-/* Original shapes positions */
-.shape1 { top: 20%; left: 10%; animation-delay: 0s; }
-.shape2 { top: 40%; right: 15%; animation-delay: 1s; }
-.shape3 { bottom: 30%; left: 20%; animation-delay: 2s; }
-.shape4 { bottom: 20%; right: 10%; animation-delay: 3s; }
-
-/* New shapes positions */
-.shape5 { top: 15%; left: 30%; animation-delay: 0.5s; }
-.shape6 { top: 60%; right: 25%; animation-delay: 1.5s; }
-.shape7 { bottom: 40%; left: 40%; animation-delay: 2.5s; }
-.shape8 { top: 35%; right: 35%; animation-delay: 3.5s; }
-.shape9 { bottom: 15%; left: 15%; animation-delay: 4s; }
-.shape10 { top: 45%; right: 45%; animation-delay: 4.5s; }
-
-/* Additional shapes for math symbols */
-.shape11 { top: 25%; left: 50%; animation-delay: 1.2s; }
-.shape12 { bottom: 35%; right: 30%; animation-delay: 2.3s; }
-.shape13 { top: 55%; left: 25%; animation-delay: 3.4s; }
-.shape14 { bottom: 25%; right: 50%; animation-delay: 4.5s; }
-.shape15 { top: 30%; left: 35%; animation-delay: 5s; }
-
-/* Add a second float animation for variety */
-@keyframes float2 {
-  0% { transform: translate(0, 0) rotate(-5deg); }
-  50% { transform: translate(-15px, 10px) rotate(5deg); }
-  100% { transform: translate(0, 0) rotate(-5deg); }
-}
-
-/* Apply different animations to even/odd shapes */
-.floating-shapes .shape:nth-child(even) {
-  animation: float 7s infinite;
-}
-
-.floating-shapes .shape:nth-child(odd) {
-  animation: float2 8s infinite;
-}
-
-/* Add hover effect */
-.floating-shapes .shape:hover {
-  color: rgba(255, 255, 255, 0.4);
-  transform: scale(1.2);
-  transition: all 0.3s ease;
-}
-
-/* Make shapes responsive */
-@media (max-width: 768px) {
-  .floating-shapes .shape {
-    font-size: 30px;
-  }
-}
-
-.animated-title {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  animation: fadeInUp 1s ease;
-}
-
-.benefit-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.benefit-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 20px;
-  transition: transform 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-10px);
-}
-
-.registration-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.registration-form .form-group {
-  margin-bottom: 20px;
-}
-
-.registration-form label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
-  font-weight: 500;
-}
-
-.registration-form input,
-.registration-form select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 15px;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 15px;
-  background: #37A19A;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  background: #2a8c86;
-  transform: translateY(-2px);
-}
-
-/* Smaller Navbar Styles */
-header {
-  height: 70px; /* Reduced from 90px */
-}
-
-.navbar-container {
-  height: 70px; /* Match header height */
-}
-
-.logo-container.small {
-  transform: scale(1.2); /* Add scale transform for bigger logo */
-  transform-origin: center;
-}
-
-.logo-container.small img {
-  height: 120px; /* Increased from 80px */
-  margin: 5px 0;
-  transition: transform 0.3s ease;
-}
-
-.logo-container img {
-  max-height: 400px; /* Increased from 300px */
-  width: auto;
-  object-fit: contain;
-}
-
-.dropdown-menu.small {
-  top: 70px; /* Match new header height */
-}
-
-/* Adjust hero section margin */
-.hero-section {
-  margin-top: 70px; /* Match new header height */
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .logo-container.small img {
-    height: 100px; /* Slightly smaller on mobile */
-  }
-}
-
-.scroll-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1100;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.scroll-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Learning Stages Section - Updated */
-.learning-stages {
-    padding: 80px 0;
-    background: linear-gradient(to bottom, #f8f9fc, #ffffff);
-}
-
-.stages-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 kolom untuk desktop */
-    gap: 35px; /* Increased gap for better spacing */
-    margin-top: 60px; /* Increased margin-top to accommodate numbers */
-    padding: 20px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.stage-card {
-    position: relative;
-    background: #fff;
-    padding: 35px 20px 25px; /* Adjusted padding */
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    margin-top: 25px; /* Increased margin-top */
-    height: 220px; /* Fixed height for consistency */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.stage-number {
-    position: absolute;
-    top: -20px; /* Moved slightly higher */
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    background: #37A19A;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 5px rgba(55, 161, 154, 0.3);
-    z-index: 2; /* Ensure number stays above card */
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .stages-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
-        gap: 45px; /* Larger gap for tablet */
-    }
-    
-    .stage-card {
-        height: 200px;
-    }
-}
-
-@media (max-width: 768px) {
-    .stages-grid {
-        grid-template-columns: 1fr; /* 1 kolom untuk mobile */
-        gap: 40px;
-    }
-    
-    .stage-card {
-        height: auto;
-        min-height: 180px;
-    }
-
-    .program-method-section .method-card .method-image img {
-        width: 160px;
-        height: 60px;
-    }
-}
-
-/* Teaching Methods Section */
-.teaching-methods {
-  padding: 60px 0;
-  background: #fff;
-}
-
-.methods-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 1000px; /* Reduced from 1200px */
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.method-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.method-card img {
-  width: 100%;
-  height: 300px; /* Fixed height for consistency */
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.method-content {
-  padding: 25px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.method-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.method-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.method-content li {
-  padding-left: 25px;
-  position: relative;
-  margin-bottom: 12px;
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .methods-container {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-
-  .method-card img {
-    height: 250px;
-  }
-  
-  .method-content {
-    padding: 20px;
-  }
-}
-
-.contact-registration-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #37A19A, #C5D69E);
-}
-
-.registration-container {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 40px;
-  background: white;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.info-card {
-  background: #f8f9fc;
-  padding: 30px;
-  border-radius: 15px;
-}
-
-.info-card ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.info-card li {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.info-card i {
-  color: #37A19A;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .stages-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .methods-container {
-        grid-template-columns: 1fr;
-    }
-
-    .registration-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Fix button and hover states */
-.submit-btn,
-.learn-more-btn,
-.maps-button,
-.sticky-footer .try-class-btn {
-  background: var(--button-green);
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover,
-.learn-more-btn:hover,
-.maps-button:hover,
-.sticky-footer .try-class-btn:hover {
-  background: var(--button-hover-green);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(55, 161, 154, 0.3);
-}
-
-/* Fix icon colors */
-.phone-number a:hover i,
-.contact-item i,
-.facility-card i,
-.learning-description li:before,
-.info-card i {
-  color: var(--button-green);
-}
-
-/* Remove duplicate method-card styles */
-.method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Fix logo container duplication */
-.logo-container {
-  justify-self: center;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.logo-container img {
-  height: 300px;
-  width: auto;
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-/* Success Animation Styles */
-.success-overlay,
-.error-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.3s ease;
-  z-index: 1000;
-  border-radius: 15px;
-}
-
-.success-content,
-.error-content {
-  text-align: center;
-  transform: translateY(20px);
-  animation: slideUp 0.5s ease forwards;
-}
-
-.success-icon,
-.error-icon {
-  font-size: 60px;
-  margin-bottom: 20px;
-  animation: scaleIn 0.5s ease;
-}
-
-.success-icon {
-  color: #37A19A;
-}
-
-.error-icon {
-  color: #dc3545;
-}
-
-.success-icon i,
-.error-icon i {
-  animation: bounce 1s ease;
-}
-
-.success-content h3,
-.error-content h3 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.success-content p,
-.error-content p {
-  color: #666;
-}
-
-.fade-out {
-  animation: fadeOut 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-30px); }
-  60% { transform: translateY(-15px); }
-}
-
-/* Form position relative for overlay */
-.registration-form,
-.popup-form {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Mobile Responsive Styles */
-@media screen and (max-width: 768px) {
-  /* Header & Navigation */
-  .navbar-container {
-    padding: 0 10px;
-  }
-
-  .logo-container.small img {
-    height: 80px; /* Smaller logo for mobile */
-  }
-
-  .dropdown-menu {
-    width: 95%;
-    padding: 15px;
-  }
-
-  .dropdown-menu ul {
-    grid-template-columns: 1fr; /* Single column for mobile */
-  }
-
-  /* Hero Section */
-  .hero-section {
-    margin-top: 60px;
-    padding: 40px 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  /* Program Methods */
-  .methods-grid {
-    grid-template-columns: 1fr; /* Single column */
-    padding: 20px;
-  }
-
-  /* Registration Forms */
-  .registration-container {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  /* Contact Section */
-  .contact-registration-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  /* Footer */
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-column {
-    margin-bottom: 30px;
-  }
-
-  /* Popup Form */
-  .popup-content {
-    width: 90%;
-    padding: 20px;
-  }
-
-  /* Sticky Footer */
-  .sticky-footer {
-    padding: 10px;
-  }
-
-  .try-class-btn {
-    font-size: 12px;
-    padding: 8px 15px;
-  }
-}
-
-/* Additional Mobile Optimizations */
-@media screen and (max-width: 480px) {
-  /* Even smaller screens */
-  .benefit-cards,
-  .facilities-grid,
-  .stages-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .method-card img {
-    height: 150px;
-  }
-
-  .statistics {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-/* Fix touch targets for mobile */
-@media (hover: none) {
-  .submit-btn,
-  .contact-item,
-  .menu-toggle {
-    min-height: 44px; /* Minimum touch target size */
-    padding: 12px 20px;
-  }
-
-  select, input {
-    height: 44px;
-    font-size: 16px; /* Prevent zoom on iOS */
-  }
-}
-
-/* Landscape mode adjustments */
-@media screen and (max-height: 480px) and (orientation: landscape) {
-  .hero-section {
-    min-height: auto;
-    padding: 40px 0;
-  }
-
-  .popup-content {
-    max-height: 85vh;
-    overflow-y: auto;
-  }
-}
-
-/* Update method-card image size in index.html */
-.program-method-section .method-card .method-image img {
-    width: 180px; /* Reduced from 200px */
-    height: 70px; /* Reduced from 80px */
-    object-fit: cover;
-}
-
-/* Program Method Section Updates */
-.program-method-section .method-card {
-    height: 1200px; /* Increased from 1050px */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
-    gap: 20px;
-}
-
-.program-method-section .method-card .method-image {
-    width: 100%;
-    height: 800px; /* Increased from 700px */
-    overflow: hidden;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.program-method-section .method-card .method-image img {
-    width: 1000px; /* Increased from 900px */
-    height: 500px; /* Increased from 450px */
-    object-fit: contain;
-    object-position: center;
-    transition: transform 0.3s ease;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .program-method-section .method-card {
-        height: auto;
-        min-height: 800px; /* Increased from 750px */
-    }
-
-    .program-method-section .method-card .method-image {
-        height: 600px; /* Increased from 550px */
-    }
-
-    .program-method-section .method-card .method-image img {
-        width: 900px; /* Increased from 800px */
-        height: 450px; /* Increased from 400px */
-    }
-}
-
-/* Program Method Section Updates */
-.program-method-section .method-card {
-    height: 300px; /* Slightly reduced from 320px */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
-    gap: 20px;
-}
-
-.program-method-section .method-card .method-image {
-    width: 100%;
-    height: 140px; /* Reduced from 160px */
-    overflow: hidden;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.program-method-section .method-card .method-image img {
-    width: 170px; /* Reduced from 180px */
-    height: 65px; /* Reduced from 70px */
-    object-fit: contain; /* Changed from cover to contain */
-    object-position: center;
-    transition: transform 0.3s ease;
-}
-
-.program-method-section .method-card .method-content {
-    flex: 1;
-    text-align: center;
-    padding: 0 15px;
-}
-
-.program-method-section .method-card .method-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.program-method-section .method-card .method-content p {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.5;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .program-method-section .method-card {
-        height: auto;
-        min-height: 280px; /* Reduced from 300px */
-    }
-
-    .program-method-section .method-card .method-image {
-        height: 120px; /* Reduced from 140px */
-    }
-
-    .program-method-section .method-card .method-image img {
-        width: 150px;
-        height: 55px;
-    }
-}
-
-/* Program Method Section - Complete Override */
-.program-method-section {
-  position: relative;
-  padding: 80px 0;
-  margin-top: 0;
-  background: #fff;
-  z-index: 20;
-}
-
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1200px; /* Increased from 800px */
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.program-method-section .method-card {
-  height: auto;
-  min-height: 600px; /* Set minimum height */
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  height: 400px; /* Fixed large height */
-  margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.program-method-section .method-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Maintain aspect ratio */
-  transition: transform 0.3s ease;
-}
-
-.program-method-section .method-content {
-  padding: 20px;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* Hover effects */
-.program-method-section .method-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(55, 161, 154, 0.2);
-}
-
-.program-method-section .method-card:hover .method-image img {
-  transform: scale(1.05);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-
-  .program-method-section .method-card {
-    min-height: 500px;
-  }
-
-  .program-method-section .method-image {
-    height: 300px;
-  }
-}
-
-/* Program Method Section - Image Size Fix */
-.program-method-section .method-card {
-  height: auto; /* Remove fixed height */
-  min-height: 500px; /* Set minimum height */
-}
-
-.program-method-section .method-card .method-image {
-  width: 100%;
-  height: auto; /* Remove fixed height */
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.program-method-section .method-card .method-image img {
-  width: 100%; /* Make image fill container width */
-  height: auto; /* Maintain aspect ratio */
-  max-width: 800px; /* Maximum width */
-  max-height: 400px; /* Maximum height */
-  object-fit: contain; /* Maintain aspect ratio while filling container */
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .program-method-section .method-card .method-image img {
-    max-width: 100%;
-    max-height: 300px;
-  }
-}
-
-/* Program Method Section - Adjusted Size */
-.program-method-section .method-card {
-  height: auto;
-  min-height: 400px; /* Reduced from 500px */
-  padding: 20px; /* Reduced from 30px */
-}
-
-.program-method-section .method-card .method-image {
-  width: 100%;
-  height: auto;
-  padding: 15px; /* Reduced from 20px */
-  margin-bottom: 15px; /* Reduced from 20px */
-}
-
-.program-method-section .method-card .method-image img {
-  width: 100%;
-  height: auto;
-  max-width: 600px; /* Reduced from 800px */
-  max-height: 300px; /* Reduced from 400px */
-  object-fit: contain;
-  object-position: center;
-}
-
-.program-method-section .method-content {
-  padding: 15px; /* Reduced from 20px */
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.5rem; /* Reduced from 1.8rem */
-  margin-bottom: 10px;
-}
-
-.program-method-section .method-content p {
-  font-size: 1rem; /* Reduced from 1.1rem */
-  line-height: 1.5;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .program-method-section .method-card {
-    min-height: 350px; /* Reduced from 400px */
-  }
-
-  .program-method-section .method-card .method-image img {
-    max-width: 100%;
-    max-height: 250px; /* Reduced from 300px */
-  }
-}
-
-/* Program Method Section - Further Size Reduction */
-.program-method-section .method-card {
-  height: auto;
-  min-height: 300px; /* Reduced from 400px */
-  padding: 15px; /* Reduced from 20px */
-}
-
-.program-method-section .method-card .method-image {
-  width: 100%;
-  height: auto;
-  padding: 10px; /* Reduced from 15px */
-  margin-bottom: 10px; /* Reduced from 15px */
-}
-
-.program-method-section .method-card .method-image img {
-  width: 100%;
-  height: auto;
-  max-width: 400px; /* Reduced from 600px */
-  max-height: 200px; /* Reduced from 300px */
-  object-fit: contain;
-  object-position: center;
-}
-
-.program-method-section .method-content {
-  padding: 10px; /* Reduced from 15px */
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.3rem; /* Reduced from 1.5rem */
-  margin-bottom: 8px; /* Reduced from 10px */
-}
-
-.program-method-section .method-content p {
-  font-size: 0.9rem; /* Reduced from 1rem */
-  line-height: 1.4;
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .program-method-section .method-card {
-    min-height: 250px; /* Reduced from 350px */
-  }
-
-  .program-method-section .method-card .method-image img {
-    max-width: 100%;
-    max-height: 180px; /* Reduced from 250px */
-  }
-}
-
-/* Program Method Section - Clean Implementation */
-.program-method-section {
-  position: relative;
-  padding: 60px 0; /* Reduced padding */
-  background: #fff;
-  z-index: 20;
-}
-
-.methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px; /* Reduced gap */
-  max-width: 1000px; /* Reduced max-width */
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px; /* Reduced padding */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  min-height: 250px; /* Set smaller fixed height */
-}
-
-.method-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(55, 161, 154, 0.15);
-}
-
-.method-image {
-  width: 100%;
-  height: 120px; /* Fixed height */
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.method-image img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.method-content {
-  flex: 1;
-  padding: 10px;
-}
-
-.method-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.method-content p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #666;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
-
-  .method-card {
-    min-height: 220px;
-  }
-
-  .method-image {
-    height: 100px;
-  }
-
-  .method-content h3 {
-    font-size: 1.1rem;
-  }
-
-  .method-content p {
-    font-size: 0.85rem;
-  }
-}
-
-/* Remove any duplicate method-card styles */
-
-/* Logo Container - Fix */
-.logo-container {
-  justify-self: center;
-  padding: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.logo-container:hover {
-  transform: scale(1.05);
-}
-
-.logo-container img {
-  height: 80px; /* Reduced height for better proportion */
-  width: auto;
-  object-fit: contain;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .logo-container img {
-    height: 60px;
-  }
-}
-
-/* Stage Card Clean Implementation */
-.stage-card {
-  position: relative;
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 15px;
-  transition: transform 0.4s ease;
-  height: auto;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.stage-card:hover {
-  transform: translateY(-10px);
-}
-
-.stage-card .stage-icon i {
-  color: var(--button-green);
-  font-size: 2rem;
-  transition: transform 0.4s ease;
-}
-
-.stage-card:hover .stage-icon i {
-  transform: translateY(-5px);
-}
-
-.stage-card .stage-number {
-  position: absolute;
-  top: -15px;
-  left: 20px;
-  width: 35px;
-  height: 35px;
-  background: var(--button-green);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: background-color 0.4s ease;
-}
-
-.stage-card:hover .stage-number {
-  background: var(--button-hover-green);
-}
-
-.stage-card h3 {
-  margin: 15px 0 10px;
-  font-size: 1.2rem;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.stage-card:hover h3 {
-  color: var(--button-green);
-}
-
-.stage-card p {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.4;
-  margin: 0;
-}
-
-/* Method Card Clean Implementation */
-.method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-height: 250px;
-}
-
-.method-card:hover {
-  transform: translateY(-10px);
-}
-
-.method-image {
-  width: 100%;
-  height: 120px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.method-image img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.4s ease;
-}
-
-.method-card:hover .method-image img {
-  transform: scale(1.05);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .stage-card {
-    min-height: 180px;
-    padding: 25px 15px;
-  }
-
-  .stage-card .stage-number {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-
-  .stage-card .stage-icon i {
-    font-size: 1.5rem;
-  }
-
-  .method-card {
-    min-height: 220px;
-  }
-
-  .method-image {
-    height: 100px;
-  }
-}
-
-/* Remove unnecessary properties and clean up */
-.stage-card {
-  transform: none;
-  backface-visibility: visible;
-}
-
-.method-card,
-.stage-card {
-  box-shadow: none;
-  transition: transform 0.4s ease;
-}
-
-.method-card:hover,
-.stage-card:hover {
-  box-shadow: none;
-}
-
-/* Method Card Image Fix */
-.method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  height: auto;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.method-image {
-  width: 100%;
-  height: 180px; /* Fixed height for consistent look */
-  margin-bottom: 20px;
-  border-radius: 8px; /* Rounded corners for image container */
-  overflow: hidden; /* Ensure image stays within border radius */
-}
-
-.method-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Changed from contain to cover */
-  object-position: center;
-  border-radius: 8px; /* Match container radius */
-  transition: transform 0.3s ease;
-}
-
-.method-card:hover .method-image img {
-  transform: scale(1.05);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .method-card {
-    min-height: 220px;
-  }
-
-  .method-image {
-    height: 160px; /* Slightly smaller on mobile */
-  }
-}
-
-/* Method Card Image Grid Fix */
-.methods-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 2rem;
-}
-
-.method-card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-radius: 1rem;
-  overflow: hidden;
-  height: 100%;
-  transition: transform 0.3s ease;
-}
-
-.method-image {
-  position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  overflow: hidden;
-  background: #f8f9fc;
-}
-
-.method-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.method-content {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.method-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.method-content p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
-}
-
-/* Hover Effects */
-.method-card:hover {
-  transform: translateY(-5px);
-}
-
-.method-card:hover .method-image img {
-  transform: scale(1.05);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .methods-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-  
-  .method-card {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-
-/* Teaching Methods Grid Fix */
-.teaching-methods {
-  padding: 4rem 0;
-  background: #fff;
-}
-
-.methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.method-card {
-  background: #fff;
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.method-image {
-  position: relative;
-  width: 100%;
-  padding-top: 66.67%; /* 3:2 Aspect ratio */
-  overflow: hidden;
-}
-
-.method-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1rem 1rem 0 0;
-  transition: transform 0.3s ease;
-}
-
-.method-content {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.method-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.method-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.method-content li {
-  padding-left: 1.5rem;
-  position: relative;
-  margin-bottom: 0.75rem;
-  color: #666;
-}
-
-.method-content li:before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #37A19A;
-}
-
-/* Hover Effects */
-.method-card:hover {
-  transform: translateY(-5px);
-}
-
-.method-card:hover .method-image img {
-  transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .methods-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-  }
-
-  .method-card {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-}
-
-/* Method Card Grid dalam Program Section */
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.program-method-section .method-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
-}
-
-.program-method-section .method-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  background: #f8f9fc;
-}
-
-.program-method-section .method-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.program-method-section .method-card:hover .method-img {
-  transform: scale(1.05);
-}
-
-.program-method-section .method-content {
-  padding: 1.5rem;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .program-method-section .method-image {
-    height: 250px;
-  }
-}
-
-/* Program Method Section - Clean Implementation */
-.program-method-section {
-  position: relative;
-  padding: 60px 0;
-  background: #fff;
-  z-index: 20;
-}
-
-/* Method Grid Adjustments */
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1400px; /* Increased from 1200px */
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* Method Card Adjustments */
-.program-method-section .method-card {
-  height: auto;
-  min-height: 500px; /* Increased minimum height */
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-}
-
-/* Method Image Container */
-.program-method-section .method-image {
-  width: 100%;
-  height: 400px; /* Increased from 300px */
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-/* Method Image */
-.program-method-section .method-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Changed from cover to maintain aspect ratio */
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-/* Method Content */
-.program-method-section .method-content {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .program-method-section .methods-grid {
-    max-width: 1000px;
-  }
-}
-
-@media (max-width: 992px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-  }
-  
-  .program-method-section .method-card {
-    min-height: 450px;
-  }
-
-  .program-method-section .method-image {
-    height: 350px;
-  }
-}
-
-@media (max-width: 768px) {
-  .program-method-section .method-card {
-    min-height: 400px;
-  }
-
-  .program-method-section .method-image {
-    height: 300px;
-  }
-}
-
-/* Program Method Section - Ultimate Fix */
-.program-method-section {
-  padding: 60px 0;
-  background: #fff;
-}
-
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1400px;
-  margin: 40px auto;
-  padding: 0 30px;
-}
-
-.program-method-section .method-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  height: auto;
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  height: 500px; /* Fixed height for all images */
-  position: relative;
-  overflow: hidden;
-}
-
-.program-method-section .method-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Changed to cover */
-  transition: transform 0.3s ease;
-}
-
-.program-method-section .method-content {
-  padding: 25px;
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #666;
-}
-
-/* Teaching Methods Section */
-.teaching-methods .method-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  height: auto;
-  min-height: 600px;
-}
-
-.teaching-methods .method-card img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-/* Hover effects */
-.program-method-section .method-card:hover,
-.teaching-methods .method-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-.program-method-section .method-card:hover .method-img,
-.teaching-methods .method-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .program-method-section .methods-grid {
-    max-width: 1000px;
-  }
-}
-
-@media (max-width: 992px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-  }
-
-  .program-method-section .method-card,
-  .teaching-methods .method-card {
-    min-height: 500px;
-  }
-
-  .program-method-section .method-image,
-  .teaching-methods .method-card img {
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .program-method-section .method-card,
-  .teaching-methods .method-card {
-    min-height: 400px;
-  }
-
-  .program-method-section .method-image,
-  .teaching-methods .method-card img {
-    height: 300px;
-  }
-}
-
-/* Program Method Section - Final Fix */
-.program-method-section {
-  padding: 60px 0;
-  background: #fff;
-}
-
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1400px;
-  margin: 40px auto;
-  padding: 0 30px;
-}
-
-.program-method-section .method-card {
-  background: white;
-  border-radius: 15px;
-  padding: 0; /* Removed padding */
-  overflow: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  height: 400px; /* Fixed height */
-  position: relative;
-  overflow: hidden;
-  margin: 0; /* Removed margin */
-}
-
-.program-method-section .method-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Changed to cover */
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.program-method-section .method-content {
-  padding: 25px;
-  text-align: center;
-  background: white;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #666;
-  margin: 0;
-}
-
-/* Hover effects */
-.program-method-section .method-card:hover {
-  transform: translateY(-10px);
-}
-
-.program-method-section .method-card:hover .method-img {
-  transform: scale(1.1);
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-  }
-
-  .program-method-section .method-image {
-    height: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .program-method-section .method-image {
-    height: 250px;
-  }
-}
-
-/* Program Method Section - Super Clean Fix */
-.program-method-section {
-  padding: 40px 0;
-  background: #fff;
-}
-
-.program-method-section .methods-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-.program-method-section .method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.program-method-section .method-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Changed to contain */
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.program-method-section .method-content {
-  padding: 10px;
-  text-align: center;
-}
-
-.program-method-section .method-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.program-method-section .method-content p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #666;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .program-method-section .methods-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-  }
-
-  .program-method-section .method-image {
-    padding-bottom: 75%; /* 4:3 aspect ratio for mobile */
-  }
-}
-
-/* Reset background pada registration section */
-.registration-section {
-  padding: 80px 0;
-  background: #fff; /* Mengembalikan ke background putih */
-}
-
-.registration-container {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 40px;
-  background: #f8f9fc; /* Background container */
-  border-radius: 20px;
-  padding: 40px;
-}
-
-/* Menghapus border/shadow dari navbar */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: var(--bg-white);
-  box-shadow: none;
-  z-index: 1000;
-}
-
-/* Perbaikan untuk method-card di program section */
-.program-method-section .method-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.program-method-section .method-image {
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.program-method-section .method-image img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Hapus style yang tidak terpakai dan duplikat */
-/* Hapus bagian yang tidak digunakan seperti:
-- Animasi yang tidak terpakai
-- Duplicate selectors
-- Unused media queries
-- Unused transitions
-*/
-
-/* Ensure consistent spacing across all grid layouts */
-.methods-grid,
-.features-grid,
-.gallery-grid,
-.stages-grid {
-  gap: 40px;
-  margin: 60px auto;
-  max-width: 1200px;
-}
-
-/* Fix any margin issues at the bottom of pages */
-body > section:last-of-type,
-body > div:last-of-type {
-  margin-bottom: 0;
-  padding-bottom: 60px;
-}
-
-/* Fix back to top button shape */
-.back-to-top {
-  width: 50px !important;
-  height: 50px !important;
-  min-width: 50px !important;
-  min-height: 50px !important;
-  max-width: 50px !important;
-  max-height: 50px !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
-  transform: none !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.back-to-top i {
-  position: static !important;
-  display: block !important;
-  width: auto !important;
-  height: auto !important;
-  margin: auto !important;
-  padding: 0 !important;
-  transform: none !important;
-}
-
-.back-to-top:hover {
-  transform: none !important;
-}
-
-/* !important rules to remove any transition effects on scroll */
-* {
-  scroll-behavior: auto !important;
-}
-
-/* Fix grid spacing */
-.stages-grid,
-.methods-container,
-.features-grid {
-  gap: 60px !important;
-}
-
-/* Fix stage number positioning */
-.stage-card {
-  margin-top: 40px !important;
-  position: relative !important;
-}
-
-.stage-card .stage-number {
-  top: -40px !important;
-  position: absolute !important;
-  z-index: 10 !important;
-}
-
-/* Fix phone number visibility in navbar */
-.phone-number,
-.navbar-container .phone-number {
-  display: none !important; /* Hide any legacy phone number displays */
-}
-
-/* Right Phone - Modify this section */
-.phone-number {
-  display: none !important; /* Hide this completely */
-}
-
-/* Update contact dropdown styling for better visibility */
-header .contact-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 15px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  min-width: 250px;
-  z-index: 1001; /* Increased from 1000 */
-  display: none;
-}
-
-/* Critical fix: ensure dropdown is visible when active */
-header .contact-dropdown.show {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  display: block !important;
-  pointer-events: all !important;
-}
-
-/* Ensure contact nav is positioned properly */
-.contact-nav {
-  position: relative !important;
-  justify-self: end !important;
-  z-index: 1001 !important;
-}
-
-/* ...existing code... */
-
-/* Fix any other phone number styles or containers */
-/* Phone Number Container - Right Side - This section should be hidden */
-.phone-number {
-  display: none !important;
-}
-
-/* Rest of existing styles remain unchanged */
-/* ...existing code... */
-
-/* Enhanced contact dropdown styling for better visibility */
-.contact-dropdown {
-  position: absolute;
-  top: calc(100% + 10px) !important;
-  right: 0 !important;
-  background: white !important;
-  border-radius: 12px !important;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
-  padding: 15px !important;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  min-width: 250px !important;
-  z-index: 1001 !important;
-  display: none;
-}
-
-/* Critical fix: ensure dropdown is visible when active */
-.contact-dropdown.show {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
-  display: block !important;
-  pointer-events: all !important;
-}
-
-/* Fix contact item visibility */
-.contact-item {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  padding: 12px !important;
-  color: #333 !important;
-  text-decoration: none !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
-  opacity: 1 !important; /* Make sure opacity is 1 */
-  transform: none !important; /* Remove any transforms */
-  margin-bottom: 5px !important;
-}
-
-.contact-dropdown.show .contact-item {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-
-.contact-item:hover {
-  background: #f5f5f5 !important;
-}
-
-.contact-item i {
-  color: #25D366 !important;
-  font-size: 20px !important;
-  opacity: 1 !important;
-}
-
 .contact-item div {
-  display: flex !important;
-  flex-direction: column !important;
-  opacity: 1 !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-item strong {
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  color: #333 !important;
-  opacity: 1 !important;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .contact-item span {
-  font-size: 12px !important;
-  color: #666 !important;
-  opacity: 1 !important;
+  font-size: 12px;
+  color: #666;
 }
 
 /* ...existing code... */
@@ -5142,7 +2482,17 @@ html, body {
   color: #666;
 }
 
-/* Fix for mobile */
+/* Add image optimization styles */
+.method-card img {
+  width: 100%;
+  height: 120px; /* Match method-image height */
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast; /* Improve image sharpness */
+  backface-visibility: hidden; /* Prevent image flickering */
+  transform: translateZ(0); /* Enable hardware acceleration */
+}
+
 @media (max-width: 768px) {
   .methods-grid {
     grid-template-columns: 1fr;
@@ -5340,5 +2690,475 @@ html, body {
   
   .simple-method-image {
     padding-bottom: 75%; /* Taller aspect ratio on mobile */
+  }
+}
+
+/* Add keyframes for icon pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ====== TAMPILAN MAKSUD DAN TUJUAN RUMBEL REVISI ====== */
+.purpose-section {
+  padding: 0; /* Removed padding to eliminate white space from top */
+  background: #e8f5e9; /* Light green background to match the image */
+  position: relative;
+  overflow: hidden;
+}
+
+.purpose-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.purpose-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.purpose-section .section-title-text {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.purpose-section .section-title {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.purpose-section .section-description {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #34495e;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.purpose-section .section-description::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  font-size: 4rem;
+  color: #37A19A;
+  font-family: serif;
+  opacity: 0.3;
+}
+
+.purpose-section .section-description::after {
+  content: '"';
+  position: absolute;
+  bottom: -30px;
+  right: 30px;
+  font-size: 4rem;
+  color: #37A19A;
+  font-family: serif;
+  opacity: 0.3;
+}
+
+.purpose-images-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.purpose-image {
+  width: 100%;
+  height: 350px; /* Tinggi optimal untuk desktop */
+  object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+  border-radius: 20px; /* Sudut membulat pada gambar */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Bayangan lembut */
+  transition: all 0.4s ease;
+  border: 3px solid transparent; /* Border transparan default */
+  background-color: #ffffff; /* Memastikan background putih di belakang gambar */
+}
+
+.purpose-image:hover {
+  transform: translateY(-5px) scale(1.02); /* Efek mengangkat dan sedikit membesar saat hover */
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15); /* Bayangan lebih gelap saat hover */
+  border-color: #37A19A; /* Border hijau saat hover */
+}
+
+@media (max-width: 768px) {
+  .purpose-section {
+    padding: 0 20px; /* Adjusted padding for mobile, removed top padding */
+  }
+  
+  .purpose-section .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .purpose-section .section-title img {
+    max-width: 80%; /* Adjusted image size for tablets */
+    border-radius: 10px;
+  }
+  
+  .purpose-section .section-description {
+    font-size: 1.1rem;
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+  
+  .purpose-images-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .purpose-image {
+    height: 300px; /* Tinggi gambar untuk tablet */
+    object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+  }
+}
+
+@media (max-width: 480px) {
+  .purpose-section .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .purpose-section .section-title img {
+    max-width: 90%; /* Adjusted image size for mobile phones */
+    border-radius: 8px;
+  }
+  
+  .purpose-section .section-description {
+    font-size: 1rem;
+    padding: 25px 15px;
+  }
+  
+  .purpose-image {
+    height: 250px; /* Tinggi gambar untuk mobile */
+    object-fit: contain; /* Memastikan seluruh gambar terlihat tanpa terpotong */
+  }
+}
+
+/* ====== END TAMPILAN MAKSUD DAN TUJUAN RUMBEL REVISI ====== */
+
+/* Contact Registration Section */
+.contact-registration-section {
+  padding: 80px 0;
+  background: #f8f8f8; /* Light gray background */
+}
+
+.contact-registration-section .section-title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.contact-registration-section .section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #37A19A, #2a8c86); /* Subtle line */
+  border-radius: 2px;
+}
+
+.contact-registration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Contact Info */
+.contact-info {
+  background: #fff; /* White card background */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Soft shadow */
+  border: 1px solid #eee; /* Light border */
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+.contact-info:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Slightly stronger shadow on hover */
+}
+
+.contact-info h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.contact-info h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #37A19A, #2a8c86);
+  border-radius: 2px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 30px;
+  background: #f8f9fa; /* Very light gray for individual contact cards */
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Very light shadow */
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  background: #e9ecef; /* Slightly darker on hover */
+}
+
+.contact-card i {
+  font-size: 2.5rem;
+  color: #37A19A;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover i {
+  transform: scale(1.05); /* Slight icon scale on hover */
+}
+
+.contact-card div {
+  text-align: left;
+}
+
+.contact-card div span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: block;
+}
+
+/* Registration Form */
+.registration-form {
+  background: #fff; /* White card background */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Soft shadow */
+  border: 1px solid #e8e8e8; /* Light border */
+  transition: all 0.3s ease;
+}
+
+.registration-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.registration-form h3 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.registration-form h3::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #37A19A, #2a8c86);
+  border-radius: 2px;
+}
+
+.registration-form .form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.registration-form input,
+.registration-form select {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #f8f9fa; /* Light background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-form input:focus,
+.registration-form select:focus {
+  outline: none;
+  border-color: #37A19A;
+  box-shadow: 0 0 0 3px rgba(55, 161, 154, 0.1);
+}
+
+.registration-form .submit-btn {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #37A19A 0%, #2a8c86 100%); /* Green gradient */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.registration-form .submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(55, 161, 154, 0.2);
+  background: linear-gradient(135deg, #2a8c86 0%, #37A19A 100%); /* Reverse gradient on hover */
+}
+
+/* Responsive for Contact & Registration */
+@media (max-width: 768px) {
+  .contact-registration-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 15px;
+  }
+  
+  .contact-info,
+  .registration-form {
+    padding: 30px 25px;
+  }
+  
+  .contact-info h3,
+  .registration-form h3 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-card {
+    padding: 20px 25px;
+    max-width: 100%;
+  }
+  
+  .contact-card i {
+    font-size: 2rem;
+  }
+  
+  .contact-card div span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.1rem !important;
+  }
+  .hero-content p {
+    font-size: 1rem !important;
+  }
+}
+
+/* Override hero content colors for specific pages */
+.jari-aljabar-page .animated-title,
+.baca-tulis-page .animated-title {
+  color: white !important;
+}
+
+.jari-aljabar-page .hero-subtitle,
+.baca-tulis-page .hero-subtitle {
+  color: white !important;
+}
+
+/* Ensure hero content text is white on these pages */
+.jari-aljabar-page .hero-content h1,
+.baca-tulis-page .hero-content h1 {
+  color: white !important;
+}
+
+.jari-aljabar-page .hero-content p,
+.baca-tulis-page .hero-content p {
+  color: white !important;
+}
+
+.additional-video-section {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust height as needed, similar to background-container */
+  overflow: hidden;
+  margin-top: 30px; /* Add some space from the section above */
+  margin-bottom: 0; /* Removed space to the section below */
+}
+
+.additional-video-section .additional-video-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100; /* Send to back */
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+}
+
+/* Responsive styles for the new video section */
+@media (max-width: 768px) {
+  .additional-video-section {
+    height: auto;
+    min-height: 200px; /* Adjust minimum height for mobile */
+    margin-top: 20px;
+    margin-bottom: 0; /* Removed space to the section below for mobile */
   }
 }
