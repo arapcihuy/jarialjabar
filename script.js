@@ -205,10 +205,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const forms = document.querySelectorAll('form');
   forms.forEach(form => {
     form.addEventListener('submit', async function(e) {
+      console.log('Form submit event triggered.');
       e.preventDefault();
       const submitBtn = form.querySelector('.submit-btn');
-      if (!submitBtn) return;
+      if (!submitBtn) {
+        console.log('Submit button not found.');
+        return;
+      }
 
+      console.log('Submit button found. Disabling and changing text.');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Mengirim...';
 
@@ -218,6 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
       for (let [key, value] of formData.entries()) {
         data[key] = value;
       }
+
+      console.log('Attempting to send form data:', data);
 
       try {
         // Kirim data ke backend PHP
