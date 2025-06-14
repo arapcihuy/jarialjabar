@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize form submission
   const forms = document.querySelectorAll('form');
   forms.forEach(form => {
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const submitBtn = form.querySelector('.submit-btn');
       if (!submitBtn) return;
@@ -212,16 +212,36 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Mengirim...';
 
+      // Ambil data formulir
+      const formData = new FormData(form);
+      const data = {};
+      for (let [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+
       try {
-        // Simple mock of form submission
-        setTimeout(function() {
+        // Kirim data ke backend PHP
+        const response = await fetch('submit_registration.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
           showMessage(form, 'success');
           form.reset();
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Daftar Sekarang';
-        }, 1000);
+        } else {
+          // Tampilkan pesan error dari server
+          showMessage(form, 'error', result.message);
+        }
       } catch (error) {
-        showMessage(form, 'error');
+        console.error('Error submitting form:', error);
+        showMessage(form, 'error', 'Terjadi kesalahan saat mengirim pendaftaran. Coba lagi.');
+      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Daftar Sekarang';
       }
@@ -404,32 +424,8 @@ function addOption(selectElement, value, text) {
   selectElement.appendChild(option);
 }
 
-// Form submission handling
-document.addEventListener('DOMContentLoaded', function() {
-  const indexForm = document.getElementById('indexRegistrationForm');
-  const popupForm = document.getElementById('popupRegistrationForm');
-
-  if (indexForm) {
-    indexForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Form submission logic here
-      alert('Terima kasih telah mendaftar! Kami akan segera menghubungi Anda.');
-    });
-  }
-
-  if (popupForm) {
-    popupForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Form submission logic here
-      alert('Terima kasih telah mendaftar kelas gratis! Kami akan segera menghubungi Anda.');
-      document.getElementById('popupForm').style.display = 'none';
-      document.body.style.overflow = ''; // Re-enable scrolling
-    });
-  }
-});
-
 // Helper function to show form submission messages
-function showMessage(form, type) {
+function showMessage(form, type, message = '') {
   const overlay = document.createElement('div');
   overlay.className = `${type}-overlay`;
   
@@ -439,9 +435,9 @@ function showMessage(form, type) {
         <i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i>
       </div>
       <h3>${type === 'success' ? 'Pendaftaran Berhasil!' : 'Gagal Mengirim'}</h3>
-      <p>${type === 'success' ? 
+      <p>${message || (type === 'success' ? 
         'Terima kasih telah mendaftar. Kami akan segera menghubungi Anda.' : 
-        'Maaf, terjadi kesalahan. Silakan coba lagi nanti.'}</p>
+        'Maaf, terjadi kesalahan. Silakan coba lagi nanti.')}</p>
     </div>
   `;
   
