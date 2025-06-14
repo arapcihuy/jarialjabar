@@ -204,54 +204,53 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize form submission
   const forms = document.querySelectorAll('form');
   forms.forEach(form => {
-    form.addEventListener('submit', async function(e) {
-      console.log('Form submit event triggered.');
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       const submitBtn = form.querySelector('.submit-btn');
-      if (!submitBtn) {
-        console.log('Submit button not found.');
-        return;
-      }
+      if (!submitBtn) return;
 
-      console.log('Submit button found. Disabling and changing text.');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Mengirim...';
 
-      // Ambil data formulir
+      // Collect form data
       const formData = new FormData(form);
       const data = {};
-      for (let [key, value] of formData.entries()) {
+      formData.forEach((value, key) => {
         data[key] = value;
-      }
+      });
 
-      console.log('Attempting to send form data:', data);
-
-      try {
-        // Kirim data ke backend PHP
-        const response = await fetch('submit_registration.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
+      // Send data to PHP backend
+      fetch('submit_registration.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(errorData => {
+            throw new Error(errorData.message || 'Network response was not ok');
+          });
+        }
+        return response.json();
+      })
+      .then(result => {
         if (result.status === 'success') {
           showMessage(form, 'success');
           form.reset();
         } else {
-          // Tampilkan pesan error dari server
           showMessage(form, 'error', result.message);
         }
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        showMessage(form, 'error', 'Terjadi kesalahan saat mengirim pendaftaran. Coba lagi.');
-      } finally {
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showMessage(form, 'error', error.message);
+      })
+      .finally(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Daftar Sekarang';
-      }
+      });
     });
   });
   
@@ -432,7 +431,7 @@ function addOption(selectElement, value, text) {
 }
 
 // Helper function to show form submission messages
-function showMessage(form, type, message = '') {
+function showMessage(form, type, message) {
   const overlay = document.createElement('div');
   overlay.className = `${type}-overlay`;
   
