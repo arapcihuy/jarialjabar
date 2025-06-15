@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-define('DB_HOST', 'srv594.hstgr.io');
-define('DB_USER', 'u800708762_rasyid1');
-define('DB_PASS', 'Rasyid3oke@');
-define('DB_NAME', 'u800708762_rasyid1');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'REDACTED_USER_CHANGE_ME');
+define('DB_PASS', 'REDACTED_PASSWORD_CHANGE_ME');
+define('DB_NAME', 'REDACTED_DB_CHANGE_ME');
 
 // Application settings
 define('MAX_LOGIN_ATTEMPTS', 5);
