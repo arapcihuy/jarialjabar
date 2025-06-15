@@ -43,30 +43,55 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Handle popup form submission
-  const popupRegistrationForm = document.getElementById('popupRegistrationForm');
-  if (popupRegistrationForm) {
-    popupRegistrationForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      
-      // Debug log form data
-      console.log("Form submitted with data:");
-      for (const [key, value] of formData.entries()) {
-        console.log(`${key}: ${value}`);
-      }
-      
-      // Show success message
-      alert('Terima kasih! Kami akan menghubungi Anda untuk jadwal kelas gratis Anda.');
-      
-      // Close popup
-      popupForm.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Restore background scrolling
-      
-      // Reset form
-      this.reset();
-    });
-  }
+  attachPopupFormHandler();
 });
+
+function attachPopupFormHandler() {
+  const popupForm = document.getElementById('popupRegistrationForm');
+  if (popupForm && !popupForm.hasAttribute('data-handler-attached')) {
+    popupForm.setAttribute('data-handler-attached', 'true');
+    popupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const feedbackDiv = document.getElementById('popupFormFeedback');
+      const submitBtn = popupForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Mengirim...';
+      submitBtn.disabled = true;
+      const formData = new FormData(popupForm);
+      const data = new URLSearchParams(formData);
+      console.log('Akan mengirim fetch ke submit_registration.php');
+      fetch('submit_registration.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+      })
+      .then(res => res.text())
+      .then(response => {
+        console.log('Fetch berhasil dikirim, response:', response);
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+        if (response.toLowerCase().includes('berhasil') || response.toLowerCase().includes('success')) {
+          feedbackDiv.textContent = 'Pendaftaran berhasil! Kami akan menghubungi Anda.';
+          feedbackDiv.style.color = 'green';
+          popupForm.reset();
+        } else {
+          feedbackDiv.textContent = 'Gagal mengirim. Silakan coba lagi.';
+          feedbackDiv.style.color = 'red';
+        }
+      })
+      .catch(err => {
+        console.log('Fetch error:', err);
+        feedbackDiv.textContent = 'Gagal mengirim. Silakan coba lagi.';
+        feedbackDiv.style.color = 'red';
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    });
+    console.log('Handler submit KHUSUS popupRegistrationForm terpasang!');
+  }
+}
 
 // Function to update popup jadwal options based on selected program
 function updatePopupJadwal() {
@@ -107,3 +132,6 @@ function addPopupOption(selectElement, value, text) {
   selectElement.appendChild(option);
   console.log("Added option:", text);
 }
+
+// Panggil fungsi ini SETIAP KALI popup/modal ditampilkan
+window.attachPopupFormHandler = attachPopupFormHandler;

@@ -254,10 +254,9 @@
         <div class="form-group">
           <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
         </div>
-        <!-- Program diset paten untuk Jari Aljabar -->
         <input type="hidden" name="program" value="jari-aljabar">
         <div class="form-group">
-          <select name="jadwal" required>
+          <select name="jadwal" id="jadwalJariAljabar" required>
             <option value="">Pilih Jadwal Les</option>
             <option value="senin-rabu-16">Senin & Rabu 16:00-17:30</option>
             <option value="senin-rabu-18">Senin & Rabu 18:00-19:30</option>
@@ -267,6 +266,7 @@
             <option value="jumat-sabtu-18">Jumat & Sabtu 18:00-19:30</option>
           </select>
         </div>
+        <div id="formFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
         <button type="submit" class="submit-btn">Daftar Sekarang</button>
       </form>
     </div>
@@ -376,6 +376,86 @@
       });
     }
   });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('jariAljabarForm');
+  const feedbackDiv = document.getElementById('formFeedback');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalBtnText = submitBtn.textContent;
+      const jadwal = form.querySelector('select[name="jadwal"]').value;
+      if (!jadwal) {
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.textContent = 'Silakan pilih jadwal les.';
+        feedbackDiv.style.backgroundColor = '#f8d7da';
+        feedbackDiv.style.color = '#721c24';
+        feedbackDiv.style.border = '1px solid #f5c6cb';
+        return;
+      }
+      submitBtn.textContent = 'Mengirim...';
+      submitBtn.disabled = true;
+      const formData = new FormData(form);
+      const data = new URLSearchParams(formData);
+      console.log('Sending data:', data.toString());
+      fetch('submit_registration.php', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+      })
+      .then(response => response.text().then(text => {
+        try { return JSON.parse(text); } catch { return text; }
+      }))
+      .then(result => {
+        feedbackDiv.style.display = 'block';
+        if (typeof result === 'object' && result !== null) {
+          if (result.status === 'success') {
+            feedbackDiv.textContent = result.message || 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+            feedbackDiv.style.backgroundColor = '#d4edda';
+            feedbackDiv.style.color = '#155724';
+            feedbackDiv.style.border = '1px solid #c3e6cb';
+            form.reset();
+          } else {
+            feedbackDiv.textContent = result.message || 'Terjadi kesalahan. Silakan coba lagi.';
+            feedbackDiv.style.backgroundColor = '#f8d7da';
+            feedbackDiv.style.color = '#721c24';
+            feedbackDiv.style.border = '1px solid #f5c6cb';
+          }
+        } else {
+          if (typeof result === 'string' && (result.toLowerCase().includes('berhasil') || result.toLowerCase().includes('success'))) {
+            feedbackDiv.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+            feedbackDiv.style.backgroundColor = '#d4edda';
+            feedbackDiv.style.color = '#155724';
+            feedbackDiv.style.border = '1px solid #c3e6cb';
+            form.reset();
+          } else {
+            feedbackDiv.textContent = result;
+            feedbackDiv.style.backgroundColor = '#f8d7da';
+            feedbackDiv.style.color = '#721c24';
+            feedbackDiv.style.border = '1px solid #f5c6cb';
+          }
+        }
+      })
+      .catch(error => {
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
+        feedbackDiv.style.backgroundColor = '#f8d7da';
+        feedbackDiv.style.color = '#721c24';
+        feedbackDiv.style.border = '1px solid #f5c6cb';
+      })
+      .finally(() => {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    });
+  }
+});
 </script>
 </body>
 </html>

@@ -211,7 +211,7 @@
         </select>
       </div>
       <input type="hidden" name="program" id="selectedProgram">
-      
+      <div id="mainFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
       <button type="submit" class="submit-btn">Daftar Sekarang</button>
     </form>
   </div>
@@ -353,39 +353,41 @@
 
 <!-- Popup -->
 <div id="popupForm" class="popup-overlay" style="display: none;">
-  <div class="popup-content">
-    <span id="closePopup" class="close-btn">&times;</span>
+  <div class="popup-content modern-popup">
+    <span class="closePopup close-btn">×</span>
     <div class="popup-header">
+      <img src="images/maskot.png" alt="maskot" class="popup-image">
       <h2>Coba Kelas Gratis!</h2>
       <p>Isi formulir di bawah ini untuk mencoba kelas gratis bersama kami.</p>
     </div>
-    <div class="popup-body">
-      <img src="images/maskot.png" alt="maskot" class="popup-image">
-      <form id="popupRegistrationForm" class="popup-form">
-        <div class="form-group">
-          <input type="text" name="fullname" required placeholder="Nama Lengkap">
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" required placeholder="Email">
-        </div>
-        <div class="form-group">
-          <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
-        </div>
-        <div class="form-group">
-          <select name="program" id="popupProgramSelect" required onchange="updatePopupJadwal()">
-            <option value="">Pilih Program</option>
-            <option value="baca-tulis">Baca Tulis Roudhoh</option>
-            <option value="jari-aljabar">Jari Aljabar</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select name="jadwal" id="popupJadwalSelect" required>
-            <option value="">Pilih Jadwal Les</option>
-          </select>
-        </div>
-        <button type="submit" class="submit-btn">Daftar Kelas Gratis</button>
-      </form>
-    </div>
+    <form id="popupRegistrationForm" class="popup-form-modern">
+      <div class="form-group-modern">
+        <input type="text" name="fullname" required placeholder="Nama Lengkap">
+      </div>
+      <div class="form-group-modern">
+        <input type="email" name="email" required placeholder="Email">
+      </div>
+      <div class="form-group-modern">
+        <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
+      </div>
+      <div class="form-group-modern">
+        <select name="program" id="popupProgramSelect" required>
+          <option value="">Pilih Program</option>
+          <option value="baca-tulis">Baca Tulis Roudhoh</option>
+          <option value="jari-aljabar">Jari Aljabar</option>
+        </select>
+      </div>
+      <div class="form-group-modern">
+        <select name="jadwal" id="popupJadwalSelect" required>
+          <option value="">Pilih Jadwal Les</option>
+          <option value="senin-rabu">Senin & Rabu (15:00 - 16:30)</option>
+          <option value="selasa-kamis">Selasa & Kamis (15:00 - 16:30)</option>
+          <option value="jumat-sabtu">Jumat & Sabtu (10:00 - 11:30)</option>
+        </select>
+      </div>
+      <div id="popupFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
+      <button type="submit" class="submit-btn-modern">Daftar Kelas Gratis</button>
+    </form>
   </div>
 </div>
 
@@ -463,6 +465,7 @@
               <option value="">Pilih Jadwal Les</option>
             </select>
           </div>
+          <div id="indexFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
           <button type="submit" class="submit-btn">Daftar Sekarang</button>
         </form>
       </div>
@@ -745,6 +748,135 @@
     option.value = value;
     option.textContent = text;
     selectElement.appendChild(option);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Modal Form
+    const mainForm = document.getElementById('mainRegistrationForm');
+    const mainFeedback = document.getElementById('mainFormFeedback');
+    if (mainForm) {
+      mainForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = mainForm.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Mengirim...';
+        submitBtn.disabled = true;
+        const formData = new FormData(mainForm);
+        fetch('submit_registration.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text().then(text => {
+          try { return JSON.parse(text); } catch { return text; }
+        }))
+        .then(result => {
+          mainFeedback.style.display = 'block';
+          if (typeof result === 'object' && result !== null) {
+            if (result.status === 'success') {
+              mainFeedback.textContent = result.message || 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+              mainFeedback.style.backgroundColor = '#d4edda';
+              mainFeedback.style.color = '#155724';
+              mainFeedback.style.border = '1px solid #c3e6cb';
+              mainForm.reset();
+            } else {
+              mainFeedback.textContent = result.message || 'Terjadi kesalahan. Silakan coba lagi.';
+              mainFeedback.style.backgroundColor = '#f8d7da';
+              mainFeedback.style.color = '#721c24';
+              mainFeedback.style.border = '1px solid #f5c6cb';
+            }
+          } else {
+            if (typeof result === 'string' && (result.toLowerCase().includes('berhasil') || result.toLowerCase().includes('success'))) {
+              mainFeedback.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+              mainFeedback.style.backgroundColor = '#d4edda';
+              mainFeedback.style.color = '#155724';
+              mainFeedback.style.border = '1px solid #c3e6cb';
+              mainForm.reset();
+            } else {
+              mainFeedback.textContent = result;
+              mainFeedback.style.backgroundColor = '#f8d7da';
+              mainFeedback.style.color = '#721c24';
+              mainFeedback.style.border = '1px solid #f5c6cb';
+            }
+          }
+        })
+        .catch(error => {
+          mainFeedback.style.display = 'block';
+          mainFeedback.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
+          mainFeedback.style.backgroundColor = '#f8d7da';
+          mainFeedback.style.color = '#721c24';
+          mainFeedback.style.border = '1px solid #f5c6cb';
+        })
+        .finally(() => {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        });
+      });
+    }
+    // Contact Registration Form
+    const indexForm = document.getElementById('indexRegistrationForm');
+    const indexFeedback = document.getElementById('indexFormFeedback');
+    if (indexForm) {
+      indexForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = indexForm.querySelector('.submit-btn');
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Mengirim...';
+        submitBtn.disabled = true;
+        const formData = new FormData(indexForm);
+        fetch('submit_registration.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text())
+        .then(text => {
+          indexFeedback.style.display = 'block';
+          if (text.toLowerCase().includes('berhasil') || text.toLowerCase().includes('success')) {
+            indexFeedback.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+            indexFeedback.style.backgroundColor = '#d4edda';
+            indexFeedback.style.color = '#155724';
+            indexFeedback.style.border = '1px solid #c3e6cb';
+            indexForm.reset();
+          } else {
+            // Coba ambil pesan error dari JSON jika ada
+            let msg = text;
+            try {
+              const obj = JSON.parse(text);
+              if (obj && obj.message) msg = obj.message;
+            } catch {}
+            indexFeedback.textContent = msg || 'Terjadi kesalahan. Silakan coba lagi.';
+            indexFeedback.style.backgroundColor = '#f8d7da';
+            indexFeedback.style.color = '#721c24';
+            indexFeedback.style.border = '1px solid #f5c6cb';
+          }
+        })
+        .catch(() => {
+          indexFeedback.style.display = 'block';
+          indexFeedback.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
+          indexFeedback.style.backgroundColor = '#f8d7da';
+          indexFeedback.style.color = '#721c24';
+          indexFeedback.style.border = '1px solid #f5c6cb';
+        })
+        .finally(() => {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        });
+      });
+    }
+  });
+
+  // Modal close logic
+  const popupOverlay = document.getElementById('popupForm');
+  const closeBtn = document.querySelector('.closePopup');
+  if (closeBtn && popupOverlay) {
+    closeBtn.onclick = function() {
+      popupOverlay.style.display = 'none';
+    };
+    // Close modal if click outside content
+    popupOverlay.onclick = function(e) {
+      if (e.target === popupOverlay) {
+        popupOverlay.style.display = 'none';
+      }
+    };
   }
 </script>
 </body>
