@@ -1,6 +1,10 @@
 <?php
-session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once '../config.php';
+
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
@@ -16,21 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
+    var_dump($result->num_rows); // debug jumlah user ditemukan
     
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
+        var_dump($user); // debug user data
+        var_dump($password, $user['password'], password_verify($password, $user['password']));
         if (password_verify($password, $user['password'])) {
-            $_SESSION['admin_id'] = $user['id'];
-            $_SESSION['admin_username'] = $user['username'];
-            $_SESSION['admin_role'] = $user['role'];
-            $_SESSION['admin_name'] = $user['fullname'];
-            
-            // Update last login
-            $update = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
-            $update->bind_param("i", $user['id']);
-            $update->execute();
-            
-            header("Location: index.php");
+            echo "<h1>LOGIN BERHASIL</h1>";
             exit();
         }
     }
