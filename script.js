@@ -204,6 +204,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize form submission
   const forms = document.querySelectorAll('form');
   forms.forEach(form => {
+    // Skip forms that have their own handlers
+    if (
+      form.id === 'jariAljabarForm' ||
+      form.id === 'bacaTulisForm' ||
+      form.id === 'popupRegistrationForm' ||
+      form.id === 'indexRegistrationForm'
+    ) {
+      if (form.id === 'indexRegistrationForm') {
+        console.log('DEBUG: Handler global SKIP indexRegistrationForm');
+      }
+      return;
+    }
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const submitBtn = form.querySelector('.submit-btn');
@@ -212,44 +225,55 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.disabled = true;
       submitBtn.textContent = 'Mengirim...';
 
-      // Collect form data
       const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-        data[key] = value;
-      });
+      const data = new URLSearchParams(formData);
 
-      // Send data to PHP backend
       fetch('submit_registration.php', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(data),
+        body: data
       })
-      .then(response => {
-        if (!response.ok) {
-          return response.json().then(errorData => {
-            throw new Error(errorData.message || 'Network response was not ok');
-          });
-        }
-        return response.json();
-      })
-      .then(result => {
-        if (result.status === 'success') {
-          showMessage(form, 'success');
+      .then(response => response.text())
+      .then(text => {
+        const feedbackDiv = form.querySelector('.form-feedback');
+        if (!feedbackDiv) return;
+
+        feedbackDiv.style.display = 'block';
+
+        // Jika response mengandung kata berhasil/success
+        if (text.toLowerCase().includes('berhasil') || text.toLowerCase().includes('success')) {
+          feedbackDiv.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
+          feedbackDiv.style.backgroundColor = '#d4edda';
+          feedbackDiv.style.color = '#155724';
+          feedbackDiv.style.border = '1px solid #c3e6cb';
           form.reset();
         } else {
-          showMessage(form, 'error', result.message);
+          // Jika response JSON error
+          let msg = text;
+          try {
+            const obj = JSON.parse(text);
+            if (obj && obj.message) msg = obj.message;
+          } catch {}
+          feedbackDiv.textContent = msg || 'Terjadi kesalahan. Silakan coba lagi.';
+          feedbackDiv.style.backgroundColor = '#f8d7da';
+          feedbackDiv.style.color = '#721c24';
+          feedbackDiv.style.border = '1px solid #f5c6cb';
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
-        showMessage(form, 'error', error.message);
+      .catch(() => {
+        const feedbackDiv = form.querySelector('.form-feedback');
+        if (!feedbackDiv) return;
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
+        feedbackDiv.style.backgroundColor = '#f8d7da';
+        feedbackDiv.style.color = '#721c24';
+        feedbackDiv.style.border = '1px solid #f5c6cb';
       })
       .finally(() => {
-        submitBtn.disabled = false;
         submitBtn.textContent = 'Daftar Sekarang';
+        submitBtn.disabled = false;
       });
     });
   });
