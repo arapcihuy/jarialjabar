@@ -280,13 +280,6 @@ body.baca-tulis-page::before {
 }
 
 .animated-title::after,
-.animated-title::before {
-  /* content: none !important; */ /* Reverting aggressive override */
-  /* display: none !important; */ /* Reverting aggressive override */
-  /* border: none !important; */ /* Reverting aggressive override */
-  /* box-shadow: none !important; */ /* Reverting aggressive override */
-  /* background: none !important; */ /* Reverting aggressive override */
-}
 
 .hero-subtitle {
   color: white;
@@ -934,9 +927,6 @@ body.baca-tulis-page::before {
   /* stroke: none !important; */ /* Removed */
 }
 
-.wave-separator {
-  /* Removed background, background-size, and animation properties */
-}
 
 .wave-separator svg .wave1 {
   /* fill: transparent !important; */ /* Removed */
