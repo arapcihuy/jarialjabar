@@ -2071,7 +2071,7 @@ header .contact-toggle.active {
   color: #666;
 }
 
-/* ...existing code... */
+/* ...rest of the code... */
 
 /* Contact dropdown - Enhanced visibility styles */
 /* These were previously inline in the HTML, now properly placed in CSS */
@@ -2249,7 +2249,7 @@ body[data-scrolling="true"] {
   overflow: hidden !important;
 }
 
-/* ...existing code... */
+/* ...rest of the code... */
 
 /* Mobile Optimization Enhancements - Add at end of file */
 
@@ -2634,7 +2634,7 @@ html, body {
 .simple-method-card {
   background: white;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */ /* Menghapus properti ini */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-decoration: none;
   color: inherit;
@@ -2649,8 +2649,8 @@ html, body {
 
 .simple-method-image {
   width: 100%;
-  height: 0;
-  padding-bottom: 60%; /* Creates a fixed aspect ratio */
+  height: 0; /* Mengatur tinggi ke 0 untuk padding-bottom trick */
+  padding-bottom: 75%; /* Mengatur ulang ke 75% untuk rasio aspek yang umum */
   position: relative;
   background-color: #f5f5f5; /* Fallback color if image doesn't load */
 }
@@ -2661,7 +2661,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Memastikan gambar mengisi penuh kontainer */
 }
 
 .simple-method-content {
@@ -2688,9 +2688,7 @@ html, body {
     max-width: 500px;
   }
   
-  .simple-method-image {
-    padding-bottom: 75%; /* Taller aspect ratio on mobile */
-  }
+  /* Menghapus aturan padding-bottom mobile spesifik karena sudah universal */
 }
 
 /* Add keyframes for icon pulse animation */
@@ -2709,9 +2707,9 @@ html, body {
 /* ====== TAMPILAN MAKSUD DAN TUJUAN RUMBEL REVISI ====== */
 .purpose-section {
   padding: 50px 0; /* Added padding to top and bottom */
-  background: #e8f5e9; /* Light green background to match the image */
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 100%); /* Gradasi oranye ke kuning */
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */ /* Menghapus properti ini agar animasi tidak terpotong */
   margin-bottom: 50px; /* Increased space below this section */
 }
 
@@ -3177,7 +3175,7 @@ html, body {
   background: rgba(0,0,0,0.45);
   z-index: 9999;
   position: fixed;
-  top: 0 left: 0 right: 0 bottom: 0;
+  inset: 0; /* Changed from top: 0 left: 0 right: 0 bottom: 0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3286,3 +3284,349 @@ html, body {
 }
 
 /* End Modern Popup Styles */
+
+.rbd-title-with-logo {
+  position: relative;
+  display: block; /* Changed from inline-block to block */
+  margin: 0 auto; /* Added to center the block */
+  text-align: center;
+  color: #ff7300;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 30px;
+  line-height: 1.1;
+}
+
+.logo-behind-text {
+  position: absolute;
+  left: 24%; /* Menggeser gambar lebih ke kiri. Anda mungkin perlu menyesuaikan nilai ini. */
+  top: 32%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 110px;
+  height: 110px;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.logo-behind-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rbd-title-text {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  padding-left: 0;
+}
+
+/* Animasi Otak-Otak */
+.animated-brains-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Mengubah lebar kontainer animasi menjadi 100% */
+  height: 100%; /* Mengubah tinggi kontainer animasi menjadi 100% */
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+  display: block; /* Menambahkan display block */
+}
+
+.animated-brain {
+  position: absolute;
+  background-image: url('images/brain_1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform: translate(-50%, -50%);
+  opacity: 1; /* Mengubah opacity awal menjadi 1 */
+  will-change: transform, opacity;
+  display: block; /* Menambahkan display block */
+}
+
+/* Memastikan purpose-section memiliki posisi relatif */
+.purpose-section {
+  position: relative;
+  overflow: visible; /* Mengubah overflow menjadi visible */
+  min-height: 500px; /* Menambahkan min-height */
+}
+
+/* Variasi animasi untuk setiap otak */
+.brain-1 {
+  animation: brain-animation-1 25s linear infinite;
+  left: 15%;
+  top: 10%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 0s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-2 {
+  animation: brain-animation-2 30s linear infinite;
+  left: 85%;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 2s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-3 {
+  animation: brain-animation-3 20s linear infinite;
+  left: 30%;
+  top: 90%;
+  width: 45px;
+  height: 45px;
+  animation-delay: 5s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-4 {
+  animation: brain-animation-4 28s linear infinite;
+  left: 5%;
+  top: 70%;
+  width: 55px;
+  height: 55px;
+  animation-delay: 8s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-5 {
+  animation: brain-animation-5 22s linear infinite;
+  left: 95%;
+  top: 20%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 10s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-6 {
+  animation: brain-animation-6 26s linear infinite;
+  left: 60%;
+  top: 5%;
+  width: 48px;
+  height: 48px;
+  animation-delay: 12s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-7 {
+  animation: brain-animation-7 23s linear infinite;
+  left: 20%;
+  top: 80%;
+  width: 52px;
+  height: 52px;
+  animation-delay: 14s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-8 {
+  animation: brain-animation-8 29s linear infinite;
+  left: 70%;
+  top: 95%;
+  width: 58px;
+  height: 58px;
+  animation-delay: 16s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-9 {
+  animation: brain-animation-9 21s linear infinite;
+  left: 40%;
+  top: 0%;
+  width: 43px;
+  height: 43px;
+  animation-delay: 18s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+.brain-10 {
+  animation: brain-animation-10 27s linear infinite;
+  left: 0%;
+  top: 40%;
+  width: 65px;
+  height: 65px;
+  animation-delay: 20s;
+  opacity: 1; /* Menambahkan opacity awal */
+}
+
+/* Keyframe Animasi */
+@keyframes brain-animation-1 {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(-10%, 10%) scale(1.1); opacity: 1; }
+  50% { transform: translate(30%, -20%) scale(0.9); opacity: 0.8; }
+  75% { transform: translate(-40%, 30%) scale(1.2); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+}
+
+@keyframes brain-animation-2 {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(-80%, -10%) scale(0.9); opacity: 1; }
+  50% { transform: translate(-20%, 40%) scale(1.2); opacity: 0.8; }
+  75% { transform: translate(-90%, -30%) scale(0.8); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes brain-animation-3 {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(20%, -60%) scale(1.2); opacity: 1; }
+  50% { transform: translate(50%, 10%) scale(0.8); opacity: 0.8; }
+  75% { transform: translate(-10%, -50%) scale(1.1); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+}
+
+@keyframes brain-animation-4 {
+  0% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(70%, 20%) scale(0.9); opacity: 1; }
+  50% { transform: translate(10%, -50%) scale(1.2); opacity: 0.8; }
+  75% { transform: translate(60%, -10%) scale(0.8); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+}
+
+@keyframes brain-animation-5 {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(-90%, 40%) scale(1.1); opacity: 1; }
+  50% { transform: translate(-30%, -60%) scale(0.9); opacity: 0.8; }
+  75% { transform: translate(-80%, 10%) scale(1.2); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+}
+
+@keyframes brain-animation-6 {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(-20%, 60%) scale(0.9); opacity: 1; }
+  50% { transform: translate(40%, -10%) scale(1.2); opacity: 0.8; }
+  75% { transform: translate(-70%, 50%) scale(0.8); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes brain-animation-7 {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(50%, -40%) scale(1.2); opacity: 1; }
+  50% { transform: translate(-30%, 30%) scale(0.8); opacity: 0.8; }
+  75% { transform: translate(80%, -20%) scale(1.1); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+}
+
+@keyframes brain-animation-8 {
+  0% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(-10%, -70%) scale(0.9); opacity: 1; }
+  50% { transform: translate(60%, 20%) scale(1.2); opacity: 0.8; }
+  75% { transform: translate(-50%, -10%) scale(0.8); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+}
+
+@keyframes brain-animation-9 {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(90%, -30%) scale(1.1); opacity: 1; }
+  50% { transform: translate(20%, 50%) scale(0.9); opacity: 0.8; }
+  75% { transform: translate(-60%, 40%) scale(1.2); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+}
+
+@keyframes brain-animation-10 {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { transform: translate(30%, 80%) scale(0.9); opacity: 1; }
+  50% { transform: translate(-40%, -30%) scale(1.2); opacity: 0.8; }
+  75% { transform: translate(70%, 20%) scale(0.8); opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+.program-age-section {
+  padding: 80px 20px;
+  background-color: #f8f9fc;
+}
+
+.program-age-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.program-age-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.program-age-card:hover {
+  transform: translateY(-5px);
+}
+
+.program-age-card img {
+  width: 100%;
+  height: 250px; /* Adjust height as needed */
+  object-fit: cover;
+  display: block;
+}
+
+.program-age-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  color: white;
+  padding: 20px;
+}
+
+.program-age-overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.program-age-overlay p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .program-age-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .program-age-card img {
+    height: 200px;
+  }
+}
+
+/* Removed AGGRESSIVE OVERRIDES FOR YELLOW LINE ON BACA-TULIS.HTML */
+/* Removed AGGRESSIVE ADDITIONAL OVERRIDE FOR YELLOW LINE ON BACA-TULIS.HTML */
+/* Removed AGGRESSIVE GLOBAL OVERRIDE FOR YELLOW LINE ON BACA-TULIS.HTML */

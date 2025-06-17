@@ -87,7 +87,7 @@ function attachPopupFormHandler() {
         feedbackDiv.style.color = 'red';
         submitBtn.textContent = originalBtnText;
         submitBtn.disabled = false;
-      });
+    });
     });
     console.log('Handler submit KHUSUS popupRegistrationForm terpasang!');
   }

@@ -59,7 +59,6 @@
   <div class="hero-content">
     <span class="hero-badge">Metode Inovatif</span>
     <h1 class="animated-title">Baca Tulis Roudhoh</h1>
-    <div class="hero-line"></div>
     <p class="hero-subtitle">Belajar Membaca dan Menulis Menyenangkan dengan Metode Cantol Roudhoh</p>
     
     <div class="benefit-cards">
@@ -83,35 +82,50 @@
     <!-- Button with smooth scrolling -->
     <button class="hero-cta" data-target="daftar" data-smooth="true">Daftar Sekarang</button>
   </div>
-
-  <div class="wave-divider bottom multi-color">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.32,118.92,125.45,111.31,184.97,106.14Z"></path>
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-    </svg>
-  </div>
 </section>
 
 <!-- Wave Separator -->
 <div class="wave-separator">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" class="wave1"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" class="wave2"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="wave3"></path>
+        <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="200%" y2="0%">
+                <stop offset="0%" style="stop-color:#FF6347;" />
+                <stop offset="25%" style="stop-color:#3CB371;" />
+                <stop offset="50%" style="stop-color:#4169E1;" />
+                <stop offset="75%" style="stop-color:#FFA500;" />
+                <stop offset="100%" style="stop-color:#FF6347;" />
+            </linearGradient>
+        </defs>
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="url(#waveGradient)" class="wave1"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="url(#waveGradient)" class="wave2"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="url(#waveGradient)" class="wave3"></path>
     </svg>
 </div>
 
 <!-- Learning Stages Section with Interactive Elements -->
 <section class="learning-stages">
+  <!-- Floating Letters Background -->
+  <div class="floating-letters">
+    <span class="letter-symbol letter1">A</span>
+    <span class="letter-symbol letter2">B</span>
+    <span class="letter-symbol letter3">C</span>
+    <span class="letter-symbol letter4">D</span>
+    <span class="letter-symbol letter5">E</span>
+    <span class="letter-symbol letter6">F</span>
+    <span class="letter-symbol letter7">G</span>
+    <span class="letter-symbol letter8">H</span>
+    <span class="letter-symbol letter9">I</span>
+    <span class="letter-symbol letter10">J</span>
+    <span class="letter-symbol letter11">K</span>
+    <span class="letter-symbol letter12">L</span>
+    <span class="letter-symbol letter13">M</span>
+  </div>
   <div class="container">
     <div class="section-header">
       <h2 class="section-title blue">Tahapan Belajar Membaca yang Menyenangkan</h2>
-      <div class="section-line"></div>
     </div>
     
     <div class="stages-timeline">
-      <div class="stages-track"></div>
       <div class="stages-grid">
   <!-- Stage 1 -->
   <div class="stage-card" data-aos="fade-up">
@@ -204,7 +218,7 @@
     <p class="section-description">Metode cantol menggunakan gambar dan cerita untuk memudahkan anak mengingat huruf</p>
     
     <div class="alphabet-container">
-      <div class="alphabet-letter" data-sound="a">A<span class="cantol">api</span></div>
+      <div class="alphabet-letter" data-sound="a">A<span class="cantol">ayam</span></div>
       <div class="alphabet-letter" data-sound="b">B<span class="cantol">bola</span></div>
       <div class="alphabet-letter" data-sound="c">C<span class="cantol">cicak</span></div>
       <div class="alphabet-letter" data-sound="d">D<span class="cantol">dasi</span></div>
@@ -212,6 +226,19 @@
       <div class="alphabet-letter" data-sound="f">F<span class="cantol">foto</span></div>
       <div class="alphabet-letter" data-sound="g">G<span class="cantol">gajah</span></div>
       <div class="alphabet-letter" data-sound="h">H<span class="cantol">harimau</span></div>
+      <div class="alphabet-letter" data-sound="j">J<span class="cantol">jagung</span></div>
+      <div class="alphabet-letter" data-sound="k">K<span class="cantol">kaki</span></div>
+      <div class="alphabet-letter" data-sound="l">L<span class="cantol">laba laba</span></div>
+      <div class="alphabet-letter" data-sound="m">M<span class="cantol">matahari</span></div>
+      <div class="alphabet-letter" data-sound="n">N<span class="cantol">nyamuk</span></div>
+      <div class="alphabet-letter" data-sound="p">P<span class="cantol">payung</span></div>
+      <div class="alphabet-letter" data-sound="r">R<span class="cantol">rambutan</span></div>
+      <div class="alphabet-letter" data-sound="s">S<span class="cantol">sapi</span></div>
+      <div class="alphabet-letter" data-sound="t">T<span class="cantol">tali</span></div>
+      <div class="alphabet-letter" data-sound="v">V<span class="cantol">vas</span></div>
+      <div class="alphabet-letter" data-sound="w">W<span class="cantol">wayang</span></div>
+      <div class="alphabet-letter" data-sound="y">Y<span class="cantol">yana</span></div>
+      <div class="alphabet-letter" data-sound="z">Z<span class="cantol">zahra</span></div>
     </div>
   </div>
 </section>
@@ -221,28 +248,23 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title yellow">Metode Pembelajaran Menyenangkan</h2>
-      <div class="section-line"></div>
     </div>
     
-    <div class="methods-container">
+    <div class="program-age-grid">
       <!-- Method 1 -->
-      <div class="method-card">
-        <div class="method-header">
-          <img src="images/cantol-method.jpg" alt="Belajar dengan Cerita" loading="lazy">
-        </div>
-        <h3>Belajar dengan Cerita</h3>
-        <div class="method-content">
+      <div class="program-age-card">
+        <img src="images/belajar-cerita.jpg" alt="Belajar dengan Cerita">
+        <div class="program-age-overlay">
+          <h3>Belajar dengan Cerita</h3>
           <p>Menggunakan cerita menarik untuk memperkenalkan huruf-huruf kepada anak</p>
         </div>
       </div>
 
       <!-- Method 2 -->
-      <div class="method-card">
-        <div class="method-header">
-          <img src="images/play-learn.jpg" alt="Bermain Sambil Belajar">
-        </div>
-        <h3>Bermain Sambil Belajar</h3>
-        <div class="method-content">
+      <div class="program-age-card">
+        <img src="images/bermain-belajar.jpg" alt="Bermain Sambil Belajar">
+        <div class="program-age-overlay">
+          <h3>Bermain Sambil Belajar</h3>
           <p>Aktivitas permainan yang membuat anak tidak sadar sedang belajar membaca</p>
         </div>
       </div>
@@ -255,7 +277,6 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title green">Daftar Program Baca Tulis Roudhoh</h2>
-      <div class="section-line"></div>
     </div>
     
     <div class="registration-container">
@@ -336,26 +357,6 @@
           letter.style.transform = 'translateY(0)';
         }, index * 50);
       });
-      
-      // Add a clean underline animation
-      setTimeout(() => {
-        const underline = document.createElement('div');
-        underline.style.cssText = `
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          width: 0;
-          height: 3px;
-          background: white;
-          transition: width 0.8s ease;
-        `;
-        animatedTitle.appendChild(underline);
-        
-        // Trigger animation after a tiny delay for proper render
-        setTimeout(() => {
-          underline.style.width = '100%';
-        }, 10);
-      }, letters.length * 50 + 200);
     }
     
     // Form submission with AJAX

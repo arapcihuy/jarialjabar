@@ -612,99 +612,88 @@ html, body, * {
 
 /* Teaching Methods Section */
 .teaching-methods {
-    padding: 80px 0;
-    background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f8f8f8;
 }
 
 .methods-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for cards */
+  gap: 30px;
+  max-width: 900px;
+  margin: 60px auto 0;
 }
 
 .method-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .method-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(55, 161, 154, 0.15);
+  transform: translateY(-5px);
 }
 
-.method-header {
-    width: 100%;
-    position: relative;
+.method-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.method-header img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+.method-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  color: white;
+  padding: 20px;
 }
 
-.method-card:hover .method-header img {
-    transform: scale(1.05);
+.method-overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: white;
 }
 
-.method-card h3 {
-    padding: 20px 20px 10px;
-    color: #333;
-    font-size: 18px;
-    font-weight: 700;
+.method-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
 }
 
-.method-content {
-    padding: 0 20px 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.method-overlay li {
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
 }
 
-.method-content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.method-content li {
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #666;
-    display: flex;
-    align-items: baseline;
-}
-
-.method-content li:before {
-    content: "•";
-    color: var(--jari-primary);
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.method-content ul li {
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+.method-overlay li:before {
+  content: '•';
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /* Registration Section */
 .registration-section {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #f8f9fc, #fff);
+  padding: 80px 20px;
+  background-color: #fff;
+  text-align: center;
 }
 
 .registration-container {
@@ -911,8 +900,49 @@ html, body, * {
         max-width: 480px;
     }
     
-    .method-header img {
-        height: 180px;
+    .method-card img {
+        height: 200px; /* Consistent height for mobile with Facilities section */
+    }
+    
+    .registration-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .program-info {
+        order: 2;
+    }
+    
+    .registration-form {
+        order: 1;
+    }
+    
+    .info-card {
+        padding: 20px 15px;
+    }
+    
+    .page-navigation {
+        left: 10px;
+        top: 10px;
+    }
+    
+    .back-home {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .wave-separator,
+    .wave-divider {
+        height: 40px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .submit-btn {
+        font-size: 16px !important; /* Prevent iOS zoom */
     }
 }
 
@@ -992,137 +1022,6 @@ html, body, * {
 
 /* Mobile optimization - Add at end of file */
 
-@media (max-width: 768px) {
-  /* Adjust math symbols for mobile */
-  .math-symbol {
-    font-size: 2rem;
-    opacity: 0.3;
-  }
-  
-  /* Better positioned symbols */
-  .symbol1 { top: 5%; left: 10%; }
-  .symbol2 { top: 15%; left: 30%; }
-  .symbol3 { top: 8%; right: 15%; }
-  .symbol4 { top: 25%; left: 20%; }
-  .symbol5 { top: 20%; right: 10%; }
-  .symbol6 { top: 40%; left: 15%; }
-  .symbol7 { top: 35%; right: 25%; }
-  .symbol8 { top: 55%; left: 30%; }
-  .symbol9 { top: 60%; right: 15%; }
-  .symbol10 { top: 15%; left: 70%; }
-  .symbol11 { top: 70%; left: 45%; }
-  .symbol12 { top: 50%; left: 55%; }
-  .symbol13 { top: 30%; right: 40%; }
-  
-  /* Hero content adjustments */
-  .animated-title {
-    font-size: 2.6rem !important;
-  }
-  
-  .hero-badge {
-    font-size: 12px;
-    padding: 6px 14px;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem !important;
-    margin-bottom: 20px;
-  }
-  
-  /* Stack benefit cards */
-  .benefit-cards {
-    flex-direction: column;
-    gap: 15px;
-    margin: 20px 0;
-  }
-  
-  .benefit-card {
-    width: 90%;
-    margin: 0 auto;
-    min-height: auto;
-  }
-  
-  /* Learning stages section */
-  .learning-stages {
-    padding: 40px 15px;
-  }
-  
-  .stages-timeline {
-    padding-top: 30px;
-  }
-  
-  .stages-grid {
-    grid-template-columns: 1fr !important;
-    gap: 40px;
-  }
-  
-  .stage-card {
-    padding: 25px 15px 20px;
-    margin-top: 40px !important;
-  }
-  
-  /* Teaching methods section */
-  .methods-container {
-    grid-template-columns: 1fr !important;
-    gap: 20px;
-  }
-  
-  .method-card {
-    margin-bottom: 15px;
-  }
-  
-  .method-header img {
-    height: 180px;
-  }
-  
-  /* Registration section */
-  .registration-container {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .program-info {
-    order: 2;
-  }
-  
-  .registration-form {
-    order: 1;
-  }
-  
-  .info-card {
-    padding: 20px 15px;
-  }
-  
-  /* Navigation positioning */
-  .page-navigation {
-    left: 10px;
-    top: 10px;
-  }
-  
-  .back-home {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-  
-  /* Adjust waves */
-  .wave-separator,
-  .wave-divider {
-    height: 40px;
-  }
-  
-  /* Section spacing */
-  section {
-    padding: 40px 0;
-  }
-  
-  /* Form elements */
-  .form-group input,
-  .form-group select,
-  .submit-btn {
-    font-size: 16px !important; /* Prevent iOS zoom */
-  }
-}
-
-/* Extra small devices */
 @media (max-width: 480px) {
   .animated-title {
     font-size: 2.2rem !important;
@@ -1134,8 +1033,16 @@ html, body, * {
     font-size: 16px !important;
   }
   
-  .method-header img {
-    height: 150px;
+  .method-card {
+    border-radius: 10px; /* Slightly less rounded corners for smaller screens */
+  }
+  
+  .method-overlay h3 {
+    font-size: 1.3rem; /* Adjust font size for smaller screens */
+  }
+  
+  .method-overlay li {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
   }
 }
 

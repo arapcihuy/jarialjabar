@@ -1,7 +1,50 @@
-/* Critical fixes for stage numbers and positioning */
-html, body, * {
-  scroll-behavior: auto !important;
-  overflow-anchor: none !important;
+/* Global aggressive reset for potential line-drawing properties */
+html, body {
+  background-image: none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: auto !important; /* Mengaktifkan scrolling */
+  position: relative;
+  z-index: 100;
+}
+
+/* Remove blue outline on focus */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure no pseudo-elements create lines on hero section or its content */
+.reading-hero::before,
+.reading-hero::after,
+.hero-content::before,
+.hero-content::after,
+.learning-stages::before,
+.learning-stages::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Specific targeting for potential separator lines (hr and .section-line) */
+hr,
+.section-line {
+  display: none !important;
+  background-image: none !important;
+  background: none !important;
+  border: none !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* Base styling for Baca Tulis page - Simplified, cleaner approach */
@@ -9,6 +52,7 @@ html, body, * {
   /* Simplified color palette with more focused tones */
   --primary: #FF6B6B;
   --primary-dark: #E95252;
+  --primary-rgb: 255, 107, 107; /* RGB values for primary color */
   --secondary: #4EA5D9;
   --secondary-dark: #3A8BC0;
   --accent: #FFD700;
@@ -31,8 +75,9 @@ html, body, * {
 body.baca-tulis-page {
   font-family: 'Nunito', 'Roboto', sans-serif;
   color: #222;
-  background-color: #FAFAFA;
+  background-color: #FAFAFA !important; /* Pastikan latar belakang halaman tetap */
   overflow-x: hidden;
+  overflow-y: auto !important; /* Mengaktifkan scrolling vertikal */
 }
 
 /* Subtle background pattern */
@@ -54,7 +99,8 @@ body.baca-tulis-page::before {
 
 /* Hero section with cleaner design */
 .reading-hero {
-  background: var(--primary-gradient);
+  background: var(--primary-gradient) !important; /* Memastikan background hero kembali */
+  background-image: var(--primary-gradient) !important;
   min-height: 80vh;
   padding: 100px 20px;
   display: flex;
@@ -62,8 +108,92 @@ body.baca-tulis-page::before {
   justify-content: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: hidden !important;
+  border-bottom: none !important; /* Memastikan tidak ada garis bawah */
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin-bottom: 0 !important;
 }
+
+.hero-content {
+  background: none !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Line Cover to hide persistent blue line */
+.line-cover {
+  width: 100%;
+  height: 2px; /* Tinggi minimal untuk menutupi garis */
+  background-color: #FAFAFA !important; /* Warna latar belakang halaman */
+  display: block; /* Pastikan div ditampilkan sebagai blok */
+  margin: 0; /* Pastikan tidak ada margin */
+  padding: 0; /* Pastikan tidak ada padding */
+  position: relative; /* Posisi relatif untuk memastikan di aliran normal */
+  z-index: 99999 !important; /* Tingkatkan z-index untuk memastikan di atas garis */
+}
+
+/* Learning Stages Section - Aggressive reset for top border/background */
+.learning-stages {
+  padding: 80px 20px;
+  background-color: #f8f9fc;
+  position: relative; /* Ensure positioned context for children */
+  /* overflow: hidden; */ /* Removed to allow floating letters to be visible */
+}
+
+/* Styling for all card elements */
+.benefit-card,
+.stage-card,
+.alphabet-letter,
+.method-card,
+.info-card {
+  background-color: #FFFFFF; /* Konsisten latar belakang putih */
+  border-radius: 12px; /* Sudut membulat yang konsisten */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bayangan lembut yang konsisten */
+  transition: all 0.3s ease; /* Transisi halus untuk efek hover */
+}
+
+/* Text color for card content */
+.benefit-card h3, .stage-card h3, .method-card h3, .info-card h3 {
+  color: #333333; /* Dark color for headings on white background */
+}
+
+.benefit-card p, .stage-card p, .method-card .method-content p, .info-card ul li {
+  color: #666666; /* Slightly lighter dark color for paragraphs on white background */
+}
+
+.alphabet-letter {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white; /* Warna latar belakang awal putih */
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary); /* Warna teks awal */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Transisi halus untuk semua properti */
+}
+
+.alphabet-letter:hover {
+  transform: translateY(-8px) rotate(3deg); /* Efek hover naik dan sedikit berputar */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Bayangan lebih jelas saat hover */
+  color: white; /* Warna teks menjadi putih saat hover */
+}
+
+/* Warna acak untuk setiap huruf saat di-hover */
+.alphabet-letter:nth-child(6n+1):hover { background-color: #FF6347; } /* Tomato */
+.alphabet-letter:nth-child(6n+2):hover { background-color: #3CB371; } /* MediumSeaGreen */
+.alphabet-letter:nth-child(6n+3):hover { background-color: #4169E1; } /* RoyalBlue */
+.alphabet-letter:nth-child(6n+4):hover { background-color: #FFA500; } /* Orange */
+.alphabet-letter:nth-child(6n+5):hover { background-color: #8A2BE2; } /* BlueViolet */
+.alphabet-letter:nth-child(6n+6):hover { background-color: #FF69B4; } /* HotPink */
 
 /* Simple, elegant floating letters */
 .floating-letters {
@@ -144,6 +274,18 @@ body.baca-tulis-page::before {
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
+  /* border: none !important; */ /* Reverting aggressive override */
+  /* box-shadow: none !important; */ /* Reverting aggressive override */
+  /* background: none !important; */ /* Reverting aggressive override */
+}
+
+.animated-title::after,
+.animated-title::before {
+  /* content: none !important; */ /* Reverting aggressive override */
+  /* display: none !important; */ /* Reverting aggressive override */
+  /* border: none !important; */ /* Reverting aggressive override */
+  /* box-shadow: none !important; */ /* Reverting aggressive override */
+  /* background: none !important; */ /* Reverting aggressive override */
 }
 
 .hero-subtitle {
@@ -236,7 +378,7 @@ body.baca-tulis-page::before {
 /* Clean learning stages section */
 .learning-stages {
   padding: 80px 20px;
-  background: white;
+  background-color: #f8f9fc;
 }
 
 .section-header {
@@ -245,23 +387,11 @@ body.baca-tulis-page::before {
 }
 
 .section-title {
-  font-size: 2.5rem;
-  color: #222;
-  margin-bottom: 40px;
-  text-align: center;
+  font-size: 2.8rem;
   font-weight: 700;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: currentColor;
-  border-radius: 3px;
-  opacity: 0.3;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
 }
 
 .section-title.blue {
@@ -281,72 +411,78 @@ body.baca-tulis-page::before {
 }
 
 .section-line {
-  height: 4px;
   width: 80px;
-  margin: 15px auto;
+  height: 4px;
+  background-color: #ddd;
+  margin: 10px auto 0;
   border-radius: 2px;
 }
 
 .section-title.blue + .section-line {
-  background: var(--secondary-gradient);
+  background-color: var(--secondary);
 }
 
 .section-title.red + .section-line {
-  background: var(--primary-gradient);
+  background-color: var(--primary);
 }
 
 .section-title.yellow + .section-line {
-  background: var(--accent-gradient);
+  background-color: var(--accent);
 }
 
 .section-title.green + .section-line {
-  background: var(--green-gradient);
+  background-color: var(--green);
 }
 
-/* Clean stages grid */
 .stages-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  row-gap: 60px; /* Increased row gap to separate the two rows */
-  column-gap: 30px; /* Keep the same column gap as before */
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
-/* Simple stage card design */
+.stages-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--secondary-light), var(--primary-light));
+  z-index: 0;
+  display: none; /* Hide the mysterious line */
+}
+
 .stage-card {
-  background: white;
-  border-radius: 15px;
+  background-color: white;
   padding: 30px 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  margin-top: 30px;
-  transition: all 0.3s ease;
-  border: 1px solid #f0f0f0;
-  height: 100%;
+  z-index: 1;
 }
 
 .stage-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Simple numbered circles */
 .stage-card .stage-number {
-  position: absolute;
-  top: -20px;
-  left: 20px;
+  background: var(--primary-gradient);
+  color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 18px;
-  z-index: 2;
+  margin: -50px auto 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .stage-card:nth-child(1) .stage-number {
@@ -382,284 +518,390 @@ body.baca-tulis-page::before {
 }
 
 .stage-card h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 1.3rem;
   color: #333;
+  margin-bottom: 10px;
 }
 
 .stage-card p {
-  font-size: 15px;
-  color: #444;
+  font-size: 0.95rem;
+  color: #666;
   line-height: 1.6;
-  margin-bottom: 0;
-  text-align: center;
 }
 
-/* Simple alphabet section */
+.stage-icon {
+  font-size: 2.5rem;
+  color: var(--secondary);
+  margin-top: 15px;
+}
+
 .alphabet-section {
-  padding: 80px 20px;
-  background: #f8fbff;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #f0f8ff, #e0f2f7); /* Gradien biru muda yang lembut */
+  text-align: center;
+  border-radius: 15px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  background-size: 200% 200%; /* Make background larger for animation */
+  animation: background-pan 15s linear infinite alternate; /* Pan animation */
 }
 
 .alphabet-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin: 40px 0;
-}
-
-/* Clean letter display */
-.alphabet-letter {
-  width: 60px;
-  height: 60px;
-  background: white;
-  border-radius: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsif */
+  gap: 18px; /* Jarak antar huruf */
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  color: var(--primary);
-  cursor: pointer;
-  position: relative;
+  margin-top: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.9); /* Latar belakang semi-transparan */
+  border-radius: 25px; /* Sudut lebih bulat */
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  perspective: 1000px; /* Menambahkan perspektif untuk efek 3D */
 }
 
-.alphabet-letter:hover {
-  transform: translateY(-5px);
-  color: white;
-  background: var(--primary-gradient);
-  box-shadow: 0 8px 20px rgba(255,107,107,0.2);
+.alphabet-letter::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.7) 0%, rgba(var(--primary-rgb), 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: radiant-burst 1.5s infinite ease-out;
+  z-index: -1;
 }
+
+.alphabet-letter:nth-child(2n)::after { animation-delay: 0.1s; }
+.alphabet-letter:nth-child(3n)::after { animation-delay: 0.2s; }
+.alphabet-letter:nth-child(4n)::after { animation-delay: 0.3s; }
+.alphabet-letter:nth-child(5n)::after { animation-delay: 0.4s; }
+.alphabet-letter:nth-child(6n)::after { animation-delay: 0.5s; }
+.alphabet-letter:nth-child(7n)::after { animation-delay: 0.6s; }
+.alphabet-letter:nth-child(8n)::after { animation-delay: 0.7s; }
+.alphabet-letter:nth-child(9n)::after { animation-delay: 0.8s; }
+.alphabet-letter:nth-child(10n)::after { animation-delay: 0.9s; }
+.alphabet-letter:nth-child(11n)::after { animation-delay: 1.0s; }
+.alphabet-letter:nth-child(12n)::after { animation-delay: 1.1s; }
+.alphabet-letter:nth-child(13n)::after { animation-delay: 1.2s; }
+.alphabet-letter:nth-child(14n)::after { animation-delay: 1.3s; }
+.alphabet-letter:nth-child(15n)::after { animation-delay: 1.4s; }
+.alphabet-letter:nth-child(16n)::after { animation-delay: 1.5s; }
+.alphabet-letter:nth-child(17n)::after { animation-delay: 1.6s; }
+.alphabet-letter:nth-child(18n)::after { animation-delay: 1.7s; }
+.alphabet-letter:nth-child(19n)::after { animation-delay: 1.8s; }
+.alphabet-letter:nth-child(20n)::after { animation-delay: 1.9s; }
+.alphabet-letter:nth-child(21n)::after { animation-delay: 2.0s; }
+.alphabet-letter:nth-child(22n)::after { animation-delay: 2.1s; }
+.alphabet-letter:nth-child(23n)::after { animation-delay: 2.2s; }
+.alphabet-letter:nth-child(24n)::after { animation-delay: 2.3s; }
+.alphabet-letter:nth-child(25n)::after { animation-delay: 2.4s; }
 
 .alphabet-letter .cantol {
+  font-size: 0.9rem; /* Ukuran teks 'cantol' lebih kecil */
+  color: var(--text-color);
   position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  background: white;
-  padding: 3px 8px;
-  border-radius: 5px;
-  color: #333;
-  font-weight: normal;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
   opacity: 0;
+  transform: translateY(10px);
   transition: all 0.3s ease;
-  white-space: nowrap;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .alphabet-letter:hover .cantol {
   opacity: 1;
-  bottom: -30px;
+  transform: translateY(0);
+  color: var(--primary-dark);
 }
 
-/* Clean method cards */
+/* Ensure the section title within alphabet-section is visible */
+.alphabet-section .section-title {
+  color: var(--primary); /* Warna judul disesuaikan */
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.alphabet-section .section-description {
+  color: #555; /* Warna deskripsi */
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Teaching Methods Section */
+.teaching-methods {
+  padding: 80px 20px;
+  background-color: #FAFAFA; /* Same as body background */
+}
+
 .methods-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  max-width: 1000px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 60px auto 0;
 }
 
 .method-card {
-  background: white;
-  border-radius: 15px;
+  /* Common card styles already applied globally to .benefit-card, .stage-card, .alphabet-letter, .method-card, .info-card */
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* New styles to mimic .benefit-card layout */
+  padding: 25px; /* Consistent padding with benefit-card */
+  display: flex !important; /* Force flexbox for internal layout */
+  flex-direction: column !important; /* Force stack content vertically */
+  align-items: center !important; /* Force center content horizontally */
+  text-align: center !important; /* Force center text within the card */
 }
 
 .method-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.method-card .method-header {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 10px !important; /* Space between icon and title */
 }
 
 .method-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  /* Removed as images are replaced by Font Awesome icons */
+  display: none !important; /* Ensure image is hidden if it somehow persists */
 }
 
-.method-card:hover img {
-  transform: scale(1.05);
+.method-card .method-header i {
+  font-size: 40px !important; /* Larger icon size */
+  color: var(--primary) !important; /* Or a color that matches your design */
+  margin-bottom: 10px !important; /* Space between icon and text */
 }
 
 .method-card h3 {
-  padding: 20px 20px 10px;
-  font-size: 18px;
-  color: var(--primary);
+  font-size: 1.5rem;
+  color: #333333 !important;
+  margin: 0 0 10px 0 !important; /* Adjust spacing, remove side margins for centering */
 }
 
 .method-card .method-content {
-  padding: 0 20px 20px;
+  padding: 0 !important; /* Remove existing padding as overall card padding is applied */
 }
 
 .method-card .method-content p {
-  font-size: 16px;
-  color: #333;
+  font-size: 0.95rem;
+  color: #666666 !important;
   line-height: 1.6;
-  text-align: center;
+  margin: 0 !important; /* Remove default paragraph margins */
 }
 
-/* Simple registration section */
+/* Ensure the background image is handled as per the original design for teaching-methods */
+/* This rule might be redundant if background-color is set on .teaching-methods itself */
+/* If .teaching-methods needs a background-image, it should be defined here */
+
+/* Registration Section */
 .registration-section {
   padding: 80px 20px;
-  background: #f9fbff;
+  background-color: #f5f5f5;
 }
 
 .registration-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .info-card {
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  border-left: 5px solid var(--green);
-  height: 100%;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Gradien putih ke abu-abu muda */
+  padding: 50px; /* Menjaga padding */
+  display: flex; /* Menjaga display flex */
+  flex-direction: column; /* Menjaga flex-direction */
+  justify-content: center; /* Menjaga justify-content */
+  align-items: flex-start; /* Menjaga align-items */
+  border-radius: 20px; /* Sudut lebih membulat */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.05); /* Bayangan multi-lapisan */
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi lebih halus dan dinamis */
+  overflow: hidden; /* Memastikan konten tidak melebihi border-radius */
+  position: relative; /* Untuk efek hover dan latar belakang */
 }
 
-.info-card h3 {
-  color: var(--green);
-  margin-bottom: 20px;
-  font-size: 20px;
+.info-card:hover {
+  transform: translateY(-8px); /* Sedikit terangkat saat hover */
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25), 0 6px 12px rgba(0, 0, 0, 0.1); /* Bayangan lebih besar saat hover */
 }
 
-.info-card ul {
-  padding-left: 0;
-  list-style-type: none;
+#registration-section .info-card h3 {
+  font-size: 2.5rem; /* Ukuran font lebih besar */
+  font-weight: 800; /* Lebih tebal */
+  color: #333333; /* Warna teks gelap */
+  margin-bottom: 25px; /* Spasi bawah lebih banyak */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px; /* Ruang untuk garis bawah */
 }
 
-.info-card ul li {
-  color: #333;
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+#registration-section .info-card h3::after {
+  content: '';
+  position: absolute;
+  left: 0; /* Mulai dari kiri */
+  bottom: 0; /* Di bagian bawah teks */
+  width: 100%; /* Lebar penuh */
+  height: 4px; /* Ketebalan garis bawah */
+  background: linear-gradient(90deg, #507D50, #7B9B7B); /* Gradien warna hijau */
+  border-radius: 2px; /* Sedikit membulat */
+  transform: scaleX(0); /* Awalnya tidak terlihat */
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out; /* Animasi saat hover */
 }
 
-.info-card ul li i {
-  color: var(--green);
+#registration-section .info-card h3:hover::after {
+  transform: scaleX(1); /* Tampil saat hover */
+}
+
+#registration-section .info-card ul {
+  list-style: none; /* Hapus bullet default */
+  padding-left: 0; /* Hapus padding default */
+  margin-top: 20px;
+}
+
+#registration-section .info-card ul li {
+  color: #404040; /* Warna teks abu-abu gelap */
+  margin-bottom: 15px; /* Spasi antar item daftar */
+  font-size: 1.1rem; /* Ukuran font sedikit lebih besar */
+  line-height: 1.6; /* Ketinggian baris untuk keterbacaan */
+  position: relative;
+  padding-left: 30px; /* Ruang untuk ikon kustom */
+}
+
+#registration-section .info-card ul li::before {
+  content: '\2713'; /* Simbol centang kustom */
+  font-family: 'Font Awesome 5 Free'; /* Pastikan Font Awesome dimuat */
+  font-weight: 900;
+  color: #507D50; /* Warna hijau untuk centang */
   position: absolute;
   left: 0;
-  top: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  margin-right: 10px;
 }
+
+/* Ensure Font Awesome is loaded. If not, consider linking it in HTML head */
+/* Example: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> */
 
 .registration-form {
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  padding: 40px;
+  text-align: left;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .form-group input,
-.form-group select {
+.form-group textarea {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #eaeaea;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
-.form-group select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+.form-group textarea:focus {
+  border-color: var(--green);
   outline: none;
 }
 
 .submit-btn {
-  background: var(--primary-gradient);
+  background: var(--green-gradient);
   color: white;
   border: none;
-  width: 100%;
-  padding: 12px;
+  padding: 15px 30px;
   border-radius: 8px;
+  font-size: 1.1rem;
   font-weight: 600;
-  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 10px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .submit-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(255,107,107,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  background: var(--green-dark);
 }
 
-/* Clean back to top button */
+/* Back to top button */
 .back-to-top {
-  background: var(--primary-gradient);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   position: fixed;
   bottom: 30px;
   right: 30px;
+  background: var(--secondary-gradient);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: all 0.3s ease;
-  transform: translateY(100px);
+  z-index: 999;
   opacity: 0;
-  z-index: 99;
+  visibility: hidden;
 }
 
 .back-to-top.show {
-  transform: translateY(0);
   opacity: 1;
+  visibility: visible;
 }
 
 .back-to-top:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  background: var(--secondary-dark);
 }
 
-/* Fix page navigation positioning and wave colors */
-
-/* Reposition "Kembali ke Beranda" to the top-left corner */
 .page-navigation {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 100; /* Ensure it's above other elements */
-  width: auto;
-  display: flex;
-  justify-content: flex-start;
+  z-index: 100;
 }
 
 .back-home {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
+  display: inline-flex;
+  align-items: center;
   padding: 10px 15px;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
   text-decoration: none;
+  border-radius: 50px;
+  font-size: 1rem;
   font-weight: 600;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
+  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -675,33 +917,53 @@ body.baca-tulis-page::before {
 
 /* Change wave colors from black to themed colors */
 .wave-divider svg path {
-  fill: var(--primary-light); /* Use primary light color instead of black */
+  /* fill: transparent !important; */ /* Removed */
   opacity: 0.5;
+  /* stroke: none !important; */ /* Removed */
 }
 
 .wave-divider svg path:nth-child(2) {
-  fill: var(--primary-light);
+  /* fill: transparent !important; */ /* Removed */
   opacity: 0.3;
+  /* stroke: none !important; */ /* Removed */
 }
 
 .wave-divider svg path:nth-child(3) {
-  fill: var(--primary-light);
+  /* fill: transparent !important; */ /* Removed */
   opacity: 0.2;
+  /* stroke: none !important; */ /* Removed */
+}
+
+.wave-separator {
+  /* Removed background, background-size, and animation properties */
 }
 
 .wave-separator svg .wave1 {
-  fill: var(--secondary-light);
-  opacity: 0.5;
+  /* fill: transparent !important; */ /* Removed */
+  opacity: 0.8; /* Slight opacity for layered effect */
+  /* stroke: none !important; */ /* Removed */
 }
 
 .wave-separator svg .wave2 {
-  fill: var(--secondary-light);
-  opacity: 0.3;
+  /* fill: transparent !important; */ /* Removed */
+  opacity: 0.6; /* Slight opacity for layered effect */
+  /* stroke: none !important; */ /* Removed */
 }
 
 .wave-separator svg .wave3 {
-  fill: var(--secondary-light);
-  opacity: 0.2;
+  /* fill: transparent !important; */ /* Removed */
+  opacity: 0.4; /* Slight opacity for layered effect */
+  /* stroke: none !important; */ /* Removed */
+}
+
+/* New animation for the SVG linear gradient */
+@keyframes animateWaveGradient {
+  0% { x1: 0%; x2: 200%; }
+  100% { x1: -100%; x2: 100%; }
+}
+
+#waveGradient {
+  animation: animateWaveGradient 15s linear infinite alternate; /* Apply animation to the gradient */
 }
 
 /* Responsive styling */
@@ -713,14 +975,40 @@ body.baca-tulis-page::before {
   }
   
   .registration-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Mengubah ke satu kolom untuk tablet */
+    max-width: 600px; /* Menambah lebar maksimal kontainer */
+    margin: 0 auto; /* Pusatkan kontainer */
+  }
+
+  .info-card {
+    padding: 30px; /* Menyesuaikan padding kartu info */
+    text-align: center; /* Pusatkan teks */
+    align-items: center; /* Pusatkan item */
+  }
+
+  .info-card ul {
+    text-align: left; /* Biarkan daftar tetap rata kiri */
   }
 }
 
 @media (max-width: 768px) {
+  .hero-line {
+    display: none;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
   .benefit-cards {
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
+  }
+  
+  .benefit-card {
+    width: 100%;
+    max-width: 250px;
   }
   
   .methods-container {
@@ -732,15 +1020,73 @@ body.baca-tulis-page::before {
   }
   
   .animated-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem !important;
+    margin-bottom: 10px;
   }
-}
-
-@media (max-width: 576px) {
+  
+  .hero-line {
+    margin: 10px auto;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 20px;
+  }
+  
+  /* Stack benefit cards */
+  .benefit-cards {
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .benefit-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  /* Learning stages section */
+  .learning-stages {
+    padding: 40px 15px;
+  }
+  
   .stages-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(8, auto);
-    row-gap: 40px; /* Further reduced for mobile */
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+  
+  .stage-card {
+    padding: 25px 15px 20px;
+  }
+  
+  /* Alphabet section */
+  .alphabet-container {
+    gap: 10px;
+  }
+  
+  .alphabet-letter {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  /* Methods section */
+  .methods-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  
+  .method-card {
+    margin-bottom: 15px;
+  }
+
+  .registration-container {
+    grid-template-columns: 1fr; /* Pastikan satu kolom untuk mobile */
+    max-width: 90%; /* Sesuaikan lebar agar tidak terlalu besar */
+  }
+
+  .info-card {
+    padding: 25px; /* Kurangi padding untuk mobile */
   }
 }
 
@@ -852,67 +1198,36 @@ body.baca-tulis-page::before {
   .method-card {
     margin-bottom: 15px;
   }
-  
-  /* Registration section */
-  .registration-container {
-    grid-template-columns: 1fr !important;
+}
+
+@keyframes background-pan {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .info-card {
-    padding: 20px 15px;
-    margin-bottom: 20px;
-  }
-  
-  .registration-form {
-    padding: 20px 15px;
-  }
-  
-  /* Navigation positioning */
-  .page-navigation {
-    left: 10px;
-    top: 10px;
-  }
-  
-  .back-home {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-  
-  /* Make waves more subtle */
-  .wave-separator,
-  .wave-divider {
-    height: 40px;
+  100% {
+    background-position: 100% 50%;
   }
 }
 
-/* Extra small devices */
-@media (max-width: 480px) {
-  .animated-title {
-    font-size: 2.2rem !important;
-  }
-  
-  .benefit-card {
-    padding: 15px;
-    min-height: auto;
-  }
-  
-  .alphabet-letter {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
+/* --- FORCING WAVE SEPARATOR VISIBILITY --- */
+/* This section is added to aggressively override conflicting styles that hide the wave separator. */
+.wave-separator,
+.wave-separator svg,
+.wave-separator svg path {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  fill: url(#waveGradient) !important; /* Ensure gradient is applied */
+  stroke: none !important; /* Ensure no stroke interferes */
 }
 
-/* Fix notch/dynamic island issues on iPhone */
-@supports (padding-top: env(safe-area-inset-top)) {
-  .page-navigation {
-    padding-top: calc(20px + env(safe-area-inset-top));
-    padding-left: calc(20px + env(safe-area-inset-left));
-  }
-  
-  .back-to-top {
-    bottom: calc(30px + env(safe-area-inset-bottom));
-    right: calc(30px + env(safe-area-inset-right));
-  }
+.wave-separator {
+  /* Removed previous background, background-size, animation properties */
+  margin: 0 !important; /* Remove any external margins */
+  padding: 0 !important; /* Remove any external padding */
+  position: relative !important; /* Ensure it respects document flow */
+  z-index: 10 !important; /* Place it above regular content */
 }
 
