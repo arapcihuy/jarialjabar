@@ -6,6 +6,12 @@ require_once '../config.php';
 
 session_start();
 
+// Jika sudah login, redirect ke dashboard
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
@@ -20,19 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    var_dump($result->num_rows); // debug jumlah user ditemukan
     
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        var_dump($user); // debug user data
-        var_dump($password, $user['password'], password_verify($password, $user['password']));
         if (password_verify($password, $user['password'])) {
-            echo "<h1>LOGIN BERHASIL</h1>";
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['fullname'] = $user['fullname'];
+            
+            // Update last login
+            $update = $conn->prepare("UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?");
+            $update->bind_param("i", $user['id']);
+            $update->execute();
+            
+            header('Location: dashboard.php');
             exit();
         }
     }
     
-    $error = "Invalid username or password";
+    $error = "Username atau password salah!";
     $stmt->close();
     $conn->close();
 }
@@ -44,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -61,7 +75,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <div class="login-container">
+            <div class="text-center mb-4">
+                <?php if (file_exists($_SERVER['DOCUMENT_ROOT'].'/logo-jari-aljabar.jpeg')): ?>
+                    <img src="/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
+                <?php elseif (file_exists($_SERVER['DOCUMENT_ROOT'].'/images/logo-jari-aljabar.jpeg')): ?>
+                    <img src="/images/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
+                <?php else: ?>
+                    <div style="color:red;font-size:12px;">Logo tidak ditemukan!</div>
+                <?php endif; ?>
+            </div>
             <h2 class="text-center mb-4">Admin Login</h2>
+            <?php if (isset($_GET['timeout'])): ?>
+                <div class="alert alert-warning">
+                    <i class="fas fa-clock"></i> Session Anda telah habis karena tidak aktif selama 15 menit. Silakan login kembali.
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_GET['logout'])): ?>
+                <div class="alert alert-success">
+                    <i class="fas fa-check"></i> Anda berhasil logout dari sistem.
+                </div>
+            <?php endif; ?>
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
             <?php endif; ?>

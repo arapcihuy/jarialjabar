@@ -1,0 +1,28 @@
+# Admin Directory .htaccess
+# Mencegah akses langsung ke file PHP tanpa session
+
+# Aktifkan rewrite engine
+RewriteEngine On
+
+# Pastikan tidak ada redirect loop
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect ke login jika mengakses file yang membutuhkan auth
+RewriteCond %{REQUEST_URI} !^/admin/login\.php$
+RewriteCond %{REQUEST_URI} !^/admin/logout\.php$
+RewriteCond %{REQUEST_URI} !^/admin/auth\.php$
+RewriteCond %{REQUEST_URI} !^/admin/test_hash\.php$
+RewriteCond %{REQUEST_URI} !^/admin/make_hash\.php$
+RewriteRule ^(.*)$ login.php [L]
+
+# Keamanan tambahan
+<Files "config.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.sql">
+    Order allow,deny
+    Deny from all
+</Files> 
