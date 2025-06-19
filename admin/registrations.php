@@ -1,7 +1,10 @@
 <?php
-require_once 'auth.php';
+session_start();
 require_once '../config.php';
-checkAdminAuth();
+require_once 'auth.php';
+
+// Cek apakah user sudah login
+checkAuth();
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -114,11 +117,20 @@ $conn->close();
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 px-0 sidebar">
                 <div class="p-3">
+                    <div class="text-center mb-3">
+                        <?php if (file_exists($_SERVER['DOCUMENT_ROOT'].'/logo-jari-aljabar.jpeg')): ?>
+                            <img src="/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
+                        <?php elseif (file_exists($_SERVER['DOCUMENT_ROOT'].'/images/logo-jari-aljabar.jpeg')): ?>
+                            <img src="/images/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
+                        <?php else: ?>
+                            <div style="color:red;font-size:12px;">Logo tidak ditemukan!</div>
+                        <?php endif; ?>
+                    </div>
                     <h4>Admin Panel</h4>
                     <hr>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="dashboard.php">
                                 <i class="bi bi-speedometer2"></i> Dashboard
                             </a>
                         </li>
@@ -178,7 +190,7 @@ $conn->close();
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary w-100">Filter</button>
+                                <button type="submit" class="btn btn-primary">Cari</button>
                             </div>
                         </form>
                     </div>

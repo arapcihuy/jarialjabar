@@ -36,11 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize menus
   const menuToggle = document.querySelector('.menu-toggle');
   const dropdownMenu = document.querySelector('.dropdown-menu');
-  if (menuToggle && dropdownMenu) {
-    menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      this.classList.toggle('active');
-      dropdownMenu.classList.toggle('show');
+  const menuLabel = document.getElementById('menuLabel');
+  if (menuToggle && dropdownMenu && menuLabel) {
+    menuToggle.addEventListener('click', function() {
+      var isOpen = dropdownMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      dropdownMenu.style.display = isOpen ? 'flex' : 'none';
+      menuLabel.textContent = isOpen ? 'Tutup' : 'Menu';
+    });
+    // Optional: close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if(isOpen && !dropdownMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        dropdownMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        dropdownMenu.style.display = 'none';
+        menuLabel.textContent = 'Menu';
+      }
     });
   }
 

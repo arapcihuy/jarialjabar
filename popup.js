@@ -44,6 +44,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Handle popup form submission
   attachPopupFormHandler();
+
+  const closePopupBtns = document.querySelectorAll('.closePopup, .close-btn');
+  if (closePopupBtns && popupForm) {
+    closePopupBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        popupForm.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    });
+  }
 });
 
 function attachPopupFormHandler() {
