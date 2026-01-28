@@ -18,7 +18,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          # protocol: ftp # Biarkan auto-detect
+          security: loose # Penting untuk shared hosting (Hostinger/Niagahoster)
           port: 21
           # Folder di hosting (sesuai screenshot: public_html)
           server-dir: public_html/
