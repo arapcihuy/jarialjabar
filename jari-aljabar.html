@@ -1,444 +1,408 @@
 <!DOCTYPE html>
-<html lang="id" class="no-smooth-scroll">
+<html class="light" lang="id">
 <head>
-  <meta name="google-site-verification" content="5xXh86A6nZo7DNvBObV9kBUX6CEhmGjaSdEgt0eb9k8" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Jari Aljabar - Metode Belajar Matematika dengan Jari Tangan</title>
-  
-  <!-- Favicon and Browser Icon Support -->
-  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="shortcut icon" href="favicon.ico">
-  
-  <!-- Load fix script FIRST - must be above everything else -->
-  <script src="fix.js"></script>
-  <!-- Add these lines inside the <head> section of each HTML file -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<script src="mobile-fixes.js" defer></script>
-<script src="responsive-fixes.js" defer></script>
-  
-  <!-- Preload the logo to ensure it's always available -->
-  <link rel="preload" href="images/logo-jari-aljabar.jpeg" as="image">
-  
-  <!-- Add cache control for better logo persistence -->
-  <meta http-equiv="Cache-Control" content="max-age=86400">
-  
-  <!-- Add structured data for consistent SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "url": "https://jarialjabar.com/",
-    "logo": "https://jarialjabar.com/images/logo-jari-aljabar.jpeg"
-  }
-  </script>
-  
-  <!-- Regular stylesheets -->
-  <link rel="stylesheet" href="style.css?v=1.0">
-  <link rel="stylesheet" href="jari-aljabar-styles.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jari Aljabar - Metode belajar matematika seru dan cepat menggunakan jari tangan di Rumah Belajar Dirgantara.">
+    <meta name="keywords" content="jari aljabar, matematika cepat, berhitung jari, les matematika, anak sd, halim perdanakusuma">
+    <meta name="author" content="Rumah Belajar Dirgantara">
+    <title>Jari Aljabar - Rumah Belajar Dirgantara</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Quicksand:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="mobile-fixes.js" defer></script>
+    <script src="responsive-fixes.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00C2CB", 
+                        "primary-dark": "#009DA3",
+                        "secondary": "#FF9F43",
+                        "secondary-dark": "#E67E22",
+                        "accent": "#FFDE59",
+                        "accent-dark": "#F4C724",
+                        "background-light": "#FFFDF9",
+                        "background-alt": "#F0FCFD",
+                        "text-main": "#2D3436",
+                        "text-muted": "#636E72",
+                    },
+                    fontFamily: {
+                        "display": ["Quicksand", "sans-serif"],
+                        "body": ["Nunito", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "2.5rem",
+                    },
+                    boxShadow: {
+                        "soft": "0 8px 30px -4px rgba(0, 0, 0, 0.08)",
+                        "hover": "0 15px 35px -5px rgba(0, 194, 203, 0.25)",
+                        "card": "0 8px 0 0 rgba(0,0,0,0.05)",
+                        "btn": "0 4px 0 0 rgba(0,0,0,0.15)",
+                        "btn-pressed": "0 0px 0 0 rgba(0,0,0,0)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFFDF9;
+            background-image: radial-gradient(#00C2CB 0.5px, transparent 0.5px), radial-gradient(#FF9F43 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed;
+        }
+        @supports (scroll-behavior: smooth) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+        }
+        .btn-bubbly {
+            transition: all 0.1s;
+            box-shadow: 0 5px 0 0 rgba(0,0,0,0.15);
+        }
+        .btn-bubbly:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        }
+        /* Mobile Menu */
+        #mobileMenu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: top left;
+        }
+        #mobileMenu.hidden {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Floating Math Symbol Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .floating-math {
+            position: absolute;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 900;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .anim-dur-4 { animation-duration: 4s; }
+        .anim-dur-5 { animation-duration: 5s; }
+        .anim-dur-6 { animation-duration: 6s; }
+        .anim-dur-7 { animation-duration: 7s; }
+
+         .bg-footer-pattern {
+            background-image: radial-gradient(white 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        
+        .feedback-msg {
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="jari-aljabar-page">
+<body class="text-text-main font-body antialiased overflow-x-hidden selection:bg-accent selection:text-text-main">
+<header class="sticky top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] mx-auto bg-white/90 backdrop-blur-md rounded-full shadow-soft border-2 border-gray-100">
+        <div class="flex h-16 items-center justify-between px-6">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="flex items-center justify-center size-10 rounded-full bg-primary text-white shadow-btn group-hover:rotate-12 transition-transform">
+                    <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+                </div>
+                <h2 class="text-primary text-xl font-bold tracking-tight group-hover:text-secondary transition-colors">Rumbel Dirgantara</h2>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-2">
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="index.html">Home</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#stages">Tahapan</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#methods">Metode</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#daftar">Daftar</a>
+            </nav>
+            <div class="hidden md:flex">
+                <a href="#daftar" class="bg-secondary hover:bg-secondary-dark text-white px-6 py-2 rounded-full text-sm font-bold btn-bubbly">
+                    Daftar Sekarang
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-primary bg-primary/10 rounded-full" id="mobileMenuBtn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div class="hidden md:hidden absolute top-20 left-0 w-full bg-white rounded-2xl shadow-xl border-2 border-gray-100 p-4 flex-col gap-2" id="mobileMenu">
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="index.html">Home</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#stages" onclick="toggleMobileMenu()">Tahapan</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#methods" onclick="toggleMobileMenu()">Metode</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#daftar" onclick="toggleMobileMenu()">Daftar</a>
+        </div>
+    </div>
+</header>
 
-<!-- Hero Section with Built-in Navigation -->
-<section class="math-hero">
-  <!-- Simple Navigation Bar - Replace with new version without phone number -->
-  <div class="page-navigation">
-    <a href="/" class="back-home">
-      <i class="fas fa-arrow-left"></i> Kembali ke Beranda
-    </a>
-    <!-- Phone contact removed -->
-  </div>
-  
-  <div class="floating-math">
-    <span class="math-symbol symbol1">×</span>
-    <span class="math-symbol symbol2">+</span>
-    <span class="math-symbol symbol3">÷</span>
-    <span class="math-symbol symbol4">−</span>
-    <span class="math-symbol symbol5">7</span>
-    <span class="math-symbol symbol6">9</span>
-    <span class="math-symbol symbol7">3</span>
-    <span class="math-symbol symbol8">8</span>
-    <span class="math-symbol symbol9">5</span>
-    <span class="math-symbol symbol10">6</span>
-    <span class="math-symbol symbol11">2</span>
-    <span class="math-symbol symbol12">4</span>
-    <span class="math-symbol symbol13">=</span>
-  </div>
-  
-  <div class="hero-content">
-    <span class="hero-badge">Metode Inovatif</span>
-    <h1 class="animated-title">Jari Aljabar</h1>
-    <div class="hero-line"></div>
-    <p class="hero-subtitle">Belajar Matematika Jadi Seru dengan Jari Tangan</p>
-    
-    <div class="benefit-cards">
-      <div class="benefit-card">
-        <div class="card-icon">🖐️</div>
-        <h3>Metode Praktis</h3>
-        <p>Tanpa alat bantu hitung apapun</p>
-      </div>
-      <div class="benefit-card">
-        <div class="card-icon">🧮</div>
-        <h3>Berhitung Cepat</h3>
-        <p>Hasil perhitungan instan</p>
-      </div>
-      <div class="benefit-card">
-        <div class="card-icon">🎯</div>
-        <h3>Akurasi Tinggi</h3>
-        <p>Minim kesalahan hitung</p>
-      </div>
+<section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+    <!-- Floating Math Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <span class="floating-math text-9xl top-20 left-10 text-primary anim-dur-4">+</span>
+        <span class="floating-math text-8xl top-40 right-20 text-secondary anim-dur-5">x</span>
+        <span class="floating-math text-9xl bottom-20 left-1/4 text-accent anim-dur-6">=</span>
+        <span class="floating-math text-8xl bottom-40 right-1/3 text-primary-dark anim-dur-7">%</span>
     </div>
 
-    <!-- MODIFIED: Use data attribute instead of onclick -->
-    <button class="hero-cta" data-target="daftar" data-smooth="true">Daftar Sekarang</button>
-  </div>
-
-  <div class="wave-divider bottom multi-color">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.32,118.92,125.45,111.31,184.97,106.14Z"></path>
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-    </svg>
-  </div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-amber-900 border-2 border-amber-900/10 w-fit rotate-[-2deg] shadow-sm mb-6">
+            <span class="material-symbols-outlined text-lg">calculate</span>
+            <span class="text-sm font-extrabold uppercase tracking-wide">Pintar Matematika!</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-text-main leading-[1.1] tracking-tight mb-6">
+            Jari <span class="text-secondary relative inline-block">Aljabar</span>
+        </h1>
+        <p class="text-text-muted text-xl font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+            Belajar matematika jadi seru dengan jari tangan! Metode praktis tanpa alat bantu untuk berhitung cepat dan akurat.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-primary hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">🖐️</span>
+                <h3 class="font-bold text-xl mb-2">Tanpa Alat</h3>
+                <p class="text-text-muted">Hanya menggunakan jari tangan, praktis di mana saja.</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-secondary hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">⚡</span>
+                <h3 class="font-bold text-xl mb-2">Berhitung Cepat</h3>
+                <p class="text-text-muted">Hasil perhitungan instan dengan akurasi tinggi.</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-accent hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">🧠</span>
+                <h3 class="font-bold text-xl mb-2">Logika Kuat</h3>
+                <p class="text-text-muted">Melatih otak kanan dan kiri secara seimbang.</p>
+            </div>
+        </div>
+        
+        <a href="#daftar" class="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-dark text-white px-10 py-5 rounded-2xl font-black text-xl btn-bubbly transition-all shadow-xl hover:shadow-2xl">
+            🚀 Daftar Sekarang
+        </a>
+    </div>
 </section>
 
-<!-- Wave Separator -->
-<div class="wave-separator">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" class="wave1"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" class="wave2"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="wave3"></path>
-    </svg>
-</div>
-
-<section class="learning-stages">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Tahapan Belajar Jari Aljabar</h2>
-      <div class="section-line"></div>
+<!-- Learning Stages -->
+<section class="py-24 bg-background-alt relative" id="stages">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-text-main mb-4">Tahapan Belajar</h2>
+            <p class="text-xl text-text-muted font-medium">Level demi level menuju master matematika.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+            <!-- Stage Cards -->
+            <div class="bg-white p-8 rounded-[2rem] border-4 border-gray-100 relative group hover:border-blue-400 transition-colors">
+                <div class="absolute -top-6 -left-6 w-14 h-14 bg-blue-500 rounded-2xl text-white flex items-center justify-center font-black text-2xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">1</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-xl text-text-main mb-3">Pengenalan Dasar</h3>
+                    <p class="text-text-muted font-medium">Menganal simbol jari untuk angka dasar.</p>
+                    <p class="text-blue-500 font-bold mt-2 text-sm">+ Penjumlahan & Pengurangan < 100</p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-[2rem] border-4 border-gray-100 relative group hover:border-green-400 transition-colors">
+                <div class="absolute -top-6 -left-6 w-14 h-14 bg-green-500 rounded-2xl text-white flex items-center justify-center font-black text-2xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">2</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-xl text-text-main mb-3">Operasi Lanjut</h3>
+                    <p class="text-text-muted font-medium">Penjumlahan dan pengurangan angka ratusan.</p>
+                    <p class="text-green-500 font-bold mt-2 text-sm">+ Konsep Perkalian Dasar</p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-[2rem] border-4 border-gray-100 relative group hover:border-yellow-400 transition-colors">
+                <div class="absolute -top-6 -left-6 w-14 h-14 bg-yellow-500 rounded-2xl text-white flex items-center justify-center font-black text-2xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">3</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-xl text-text-main mb-3">Perkalian & Pembagian</h3>
+                    <p class="text-text-muted font-medium">Menguasai perkalian dan pembagian cepat.</p>
+                    <p class="text-yellow-600 font-bold mt-2 text-sm">+ Operasi campuran</p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-[2rem] border-4 border-gray-100 relative group hover:border-purple-400 transition-colors">
+                <div class="absolute -top-6 -left-6 w-14 h-14 bg-purple-500 rounded-2xl text-white flex items-center justify-center font-black text-2xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">4</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-xl text-text-main mb-3">Pecahan & Desimal</h3>
+                    <p class="text-text-muted font-medium">Memahami konsep pecahan dan desimal.</p>
+                    <p class="text-purple-500 font-bold mt-2 text-sm">+ Konsep uang</p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-[2rem] border-4 border-gray-100 relative group hover:border-red-400 transition-colors">
+                 <div class="absolute -top-6 -left-6 w-14 h-14 bg-red-500 rounded-2xl text-white flex items-center justify-center font-black text-2xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">5</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-xl text-text-main mb-3">Soal Cerita & Logika</h3>
+                    <p class="text-text-muted font-medium">Penyelesaian masalah dan logika matematika.</p>
+                    <p class="text-red-500 font-bold mt-2 text-sm">+ Persiapan ujian sekolah</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="stages-timeline">
-      <div class="stages-track"></div>
-      <div class="stages-grid">
-        <div class="stage-card" data-aos="fade-up">
-          <div class="stage-number">1</div>
-          <h3>Pengenalan Dasar Simbol Jari</h3>
-          <p>Penjumlahan dan pengurangan dibawah 100</p>
-          <div class="stage-icon">
-            <i class="fas fa-hand-paper"></i>
-          </div>
-        </div>
-
-        <div class="stage-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="stage-number">2</div>
-          <h3>Penjumlahan & Pengurangan Lanjut</h3>
-          <p>Penjumlahan dan pengurangan diatas 100</p>
-          <div class="stage-icon">
-            <i class="fas fa-times"></i>
-          </div>
-        </div>
-
-        <div class="stage-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="stage-number">3</div>
-          <h3>Konsep Perkalian & Pembagian</h3>
-          <p>Konsep perkalian dan pembagian dibawah 100</p>
-          <div class="stage-icon">
-            <i class="fas fa-calculator"></i>
-          </div>
-        </div>
-
-        <div class="stage-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="stage-number">4</div>
-          <h3>Konsep Pecahan & Desimal</h3>
-          <p>Konsep pecahan. Dan desimal..</p>
-          <div class="stage-icon">
-            <i class="fas fa-divide"></i>
-          </div>
-        </div>
-
-        <div class="stage-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="stage-number">5</div>
-          <h3>Latihan Soal Cerita</h3>
-          <p>Latihan soal cerita mengolah logika</p>
-          <div class="stage-icon">
-            <i class="fas fa-superscript"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<section class="teaching-methods">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Metode Pembelajaran Jari Aljabar</h2>
-      <div class="section-line"></div>
-    </div>
-    
-    <!-- Fixed method cards layout -->
-    <div class="methods-container">
-      <div class="facility-card">
-        <img src="images/jari-perkalian.jpg" alt="Teknik Perkalian">
-        <h3>Teknik Perkalian</h3>
-        <ul>
-          <li>Formasi jari untuk angka dasar</li>
-          <li>Rumus cepat perkalian 6-15</li>
-          <li>Latihan kecepatan berhitung</li>
-        </ul>
-      </div>
-      <div class="facility-card">
-        <img src="images/jari-pembagian.jpg" alt="Teknik Pembagian">
-        <h3>Teknik Pembagian</h3>
-        <ul>
-          <li>Pembagian dengan metode jari</li>
-          <li>Penyelesaian soal praktis</li>
-          <li>Drill latihan pembagian</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<!-- Teaching Methods -->
+<section class="py-24 bg-white relative" id="methods">
+     <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-card group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/jari-perkalian.jpg" alt="Teknik Perkalian" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="absolute bottom-6 left-6 text-white text-2xl font-black">Teknik Perkalian</h3>
+                </div>
+                <div class="p-8">
+                    <p class="text-text-muted font-bold text-lg mb-4">Menggunakan formasi jari khusus untuk perkalian 6-10, 11-15, dan 16-20. Anak tidak perlu menghafal, cukup menggerakkan jari!</p>
+                    <ul class="space-y-2">
+                         <li class="flex items-center gap-2 font-medium text-text-muted"><span class="text-green-500 material-symbols-outlined">check_circle</span> Formasi jari logis</li>
+                         <li class="flex items-center gap-2 font-medium text-text-muted"><span class="text-green-500 material-symbols-outlined">check_circle</span> Cepat dan akurat</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-card group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/jari-pembagian.jpg" alt="Teknik Pembagian" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="absolute bottom-6 left-6 text-white text-2xl font-black">Teknik Pembagian</h3>
+                </div>
+                <div class="p-8">
+                    <p class="text-text-muted font-bold text-lg mb-4">Pembagian menjadi sangat mudah dengan konsep kebalikan perkalian yang diterapkan pada jari.</p>
+                     <ul class="space-y-2">
+                         <li class="flex items-center gap-2 font-medium text-text-muted"><span class="text-green-500 material-symbols-outlined">check_circle</span> Tanpa kertas buram</li>
+                         <li class="flex items-center gap-2 font-medium text-text-muted"><span class="text-green-500 material-symbols-outlined">check_circle</span> Mudah dipahami</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     </div>
 </section>
 
-<section id="daftar" class="registration-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Daftar Program Jari Aljabar</h2>
-      <div class="section-line"></div>
+<!-- Registration Form -->
+<section class="py-24 bg-background-alt relative" id="daftar">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 text-left">
+             <div>
+                <h2 class="text-4xl font-black text-text-main mb-6">Program Jari Aljabar</h2>
+                <div class="bg-gradient-to-br from-secondary to-secondary-dark rounded-[2.5rem] p-8 text-white shadow-xl relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-black mb-4">Matematika SD</h3>
+                        <ul class="space-y-3 font-bold text-lg">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Usia 7-12 Tahun</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> 12 Pertemuan (3 Bulan)</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> 2x Seminggu @ 60 Menit</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Modul Latihan Lengkap</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Sertifikat Kelulusan</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 text-9xl opacity-20 rotate-12">🧮</div>
+                </div>
+            </div>
+            
+            <div class="bg-white border-4 border-gray-100 rounded-[2.5rem] p-8 shadow-card">
+                <h2 class="text-3xl font-black text-text-main mb-2">Daftar Sekarang!</h2>
+                 <p class="text-text-muted mb-6 font-bold">Jago matematika tanpa pusing.</p>
+                 
+                 <form id="jariAljabarForm" class="space-y-4">
+                    <input type="hidden" name="program" value="jari-aljabar">
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-secondary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="fullname" placeholder="Nama Lengkap Anak" type="text" required />
+                    </div>
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-secondary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="email" placeholder="Email Orang Tua" type="email" required />
+                    </div>
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-secondary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="whatsapp" placeholder="Nomor WhatsApp (62xxx)" type="tel" required />
+                    </div>
+                    <div>
+                        <select name="jadwal" aria-label="Pilih Jadwal Les" class="w-full rounded-2xl border-2 border-gray-200 focus:border-secondary focus:ring-0 p-4 font-bold text-text-main bg-white" required>
+                            <option value="">Pilih Jadwal Les</option>
+                            <option value="senin-rabu-16">Senin & Rabu 16:00-17:30</option>
+                            <option value="senin-rabu-18">Senin & Rabu 18:00-19:30</option>
+                            <option value="selasa-kamis-16">Selasa & Kamis 16:00-17:30</option>
+                            <option value="selasa-kamis-18">Selasa & Kamis 18:00-19:30</option>
+                            <option value="jumat-sabtu-16">Jumat & Sabtu 16:00-17:30</option>
+                            <option value="jumat-sabtu-18">Jumat & Sabtu 18:00-19:30</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-feedback feedback-msg"></div>
+                    
+                    <button class="w-full bg-primary hover:bg-primary-dark text-white font-black text-lg py-5 rounded-2xl btn-bubbly transition-all mt-2 submit-btn" type="submit">
+                        Kirim Pendaftaran
+                    </button>
+                 </form>
+            </div>
+        </div>
     </div>
-    
-    <div class="registration-container">
-      <div class="program-info">
-        <div class="info-card">
-          <h3>Program Jari Aljabar</h3>
-          <ul>
-            <li>Untuk anak usia 7-12 tahun</li>
-            <li>12 pertemuan (3 bulan)</li>
-            <li>2x pertemuan per minggu</li>
-            <li>Durasi 60 menit per pertemuan</li>
-            <li>Modul latihan lengkap</li>
-            <li>Tes kemampuan berkala</li>
-          </ul>
-        </div>
-      </div>
-
-      <form id="jariAljabarForm" class="registration-form">
-        <div class="form-group">
-          <input type="text" name="fullname" required placeholder="Nama Lengkap">
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" required placeholder="Email">
-        </div>
-        <div class="form-group">
-          <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
-        </div>
-        <input type="hidden" name="program" value="jari-aljabar">
-        <div class="form-group">
-          <select name="jadwal" id="jadwalJariAljabar" required>
-            <option value="">Pilih Jadwal Les</option>
-            <option value="senin-rabu-16">Senin & Rabu 16:00-17:30</option>
-            <option value="senin-rabu-18">Senin & Rabu 18:00-19:30</option>
-            <option value="selasa-kamis-16">Selasa & Kamis 16:00-17:30</option>
-            <option value="selasa-kamis-18">Selasa & Kamis 18:00-19:30</option>
-            <option value="jumat-sabtu-16">Jumat & Sabtu 16:00-17:30</option>
-            <option value="jumat-sabtu-18">Jumat & Sabtu 18:00-19:30</option>
-          </select>
-        </div>
-        <div id="formFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
-        <button type="submit" class="submit-btn">Daftar Sekarang</button>
-      </form>
-    </div>
-  </div>
 </section>
 
-<!-- MODIFIED: Remove onclick attribute -->
-<div class="back-to-top" data-smooth="true">
-  <i class="fas fa-arrow-up"></i>
-</div>
+<footer class="bg-primary text-white py-16 border-t-8 border-accent relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-footer-pattern"></div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-center size-12 rounded-2xl bg-white text-primary shadow-lg rotate-3">
+                    <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                </div>
+                <div>
+                    <span class="text-2xl font-black block">Rumbel Dirgantara</span>
+                    <span class="text-sm font-bold text-white/80">Baca Tulis & Jari Aljabar</span>
+                </div>
+            </div>
+            <div class="text-sm font-medium text-white/80">
+                © 2023 Rumah Belajar Dirgantara.
+            </div>
+        </div>
+    </div>
+</footer>
 
-<!-- Load our script files in the correct order -->
-<script src="smooth-scroll.js"></script>
-<script src="script.js" defer></script>
-
-<!-- Simple script for smooth scrolling -->
+<script src="script.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Back-to-top button
-    var backToTop = document.querySelector('.back-to-top');
-    if (backToTop) {
-      backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Use smooth scrolling for back to top
-        window.smoothScrollTo(0);
-      });
-      
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-          backToTop.classList.add('show');
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
         } else {
-          backToTop.classList.remove('show');
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
         }
-      }, { passive: true });
     }
-    
-    // Hero CTA button
-    var heroCta = document.querySelector('.hero-cta');
-    if (heroCta) {
-      heroCta.addEventListener('click', function(e) {
-        e.preventDefault();
-        var targetId = this.getAttribute('data-target');
-        var targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          // Use smooth scrolling for daftar button
-          var position = getElementPosition(targetElement);
-          window.smoothScrollTo(position);
-        }
-      });
-    }
-
-    // Helper function to get element position
-    function getElementPosition(element) {
-      var position = 0;
-      while (element) {
-        position += element.offsetTop;
-        element = element.offsetParent;
-      }
-      return position;
-    }
-
-    // Split the title text into individual letters for animation
-    const title = document.querySelector('.animated-title');
-    if (title) {
-      const text = title.textContent;
-      let html = '';
-      
-      for (let i = 0; i < text.length; i++) {
-        if (text[i] === ' ') {
-          html += ' ';
-        } else {
-          html += `<span style="animation-delay: ${i * 0.05}s;">${text[i]}</span>`;
-        }
-      }
-      
-      title.innerHTML = html;
-      
-      // Add the animation class
-      setTimeout(() => {
-        title.classList.add('animate');
-      }, 100);
-    }
-    
-    // Enhance hero CTA button with ripple effect
-    const cta = document.querySelector('.hero-cta');
-    if (cta) {
-      cta.addEventListener('click', function(e) {
-        // Create ripple element
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
-        
-        // Position the ripple
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        
-        // Remove ripple after animation
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
-      });
-    }
-  });
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('jariAljabarForm');
-  const feedbackDiv = document.getElementById('formFeedback');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const submitBtn = form.querySelector('.submit-btn');
-      const originalBtnText = submitBtn.textContent;
-      const jadwal = form.querySelector('select[name="jadwal"]').value;
-      if (!jadwal) {
-        feedbackDiv.style.display = 'block';
-        feedbackDiv.textContent = 'Silakan pilih jadwal les.';
-        feedbackDiv.style.backgroundColor = '#f8d7da';
-        feedbackDiv.style.color = '#721c24';
-        feedbackDiv.style.border = '1px solid #f5c6cb';
-        return;
-      }
-      submitBtn.textContent = 'Mengirim...';
-      submitBtn.disabled = true;
-      const formData = new FormData(form);
-      const data = new URLSearchParams(formData);
-      console.log('Sending data:', data.toString());
-      fetch('submit_registration.php', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: data
-      })
-      .then(response => response.text().then(text => {
-        try { return JSON.parse(text); } catch { return text; }
-      }))
-      .then(result => {
-        feedbackDiv.style.display = 'block';
-        if (typeof result === 'object' && result !== null) {
-          if (result.status === 'success') {
-            feedbackDiv.textContent = result.message || 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
-            feedbackDiv.style.backgroundColor = '#d4edda';
-            feedbackDiv.style.color = '#155724';
-            feedbackDiv.style.border = '1px solid #c3e6cb';
-            form.reset();
-          } else {
-            feedbackDiv.textContent = result.message || 'Terjadi kesalahan. Silakan coba lagi.';
-            feedbackDiv.style.backgroundColor = '#f8d7da';
-            feedbackDiv.style.color = '#721c24';
-            feedbackDiv.style.border = '1px solid #f5c6cb';
-          }
-        } else {
-          if (typeof result === 'string' && (result.toLowerCase().includes('berhasil') || result.toLowerCase().includes('success'))) {
-            feedbackDiv.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
-            feedbackDiv.style.backgroundColor = '#d4edda';
-            feedbackDiv.style.color = '#155724';
-            feedbackDiv.style.border = '1px solid #c3e6cb';
-            form.reset();
-          } else {
-            feedbackDiv.textContent = result;
-            feedbackDiv.style.backgroundColor = '#f8d7da';
-            feedbackDiv.style.color = '#721c24';
-            feedbackDiv.style.border = '1px solid #f5c6cb';
-          }
-        }
-      })
-      .catch(error => {
-        feedbackDiv.style.display = 'block';
-        feedbackDiv.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
-        feedbackDiv.style.backgroundColor = '#f8d7da';
-        feedbackDiv.style.color = '#721c24';
-        feedbackDiv.style.border = '1px solid #f5c6cb';
-      })
-      .finally(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-      });
-    });
-  }
-});
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
 </script>
 </body>
 </html>

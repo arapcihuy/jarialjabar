@@ -1,594 +1,872 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="id">
 <head>
-    <meta name="google-site-verification" content="5xXh86A6nZo7DNvBObV9kBUX6CEhmGjaSdEgt0eb9k8" />
-    <meta charset="UTF-8">
-    <!-- SEO Meta Tags (Update Fokus Keyword) -->
-    <meta name="description" content="Jari Aljabar Halim adalah bagian dari RumahBelajar Dirgantara, media edukasi kreatif dan interaktif. Kunjungi situs kami untuk daftar dan mulai belajar bersama.">
-    <meta name="keywords" content="jari aljabar halim, rudhoh halim, daftar jarialjabar halim, daftar rumahbelajar dirgantara, rumabelajar dirgantara, rumahbelajar dirgantara">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Jari Aljabar Halim">
-    <meta property="og:title" content="Jari Aljabar Halim - RumahBelajar Dirgantara">
-    <meta property="og:description" content="Gabung dengan komunitas belajar Jari Aljabar Halim, bagian dari RumahBelajar Dirgantara. Pendaftaran terbuka untuk semua kalangan.">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Jari Aljabar adalah media pembelajaran matematika interaktif untuk semua usia. Belajar matematika jadi mudah, menyenangkan, dan gratis!">
-    <meta name="keywords" content="jari aljabar, belajar matematika, matematika interaktif, media belajar, edukasi online, matematika dasar, aljabar">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Jari Aljabar Team">
-    <meta property="og:title" content="Jari Aljabar - Belajar Matematika Interaktif">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jari-aljabar.web.app/">
-    <meta property="og:image" content="https://jari-aljabar.web.app/images/logo-jari-aljabar.jpeg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>rumbeldirgantara.com</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <!-- Make sure Font Awesome loads BEFORE any icons are used -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- Add these lines inside the <head> section of each HTML file -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<script src="mobile-fixes.js" defer></script>
-<script src="responsive-fixes.js" defer></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Jari Aljabar Halim adalah bagian dari RumahBelajar Dirgantara. Media edukasi kreatif dan interaktif untuk anak usia dini dan SD.">
+    <meta name="keywords" content="jari aljabar, baca tulis, rumbel dirgantara, les matematika, les baca tulis, halim perdanakusuma">
+    <meta name="author" content="Rumah Belajar Dirgantara">
+    <title>Rumah Belajar Dirgantara - Playful Adventure</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Quicksand:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="mobile-fixes.js" defer></script>
+    <script src="responsive-fixes.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00C2CB", 
+                        "primary-dark": "#009DA3",
+                        "secondary": "#FF9F43",
+                        "secondary-dark": "#E67E22",
+                        "accent": "#FFDE59",
+                        "accent-dark": "#F4C724",
+                        "background-light": "#FFFDF9",
+                        "background-alt": "#F0FCFD",
+                        "text-main": "#2D3436",
+                        "text-muted": "#636E72",
+                    },
+                    fontFamily: {
+                        "display": ["Quicksand", "sans-serif"],
+                        "body": ["Nunito", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "2.5rem",
+                    },
+                    boxShadow: {
+                        "soft": "0 8px 30px -4px rgba(0, 0, 0, 0.08)",
+                        "hover": "0 15px 35px -5px rgba(0, 194, 203, 0.25)",
+                        "card": "0 8px 0 0 rgba(0,0,0,0.05)",
+                        "btn": "0 4px 0 0 rgba(0,0,0,0.15)",
+                        "btn-pressed": "0 0px 0 0 rgba(0,0,0,0)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFFDF9;
+            background-image: radial-gradient(#00C2CB 0.5px, transparent 0.5px), radial-gradient(#FF9F43 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed;
+        }
+        @supports (scroll-behavior: smooth) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+        }
+        .btn-bubbly {
+            transition: all 0.1s;
+            box-shadow: 0 5px 0 0 rgba(0,0,0,0.15);
+        }
+        .btn-bubbly:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        }
+        /* Mobile Menu */
+        #mobileMenu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: top left;
+        }
+        #mobileMenu.hidden {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+        }
+
+        /* Extracted Utility Classes */
+        .anim-dur-3 { animation-duration: 3s; }
+        .anim-dur-4 { animation-duration: 4s; }
+        
+        .bg-hero {
+            background-image: url('images/your-background.jpg');
+            background-size: cover;
+            background-position: 50% 50%;
+            background-color: #EEE;
+        }
+        .bg-wiwik {
+            background-image: url('images/wiwik_latifah.jpg');
+            background-color: #DDD;
+        }
+        .bg-baca-tulis {
+            background-image: url('images/baca-tulis-roudhoh.jpg');
+            background-color: #EEE;
+        }
+        .bg-jari-aljabar {
+            background-image: url('images/jari-aljabar.jpg');
+            background-color: #EEE;
+        }
+        .bg-ruang-kelas { background-image: url('images/ruang-kelas-ber-ac.jpg'); }
+        .bg-guru { background-image: url('images/guru-terlatih.jpg'); }
+        .bg-semi-privat { background-image: url('images/kelas-semi-privat.jpg'); }
+        .bg-metode { background-image: url('images/metode-pembelajran-interaktif.jpg'); }
+        
+        .feedback-msg {
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .bg-footer-pattern {
+            background-image: radial-gradient(white 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        /* JS toggled elements can use inline styles or classes, but initial state should be clean */
+        .init-hidden { display: none; }
+        .bg-guru-profesional {
+            background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+    </style>
 </head>
-<div class="background-container">
-  <video autoplay loop muted playsinline class="background-video">
-    <source src="videos/background-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="background-image"></div>
-</div>
-<body>
-  <header>
-  <nav class="topnav" id="myTopnav">
-    <div class="dropdown">
-      <button class="dropbtn" id="menuDropdownBtn">
-        <i class="fa fa-bars"></i> Menu
-      </button>
-      <div class="dropdown-content" id="mainDropdown">
-        <a href="#home"><i class="fa fa-home"></i> Beranda</a>
-        <a href="#about"><i class="fa fa-info-circle"></i> Tentang Kami</a>
-        <a href="#program">
-          <i class="fa fa-graduation-cap"></i> Program & Metode
-          <span class="subtext">Baca Tulis Roudhoh & Jari Aljabar</span>
-        </a>
-        <a href="#facilities">
-          <i class="fa fa-building"></i> Fasilitas
-          <span class="subtext">Fasilitas Pembelajaran</span>
-        </a>
-        <a href="#contact-registration"><i class="fa fa-address-book"></i> Kontak & Pendaftaran</a>
-        <a href="/admin/login.php"><i class="fa fa-user-lock"></i> Login Admin</a>
-      </div>
-    </div>
-    <a href="#" class="logo-navbar">
-      <img src="images/logo-jari-aljabar.jpeg" alt="Logo" style="height:150px !important;width:auto;max-width:260px;object-fit:contain !important;">
-    </a>
-    <div class="topnav-right">
-      <div class="contact-container">
-        <button class="contact-toggle" aria-label="Kontak">
-          <i class="fa fa-phone"></i>
-        </button>
-        <div class="contact-dropdown">
-          <a class="contact-item" href="mailto:email@domain.com"><i class="fa fa-envelope"></i> info@rumbeldirgantara.com</a>
-          <a class="contact-item" href="tel:08123456789"><i class="fa fa-phone"></i> 0812-3456-789</a>
+<body class="text-text-main font-body antialiased overflow-x-hidden selection:bg-accent selection:text-text-main">
+<header class="sticky top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] mx-auto bg-white/90 backdrop-blur-md rounded-full shadow-soft border-2 border-gray-100">
+        <div class="flex h-16 items-center justify-between px-6">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="flex items-center justify-center size-10 rounded-full bg-primary text-white shadow-btn group-hover:rotate-12 transition-transform">
+                    <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+                </div>
+                <h2 class="text-primary text-xl font-bold tracking-tight group-hover:text-secondary transition-colors">Rumbel Dirgantara</h2>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-2">
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#home" data-smooth="true">Home</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#about" data-smooth="true">Tentang</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#methods" data-smooth="true">Petualangan</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#facilities" data-smooth="true">Markas</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#contact" data-smooth="true">Kontak</a>
+                <a class="px-3 py-2 rounded-full text-text-muted hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="https://rumbeldirgantara.com/admin/login.php?logout=1" title="Login Admin" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined text-lg align-middle">lock</span>
+                </a>
+            </nav>
+            <div class="hidden md:flex">
+                <a href="#contact" data-smooth="true" class="bg-secondary hover:bg-secondary-dark text-white px-6 py-2 rounded-full text-sm font-bold btn-bubbly">
+                    Daftar Sekarang
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-primary bg-primary/10 rounded-full" id="mobileMenuBtn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
-      </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div class="hidden md:hidden absolute top-20 left-0 w-full bg-white rounded-2xl shadow-xl border-2 border-gray-100 p-4 flex-col gap-2" id="mobileMenu">
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#home" data-smooth="true" onclick="toggleMobileMenu()">Home</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#about" data-smooth="true" onclick="toggleMobileMenu()">Tentang</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#methods" data-smooth="true" onclick="toggleMobileMenu()">Petualangan</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#facilities" data-smooth="true" onclick="toggleMobileMenu()">Markas</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#contact" data-smooth="true" onclick="toggleMobileMenu()">Kontak</a>
+            <div class="border-t border-gray-100 my-1"></div>
+            <a class="block px-4 py-3 rounded-xl hover:bg-red-50 text-red-500 font-bold" href="https://rumbeldirgantara.com/admin/login.php?logout=1" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-user-lock mr-2"></i> Login Admin
+            </a>
+        </div>
     </div>
-  </nav>
 </header>
 
-<!-- Overlay untuk menu mobile -->
-<div class="menu-overlay" id="menuOverlay"></div>
-
-<script>
-// Fungsi untuk toggle dropdown sebagai sidebar
-function toggleDropdown() {
-  var dropdown = document.getElementById('mainDropdown');
-  var overlay = document.getElementById('menuOverlay');
-  if (dropdown && overlay) {
-    dropdown.classList.toggle('show');
-    overlay.classList.toggle('show');
-  }
-}
-
-// Event listener saat DOM ready
-document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('menuDropdownBtn');
-  var dropdown = document.getElementById('mainDropdown');
-  var overlay = document.getElementById('menuOverlay');
-
-  if (btn && dropdown && overlay) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleDropdown();
-    });
-    overlay.addEventListener('click', function() {
-      dropdown.classList.remove('show');
-      overlay.classList.remove('show');
-    });
-    // Close dropdown if click outside (desktop fallback)
-    document.addEventListener('click', function(e) {
-      if (!dropdown.contains(e.target) && !btn.contains(e.target) && !overlay.contains(e.target)) {
-        dropdown.classList.remove('show');
-        overlay.classList.remove('show');
-      }
-    });
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  var logoLink = document.querySelector('.logo-navbar');
-  if (logoLink) {
-    logoLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-});
-</script>
-
-<!-- Home/Beranda Section -->
-<section id="home" class="hero-section">
-  <div class="hero-content">
-    <h1>Belajar dengan Ikhlas dan Menyenangkan</h1>
-    <p>Rumah Belajar Dirgantara menyediakan bimbingan belajar mulai dari anak usia 4 tahun hingga jenjang sekolah dasar dengan metode inovatif.</p>
-  </div>
-</section>
-
-<!-- New Section: Additional Video -->
-<section class="additional-video-section">
-  <video autoplay loop muted playsinline class="additional-video-player">
-    <source src="videos/vidio.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
-
-<!-- New Section: Maksud dan Tujuan Rumbel -->
-<section id="purpose" class="purpose-section">
-  <div class="container" style="max-width: 1100px; margin: 0 auto;">
-    <div class="animated-brains-container">
-      <div class="animated-brain brain-1"></div>
-      <div class="animated-brain brain-2"></div>
-      <div class="animated-brain brain-3"></div>
-      <div class="animated-brain brain-4"></div>
-      <div class="animated-brain brain-5"></div>
-      <div class="animated-brain brain-6"></div>
-      <div class="animated-brain brain-7"></div>
-      <div class="animated-brain brain-8"></div>
-      <div class="animated-brain brain-9"></div>
-      <div class="animated-brain brain-10"></div>
-    </div>
-    <h2 style="text-align:center; color:#ff7300; font-size:2.5rem; font-weight:900; margin-bottom:0;">KENAPA HARUS</h2>
-    <h1 class="rbd-title-with-logo">
-      <span class="logo-behind-text">
-        <img src="images/Cropped_Image.png" alt="Logo RBD">
-      </span>
-      <span class="rbd-title-text">Rumah Belajar Dirgantara?</span>
-    </h1>
-    <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
-      <!-- Owner Photo Placeholder -->
-      <div style="width:110px; height:110px; border-radius:50%; border:5px solid #ff7300; overflow:hidden; margin-bottom:10px; background:#eee; display:flex; align-items:center; justify-content:center; background-image:url('images/wiwik_latifah.jpg'); background-size:cover; background-position:center;">
-      </div>
-      <div style="text-align:center;">
-        <strong>Owner of Rumbel Dirgantara</strong><br>
-        <span style="font-weight:600;"> Wiwik Latifah </span>
-      </div>
-    </div>
-    <div style="text-align:center; max-width:900px; margin:0 auto 30px;">
-      <span style="font-weight:bold;">Rumah Belajar Dirgantara</span> memiliki tujuan untuk membantu anak yang masih kesulitan dalam membaca dan berhitung.<br>
-      Sehingga metode <span style="font-weight:bold;">Jari Aljabar</span> dan <span style="font-weight:bold;">Roudhoh</span> yang kami padukan dapat menciptakan suasana belajar lebih mudah, menyenangkan dan Membantu otak bekerja secara seimbang.
-    </div>
-    <div class="program-age-grid" style="margin-top:30px;">
-      <!-- Card 1: Dapat Mengasah Pola Pikir Anak -->
-      <div class="program-age-card">
-        <img src="images/purpose_idea.jpg" alt="Dapat Mengasah Pola Pikir Anak">
-        <div class="program-age-overlay">
-          <h3>Dapat Mengasah Pola Pikir Anak</h3>
-        </div>
-      </div>
-      <!-- Card 2: Menumbuhkan Rasa Ingin Tahu dan Kreativitas -->
-      <div class="program-age-card">
-        <img src="images/purpose_creative.jpg" alt="Menumbuhkan Rasa Ingin Tahu dan Kreativitas">
-        <div class="program-age-overlay">
-          <h3>Menumbuhkan Rasa Ingin Tahu dan Kreativitas</h3>
-        </div>
-      </div>
-      <!-- Card 3: Menciptakan Kemampuan Abstraksi Akademis -->
-      <div class="program-age-card">
-        <img src="images/purpose_academic.jpg" alt="Menciptakan Kemampuan Abstraksi Akademis">
-        <div class="program-age-overlay">
-          <h3>Menciptakan Kemampuan Abstraksi Akademis</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Replace program section with simplified version -->
-<section id="program" class="program-method-section">
-  <div class="container">
-    <h2 class="section-title">Metode Pembelajaran</h2>
+<section class="relative pt-20 pb-20 lg:pt-32 lg:pb-40 overflow-hidden" id="home">
+    <div class="absolute top-20 left-10 text-accent opacity-60 animate-bounce anim-dur-3"><span class="material-symbols-outlined text-6xl">star</span></div>
+    <div class="absolute bottom-40 right-10 text-primary opacity-40 animate-bounce anim-dur-4"><span class="material-symbols-outlined text-6xl">edit</span></div>
     
-    <div class="simple-methods-grid">
-      <a href="baca-tulis.html" class="simple-method-card">
-        <div class="simple-method-image">
-          <img src="images/baca-tulis-roudhoh.jpg" alt="Baca Tulis Roudhoh">
-        </div>
-        <div class="simple-method-content">
-          <h3>Baca Tulis Roudhoh</h3>
-          <p>Menggunakan metode cantol roudhoh untuk membaca dengan mudah dan cepat.</p>
-        </div>
-      </a>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            <div class="flex flex-col gap-6 max-w-2xl text-center lg:text-left items-center lg:items-start">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-amber-900 border-2 border-amber-900/10 w-fit rotate-[-2deg] shadow-sm">
+                    <span class="material-symbols-outlined text-lg">school</span>
+                    <span class="text-sm font-extrabold uppercase tracking-wide">Pendaftaran Dibuka!</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-text-main leading-[1.15] tracking-tight">
+                    Belajar <span class="text-primary relative inline-block">Seru</span> &amp; <span class="text-secondary relative inline-block">Ikhlas</span>
+                </h1>
+                <p class="text-text-muted text-xl font-medium leading-relaxed max-w-lg">
+                    Ayo gabung di Rumah Belajar Dirgantara! Tempat di mana belajar jadi petualangan seru dan penuh tawa untuk buah hati Anda.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start">
+                    <button id="openPopup" class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold btn-bubbly group text-lg">
+                        <span>Coba Kelas Gratis</span>
+                        <span class="material-symbols-outlined text-xl group-hover:rotate-45 transition-transform">rocket_launch</span>
+                    </button>
+                    <a href="https://wa.me/6282115555264" class="flex items-center justify-center gap-2 bg-white border-2 border-secondary text-secondary hover:bg-orange-50 px-8 py-4 rounded-xl font-bold btn-bubbly text-lg">
+                        <span class="material-symbols-outlined text-xl">chat_bubble</span>
+                        <span>Tanya Kakak Admin</span>
+                    </a>
+                </div>
+                
+                <!-- Testimonial Avatars -->
+                <div class="flex items-center gap-4 mt-8 bg-white/80 p-3 rounded-2xl border border-gray-100 shadow-soft backdrop-blur-sm">
+                        <img alt="Parent" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" src="https://randomuser.me/api/portraits/women/44.jpg"/>
+                        <img alt="Parent" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" src="https://randomuser.me/api/portraits/men/32.jpg"/>
+                        <img alt="Parent" class="w-10 h-10 rounded-full border-2 border-white object-cover bg-gray-200" src="https://randomuser.me/api/portraits/women/68.jpg"/>
+                    <div class="flex flex-col text-left">
+                        <div class="flex text-accent text-sm">
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                            <span class="material-symbols-outlined text-[18px]">star</span>
+                        </div>
+                        <span class="text-xs font-bold text-text-muted">Dipercaya 500+ Super Parents</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative lg:h-auto flex justify-center">
+                <div class="absolute inset-0 bg-accent rounded-[3rem] rotate-6 transform translate-x-4 translate-y-4 shadow-lg border-4 border-dashed border-white"></div>
+                <div class="relative h-[350px] sm:h-[450px] w-full max-w-md rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white transform hover:rotate-2 transition-transform duration-300 ease-in-out bg-hero">
+                     <!-- Create fallback if image missing -->
 
-      <a href="jari-aljabar.html" class="simple-method-card">
-        <div class="simple-method-image">
-          <img src="images/jari-aljabar.jpg" alt="Jari Aljabar">
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border-b-4 border-primary">
+                        <p class="font-black text-lg text-primary">Metode Modern!</p>
+                        <p class="text-sm font-bold text-text-muted">Bikin anak betah belajar</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="simple-method-content">
-          <h3>Jari Aljabar</h3>
-          <p>Metode belajar matematika menggunakan jari tangan tanpa alat bantu.</p>
-        </div>
-      </a>
     </div>
-  </div>
 </section>
 
-<!-- Add modal markup -->
-<div id="registrationModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Daftar Program</h2>
-    <form id="mainRegistrationForm" class="registration-form">
-      <div class="form-group">
-        <label>Nama Lengkap</label>
-        <input type="text" name="fullname" required placeholder="Masukkan nama lengkap">
-      </div>
-      
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" name="email" required placeholder="Masukkan email">
-      </div>
-      
-      <div class="form-group">
-        <label>Nomor WhatsApp</label>
-        <input type="tel" name="whatsapp" required placeholder="Masukkan nomor WhatsApp">
-      </div>
-      
-      <div class="form-group">
-        <select name="jadwal" required>
-          <option value="">Pilih Jadwal Les</option>
-          <option value="senin-rabu">Senin & Rabu</option>
-          <option value="selasa-kamis">Selasa & Kamis</option>
-          <option value="jumat-sabtu">Jumat & Sabtu</option>
-        </select>
-      </div>
-      <input type="hidden" name="program" id="selectedProgram">
-      <div id="mainFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
-      <button type="submit" class="submit-btn">Daftar Sekarang</button>
-    </form>
-  </div>
-</div>
+<!-- Stats Section -->
+<section class="bg-primary pt-0 pb-16 relative">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border-2 border-white/20 transform hover:-translate-y-2 transition-transform">
+                <h3 class="text-5xl font-black text-white mb-2 drop-shadow-md">2007</h3>
+                <div class="bg-accent text-amber-900 font-bold px-4 py-1 rounded-full inline-block text-sm">Tahun Berdiri</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border-2 border-white/20 transform hover:-translate-y-2 transition-transform delay-75">
+                <h3 class="text-5xl font-black text-white mb-2 drop-shadow-md">90%</h3>
+                <div class="bg-secondary text-white font-bold px-4 py-1 rounded-full inline-block text-sm">Tingkat Kelulusan</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border-2 border-white/20 transform hover:-translate-y-2 transition-transform delay-150">
+                <h3 class="text-5xl font-black text-white mb-2 drop-shadow-md">500+</h3>
+                <div class="bg-white text-primary font-bold px-4 py-1 rounded-full inline-block text-sm">Siswa Bahagia</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- About Section -->
-<section id="about" class="about-section">
-  <div class="about-container">
-    <div class="about-content">
-      <h2>Tentang Kami</h2>
-      <p>Rumah Belajar Dirgantara adalah jasa pendidikan yang bergerak di bidang bimbingan belajar.</p>
-      <p>Program dimulai dari anak usia 4 tahun menggunakan metode Cantol Roudhoh untuk membaca, serta Jari Aljabar untuk matematika.</p>
-      <p>Pembelajaran Bahasa Inggris dan pelajaran sekolah lainnya juga tersedia.</p>
+<section class="py-24 bg-background-alt" id="about">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="w-full lg:w-1/3">
+                <div class="bg-white p-8 rounded-[2rem] shadow-card border-4 border-primary/20 h-full flex flex-col items-center text-center sticky top-24 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-24 bg-primary/10 rounded-t-[1.5rem]"></div>
+                    <div class="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg relative z-10 bg-white">
+                        <div class="w-full h-full bg-cover bg-center bg-wiwik"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-black text-text-main">Ibu Wiwik Latifah</h3>
+                        <p class="text-secondary font-bold text-sm mb-4 uppercase tracking-widest bg-secondary/10 px-3 py-1 rounded-full inline-block mt-1">Founder &amp; Owner</p>
+                        <p class="text-text-muted font-medium leading-relaxed mb-6 bg-yellow-50 p-4 rounded-xl border border-yellow-100 italic">
+                            "Pendidikan bukan hanya tentang mengisi wadah, tetapi menyalakan api. Yuk, kita nyalakan semangat belajar anak!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-2/3">
+                <div class="mb-10 text-center lg:text-left">
+                    <h2 class="text-4xl font-black text-text-main mb-3">Kenapa Harus Kami?</h2>
+                    <p class="text-lg text-text-muted font-medium">Kami bikin suasana belajar senyaman taman bermain!</p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-blue-400 hover:translate-y-[-5px] transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-500 flex items-center justify-center mb-4 transform -rotate-3">
+                            <span class="material-symbols-outlined text-3xl">psychology</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2 text-text-main">Metode Teruji</h4>
+                        <p class="text-text-muted font-medium">Kurikulum juara yang bikin nilai rapor melesat naik!</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-green-400 hover:translate-y-[-5px] transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-green-100 text-green-500 flex items-center justify-center mb-4 transform rotate-3">
+                            <span class="material-symbols-outlined text-3xl">favorite</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2 text-text-main">Lingkungan Nyaman</h4>
+                        <p class="text-text-muted font-medium">Kelas ber-AC, wangi, bersih, dan super ramah anak.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-secondary hover:translate-y-[-5px] transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-100 text-secondary flex items-center justify-center mb-4 transform -rotate-2">
+                            <span class="material-symbols-outlined text-3xl">savings</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2 text-text-main">Biaya Bersahabat</h4>
+                        <p class="text-text-muted font-medium">Pendidikan kualitas internasional dengan harga lokal.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-purple-400 hover:translate-y-[-5px] transition-all">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-500 flex items-center justify-center mb-4 transform rotate-2">
+                            <span class="material-symbols-outlined text-3xl">groups</span>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2 text-text-main">Kelas Eksklusif</h4>
+                        <p class="text-text-muted font-medium">Guru lebih fokus karena muridnya dibatasi. Belajar jadi intens!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rahasia Juara Section -->
+        <div class="mt-24 text-center">
+            <div class="inline-block bg-primary text-white font-black px-6 py-2 rounded-full text-xs tracking-widest mb-4 uppercase transform -rotate-2 shadow-md">Core Values</div>
+            <h2 class="text-3xl md:text-5xl font-black text-text-main mb-16">Rahasia Juara: R.A.H.M.A.T</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <!-- R: Ringkas -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-red-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-red-500">bolt</span>
+                    </div>
+                    <h4 class="font-black text-xl text-red-500 mb-3">Ringkas</h4>
+                    <span class="bg-red-50 text-red-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Materi Padat</span>
+                </div>
+                
+                <!-- A: Aktif -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-orange-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-orange-500">directions_run</span>
+                    </div>
+                    <h4 class="font-black text-xl text-orange-500 mb-3">Aktif</h4>
+                    <span class="bg-orange-50 text-orange-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Siswa Terlibat</span>
+                </div>
+
+                <!-- H: Harmoni -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-yellow-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-yellow-500">music_note</span>
+                    </div>
+                    <h4 class="font-black text-xl text-yellow-500 mb-3">Harmoni</h4>
+                    <span class="bg-yellow-50 text-yellow-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Seimbang</span>
+                </div>
+
+                <!-- M: Mudah -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-green-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-green-500">sentiment_satisfied_alt</span>
+                    </div>
+                    <h4 class="font-black text-xl text-green-500 mb-3">Mudah</h4>
+                    <span class="bg-green-50 text-green-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Gampang!</span>
+                </div>
+
+                <!-- A: Aplikatif -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-blue-500">build</span>
+                    </div>
+                    <h4 class="font-black text-xl text-blue-500 mb-3">Aplikatif</h4>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Bisa Dipakai</span>
+                </div>
+
+                <!-- T: Terpadu -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-24 h-24 rounded-full border-4 border-purple-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform bg-white shadow-soft">
+                        <span class="material-symbols-outlined text-4xl text-purple-500">hub</span>
+                    </div>
+                    <h4 class="font-black text-xl text-purple-500 mb-3">Terpadu</h4>
+                    <span class="bg-purple-50 text-purple-600 text-xs font-extrabold px-4 py-2 rounded-full shadow-sm">Komplit</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="about-image">
-      <img src="images/about-dirgantara.jpg" alt="Tentang Rumah Belajar Dirgantara">
-    </div>
-  </div>
 </section>
 
-<section id="jari-aljabar-overview" class="overview-section">
-  <div class="container">
-    <!-- Judul Bagian -->
-    <h1 class="section-title">Jari Aljabar</h1>
-    <h3 class="section-subtitle">Metode Belajar dengan Sistem Pengajaran Terbaik</h3>
-    <p class="section-description">
-      Berdasarkan pengalaman panjang sejak 2007, Jari Aljabar telah berfokus pada pengembangan metode pembelajaran yang 
-      mempermudah anak-anak dalam memahami konsep matematika secara cepat, menyenangkan, dan efektif. Dengan pendekatan 
-      inovatif, Jari Aljabar membantu anak-anak meningkatkan kepercayaan diri mereka dalam belajar matematika.
-    </p>
-
-    <!-- Statistik -->
-    <div class="statistics">
-      <div class="stat-item">
-        <h2>2007</h2>
-        <p>Didirikan di Indonesia</p>
-      </div>
-      <div class="stat-item">
-        <h2>90%</h2>
-        <p>Mengurangi Kesalahan Hitung dengan Metode Praktis</p>
-      </div>
-      <div class="stat-item">
-        <h2>500+</h2>
-        <p>Siswa yang Terbantu</p>
-      </div>
+<!-- Methods Section -->
+<section class="py-24 bg-white relative" id="methods">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="max-w-xl">
+                <h2 class="text-4xl md:text-5xl font-black text-text-main mb-4 relative inline-block">
+                    Petualangan Belajarmu!
+                    <span class="absolute -top-6 -right-8 text-4xl rotate-12">🚀</span>
+                </h2>
+                <p class="text-text-muted font-medium text-lg">Pilih metode seru yang cocok buat gaya belajarmu.</p>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Program 1 -->
+            <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-card border-4 border-primary/30 hover:border-primary transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-72 w-full bg-cover bg-center relative bg-baca-tulis">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-accent text-amber-900 text-xs font-black uppercase px-3 py-1 rounded-full mb-2 inline-block shadow-sm">Favorit</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-3xl font-black text-text-main mb-3 group-hover:text-primary transition-colors">Baca Tulis Roudhoh</h3>
+                    <p class="text-text-muted font-medium mb-8 leading-relaxed">Metode ajaib! Anak usia dini bisa baca tulis super cepat tanpa merasa terbebani.</p>
+                    <div class="flex items-center justify-between p-2 bg-background-alt rounded-2xl">
+                        <span class="text-sm font-bold text-primary px-4 py-2 rounded-xl bg-white shadow-sm border border-primary/10">🐣 Usia 4-7 Tahun</span>
+                        <a href="baca-tulis.html" class="bg-primary text-white w-10 h-10 rounded-xl hover:bg-primary-dark transition-colors flex items-center justify-center shadow-btn btn-bubbly">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Program 2 -->
+            <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-card border-4 border-secondary/30 hover:border-secondary transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-72 w-full bg-cover bg-center relative bg-jari-aljabar">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-3xl font-black text-text-main mb-3 group-hover:text-secondary transition-colors">Jari Aljabar</h3>
+                    <p class="text-text-muted font-medium mb-8 leading-relaxed">Hitung cepat pakai jari tangan? Bisa! Seimbangkan otak kiri &amp; kanan bikin kamu makin cerdas.</p>
+                    <div class="flex items-center justify-between p-2 bg-orange-50 rounded-2xl">
+                        <span class="text-sm font-bold text-secondary px-4 py-2 rounded-xl bg-white shadow-sm border border-secondary/10">🎓 Usia 5-12 Tahun</span>
+                        <a href="jari-aljabar.html" class="bg-secondary text-white w-10 h-10 rounded-xl hover:bg-secondary-dark transition-colors flex items-center justify-center shadow-btn btn-bubbly">
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-  <section id="learning-system" class="learning-system-section">
-    <div class="container">
-      <h1 class="section-title">Sistem Belajar Kami</h1>
-      <div class="learning-system-content">
-        <div class="learning-diagram">
-          <img src="images/jari-aljabar-diagram.png" alt="Learning Diagram">
+<!-- Facilities Section -->
+<section class="py-24 bg-background-alt" id="facilities">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-text-main mb-4">Markas Belajar Seru</h2>
+            <p class="text-xl text-text-muted font-medium">Fasilitas lengkap buat dukung kreativitasmu.</p>
         </div>
-        <div class="learning-description">
-          <h2>Sistem Pembelajaran Jari Aljabar</h2>
-          <p>
-            Rumah Belajar Dirgantara menggunakan pendekatan inovatif untuk membantu siswa memahami konsep matematika dengan cepat dan menyenangkan melalui metode Jari Aljabar. Sistem ini melibatkan:
-          </p>
-          <ul>
-            <li><strong>Ringkas:</strong> Materi disusun secara sederhana agar lebih mudah dipahami.</li>
-            <li><strong>Aktif:</strong> Mendorong siswa untuk terlibat dalam proses belajar interaktif.</li>
-            <li><strong>Harmoni:</strong> Menyeimbangkan teori dan praktik agar pembelajaran lebih efektif.</li>
-            <li><strong>Mudah:</strong> Konsep diajarkan secara bertahap agar lebih gampang diikuti.</li>
-            <li><strong>Aplikatif:</strong> Fokus pada penerapan dalam kehidupan nyata untuk pemahaman lebih baik.</li>
-            <li><strong>Terpadu:</strong> Mengintegrasikan berbagai sumber belajar dan teknologi untuk hasil maksimal.</li>
-          </ul>
-          <p>
-            Dengan sistem ini, anak-anak tidak hanya belajar tetapi juga membangun kepercayaan diri mereka.
-          </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-[2rem] overflow-hidden shadow-btn border-4 border-gray-100 hover:border-blue-300 transition-all group">
+                <div class="h-48 w-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500 bg-ruang-kelas"></div>
+                <div class="p-6 relative bg-white">
+                    <div class="absolute -top-8 right-4 w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white shadow-md border-4 border-white">
+                        <span class="material-symbols-outlined">ac_unit</span>
+                    </div>
+                    <h4 class="font-bold text-xl mb-1 text-text-main">Ruang Adem</h4>
+                    <p class="text-sm font-bold text-text-muted">AC dingin, belajar nyaman.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2rem] overflow-hidden shadow-btn border-4 border-gray-100 hover:border-yellow-300 transition-all group">
+                <div class="h-48 w-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500 bg-guru"></div>
+                <div class="p-6 relative bg-white">
+                    <div class="absolute -top-8 right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-white shadow-md border-4 border-white">
+                        <span class="material-symbols-outlined">menu_book</span>
+                    </div>
+                    <h4 class="font-bold text-xl mb-1 text-text-main">Guru Terlatih</h4>
+                    <p class="text-sm font-bold text-text-muted">Dibimbing Profesional.</p>
+                </div>
+            </div>
+             <div class="bg-white rounded-[2rem] overflow-hidden shadow-btn border-4 border-gray-100 hover:border-purple-300 transition-all group">
+                <div class="h-48 w-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500 bg-semi-privat"></div>
+                <div class="p-6 relative bg-white">
+                    <div class="absolute -top-8 right-4 w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center text-white shadow-md border-4 border-white">
+                        <span class="material-symbols-outlined">groups</span>
+                    </div>
+                    <h4 class="font-bold text-xl mb-1 text-text-main">Semi Privat</h4>
+                    <p class="text-sm font-bold text-text-muted">Maksimal 4 Siswa.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2rem] overflow-hidden shadow-btn border-4 border-gray-100 hover:border-green-300 transition-all group">
+                <div class="h-48 w-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500 bg-metode"></div>
+                <div class="p-6 relative bg-white">
+                    <div class="absolute -top-8 right-4 w-12 h-12 bg-green-400 rounded-full flex items-center justify-center text-white shadow-md border-4 border-white">
+                        <span class="material-symbols-outlined">chair</span>
+                    </div>
+                    <h4 class="font-bold text-xl mb-1 text-text-main">Metode Seru</h4>
+                    <p class="text-sm font-bold text-text-muted">Belajar menyenangkan.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section id="guru-profesional" class="guru-profesional-section">
-    <div class="container">
-      <h1 class="section-title">Guru Profesional</h1>
-      <div class="guru-content">
-        <!-- Video Section -->
-        <div class="guru-video">
-          <video controls>
-            <source src="videos/jari-aljabar-guru.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video tag.
-          </video>
-          <p>
-            Guru kami telah melalui pelatihan intensif dan seleksi ketat. Hanya mereka yang memiliki keahlian mengajar terbaik yang bergabung dengan Jari Aljabar.
-          </p>
-        </div>
-  
-        <!-- Certificate Section -->
-        <div class="guru-certificate">
-          <img src="images/certificate-jari-aljabar.png" alt="Sertifikat Guru Jari Aljabar">
-          <h3>Kualifikasi Guru Jari Aljabar</h3>
-          <p>
-            Semua guru kami memiliki sertifikat pelatihan metode Jari Aljabar. Mereka terlatih untuk:
-          </p>
-          <ul>
-            <li>Menggunakan alat bantu pengajaran interaktif.</li>
-            <li>Meningkatkan pemahaman anak dalam matematika praktis.</li>
-            <li>Memberikan suasana belajar yang menyenangkan dan efektif.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Teachers Section -->
+<section class="py-24 bg-white relative" id="teachers">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+            <!-- Left: Text Info -->
+            <div class="w-full md:w-1/2">
+                <div class="inline-block bg-primary/10 text-primary font-black px-4 py-2 rounded-full text-xs tracking-widest mb-4 uppercase">
+                    Tim Pengajar
+                </div>
+                <h2 class="text-4xl font-black text-text-main mb-6">Guru Profesional & Terlatih</h2>
+                <p class="text-lg text-text-muted font-medium mb-8 leading-relaxed">
+                    Guru kami telah melalui pelatihan intensif dan seleksi ketat. Hanya mereka yang memiliki keahlian mengajar terbaik yang bergabung dengan Jari Aljabar.
+                </p>
+                
+                <div class="bg-background-alt rounded-[2rem] p-8 border-4 border-primary/20 relative">
+                    <div class="absolute -top-6 -right-6 bg-accent text-amber-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg rotate-12 border-4 border-white">
+                        <span class="material-symbols-outlined text-3xl">verified</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary mb-4">Kualifikasi Guru Jari Aljabar</h3>
+                    <p class="text-text-muted font-bold mb-6">Semua guru kami memiliki sertifikat pelatihan metode Jari Aljabar.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="bg-green-100 p-2 rounded-xl text-green-500 mt-1">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-text-main">Alat Bantu Interaktif</h4>
+                                <p class="text-sm text-text-muted font-bold">Menggunakan media ajar yang seru.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="bg-yellow-100 p-2 rounded-xl text-yellow-600 mt-1">
+                                <span class="material-symbols-outlined">calculate</span>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-text-main">Matematika Praktis</h4>
+                                <p class="text-sm text-text-muted font-bold">Meningkatkan pemahaman anak secara nyata.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="bg-red-100 p-2 rounded-xl text-red-500 mt-1">
+                                <span class="material-symbols-outlined">sentiment_very_satisfied</span>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-text-main">Suasana Menyenangkan</h4>
+                                <p class="text-sm text-text-muted font-bold">Belajar efektif tanpa tekanan.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Right: Image/Visual -->
+            <div class="w-full md:w-1/2 relative z-10">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-secondary rounded-[3rem] rotate-3 transform translate-x-4 translate-y-4"></div>
+                    <div class="relative bg-white rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl h-[500px] bg-black">
+                        <!-- Video Background -->
+                        <video class="absolute inset-0 w-full h-full object-cover object-bottom" autoplay loop muted>
+                            <source src="videos/jari-aljabar-guru.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute bottom-0 left-0 w-full p-8 text-white z-10">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50">
+                                    <span class="material-symbols-outlined">badge</span>
+                                </div>
+                                <div>
+                                    <p class="font-black text-xl">Sertifikasi Resmi</p>
+                                    <p class="text-white/80 text-sm">Metode Jari Aljabar</p>
+                                </div>
+                            </div>
+                            <p class="font-medium opacity-90 italic">"Kami mengajar dengan hati, mendidik dengan kasih sayang."</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate Image Overlay -->
+                    <div class="absolute bottom-32 -right-8 w-40 h-auto bg-white p-2 rounded-xl shadow-2xl transform rotate-6 border-4 border-white hover:scale-150 hover:rotate-0 transition-all duration-300 origin-bottom-right z-20">
+                         <img src="images/certificate-jari-aljabar.png" alt="Sertifikat Jari Aljabar" class="w-full rounded-lg shadow-inner">
+                         <div class="absolute -top-3 -right-3 bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-md">
+                             <span class="material-symbols-outlined text-sm">check</span>
+                         </div>
+                    </div>
 
-  <section id="strategic-locations" class="strategic-section">
-    <div class="container">
-      <div class="location-content">
-        <div class="location-text">
-          <h2>Lokasi Strategis & Tempat Kursus yang Nyaman</h2>
-          <p>
-            Jari Aljabar memiliki pusat pelatihan di berbagai kota yang strategis, membuatnya mudah diakses. Dengan fasilitas
-            modern dan lingkungan yang nyaman, kami memastikan pengalaman belajar yang menyenangkan bagi anak-anak.
-          </p>
-          <a href="https://g.co/kgs/edyL9K5" 
-             class="learn-more-btn" 
-             target="_blank"
-             onclick="window.open(this.href, '_blank'); return false;">
-             Kenali lebih dekat dengan lokasi kami
-          </a>
+                    <!-- Floating Badge -->
+                    <div class="absolute top-10 -right-6 bg-white p-4 rounded-2xl shadow-xl animate-bounce anim-dur-3 border-b-4 border-secondary z-20">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl">👩‍🏫</span>
+                            <div>
+                                <p class="font-black text-text-main text-sm">100%</p>
+                                <p class="text-xs font-bold text-text-muted">Terlatih</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="location-image">
-          <img src="images/location.jpg" alt="Lokasi Jari Aljabar">
-        </div>
-      </div>
     </div>
-  </section>
-  
- <!-- Sticky Footer -->
-<div class="sticky-footer">
-  <a href="https://wa.me/6282115555264" class="whatsapp-btn">
-      <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="javascript:void(0)" class="try-class-btn" id="openPopup">Yuk, Coba Kelas Gratis!</a>
-</div>
+</section>
 
-<!-- Popup -->
-<div id="popupForm" class="popup-overlay" style="display: none;">
-  <div class="popup-content modern-popup">
-    <span class="closePopup close-btn">×</span>
-    <div class="popup-header">
-      <img src="images/maskot.png" alt="maskot" class="popup-image">
-      <h2>Coba Kelas Gratis!</h2>
-      <p>Isi formulir di bawah ini untuk mencoba kelas gratis bersama kami.</p>
+<!-- Contact & Registration Section -->
+<section class="py-24 bg-white relative" id="contact">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Contact Info -->
+            <div class="flex flex-col gap-8">
+                <div>
+                    <h2 class="text-4xl font-black text-text-main mb-4">Yuk, Main ke Sini!</h2>
+                    <p class="text-text-muted text-lg font-medium">Lihat langsung serunya belajar di Rumah Belajar Dirgantara.</p>
+                </div>
+                <div class="bg-white rounded-[2.5rem] p-6 border-4 border-gray-100 shadow-card hover:border-accent transition-colors">
+                    <div class="w-full h-64 bg-gray-200 rounded-[2rem] mb-6 overflow-hidden relative border-4 border-dashed border-gray-300">
+                        <img alt="Map" class="w-full h-full object-cover" src="images/location.jpg" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <a href="https://g.co/kgs/edyL9K5" target="_blank" rel="noopener" class="bg-white px-6 py-3 rounded-full shadow-lg text-primary font-black text-sm flex items-center gap-2 hover:scale-110 transition-transform border-2 border-primary">
+                                <span class="material-symbols-outlined text-red-500">location_on</span>
+                                Buka Google Maps
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-black text-xl text-text-main mb-2">Rumah Belajar Dirgantara Pusat</h3>
+                    <p class="text-text-muted font-medium mb-6">Jl. Dirgantara No. 12, Halim Perdanakusuma, Jakarta Timur</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/6282115555264" class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-4 rounded-xl font-bold btn-bubbly transition-colors">
+                            <span class="material-symbols-outlined">chat</span>
+                            Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Registration Form -->
+            <div class="bg-gradient-to-br from-primary/10 to-accent/10 p-8 md:p-10 rounded-[3rem] border-4 border-white shadow-soft relative">
+                 <div class="absolute -top-4 -right-4 text-6xl rotate-12">📝</div>
+                <h2 class="text-3xl font-black text-primary mb-2">Daftar Trial Gratis!</h2>
+                <p class="text-text-muted mb-8 font-bold">Isi formulir ini biar Kakak Admin hubungi Ayah/Bunda ya.</p>
+                
+                <form class="space-y-5" id="indexRegistrationForm">
+                    <div>
+                        <label class="block text-sm font-black text-text-main mb-2 pl-2" for="fullname">Nama Orang Tua</label>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" id="fullname" name="fullname" placeholder="Nama Ayah/Bunda" type="text" required />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-black text-text-main mb-2 pl-2" for="email">Email</label>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" id="email" name="email" placeholder="Alamat Email" type="email" required />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-black text-text-main mb-2 pl-2" for="childName">Nama Anak (Opsional)</label>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-secondary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" id="childName" placeholder="Nama Panggilan Anak" type="text"/>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                           <label class="block text-sm font-black text-text-main mb-2 pl-2" for="programSelect">Minat</label>
+                           <select class="w-full rounded-2xl border-2 border-gray-200 focus:border-accent focus:ring-0 p-4 font-bold text-text-main bg-white" id="programSelect" name="program" required onchange="updateJadwal()">
+                                <option value="">Pilih Program</option>
+                                <option value="baca-tulis">Baca Tulis Roudhoh</option>
+                                <option value="jari-aljabar">Jari Aljabar</option>
+                           </select>
+                        </div>
+                         <div>
+                           <label class="block text-sm font-black text-text-main mb-2 pl-2" for="jadwalSelect">Jadwal</label>
+                           <select class="w-full rounded-2xl border-2 border-gray-200 focus:border-accent focus:ring-0 p-4 font-bold text-text-main bg-white" id="jadwalSelect" name="jadwal" required>
+                                <option value="">Pilih Jadwal Les</option>
+                           </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-black text-text-main mb-2 pl-2" for="whatsapp">WhatsApp</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-4 text-gray-400 font-bold">+62</span>
+                            <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 pl-14 font-bold text-text-main placeholder:text-gray-300 transition-colors" id="whatsapp" name="whatsapp" placeholder="812-3456-7890" type="tel" required />
+                        </div>
+                    </div>
+                    
+                    <div class="form-feedback feedback-msg"></div>
+                    
+                    <button class="w-full bg-primary hover:bg-primary-dark text-white font-black text-lg py-5 rounded-2xl btn-bubbly transition-all mt-4 submit-btn" type="submit">
+                        🚀 Kirim Pendaftaran
+                    </button>
+                    <p class="text-xs text-center text-text-muted mt-4 font-bold bg-white/50 py-2 rounded-lg">Data aman! Admin akan segera menghubungi.</p>
+                </form>
+            </div>
+        </div>
     </div>
-    <form id="popupRegistrationForm" class="popup-form-modern">
-      <div class="form-group-modern">
-        <input type="text" name="fullname" required placeholder="Nama Lengkap">
+</section>
+
+<!-- Popup Form -->
+<div id="popupForm" class="popup-overlay init-hidden">
+  <div class="popup-content bg-white p-8 rounded-[2rem] max-w-md w-full relative show-zoom">
+    <span class="closePopup close-btn absolute top-4 right-4 text-2xl cursor-pointer text-gray-400 hover:text-red-500">×</span>
+    <div class="text-center mb-6">
+      <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+         <span class="text-4xl">🎁</span>
       </div>
-      <div class="form-group-modern">
-        <input type="email" name="email" required placeholder="Email">
+      <h2 class="text-2xl font-black text-text-main">Coba Kelas Gratis!</h2>
+      <p class="text-text-muted font-medium mt-2">Yuk coba dulu serunya belajar di sini. Gratis 1x pertemuan!</p>
+    </div>
+    <form id="popupRegistrationForm" class="space-y-4">
+      <div>
+        <input type="text" name="fullname" class="w-full rounded-xl border-2 border-gray-200 p-3 font-bold text-text-main focus:border-primary focus:ring-0" required placeholder="Nama Lengkap">
       </div>
-      <div class="form-group-modern">
-        <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
+      <div>
+        <input type="email" name="email" class="w-full rounded-xl border-2 border-gray-200 p-3 font-bold text-text-main focus:border-primary focus:ring-0" required placeholder="Email">
       </div>
-      <div class="form-group-modern">
-        <select name="program" id="popupProgramSelect" required>
+      <div>
+        <input type="tel" name="whatsapp" class="w-full rounded-xl border-2 border-gray-200 p-3 font-bold text-text-main focus:border-primary focus:ring-0" required placeholder="Nomor WhatsApp">
+      </div>
+      <div>
+        <select name="program" id="popupProgramSelect" class="w-full rounded-xl border-2 border-gray-200 p-3 font-bold text-text-main bg-white focus:border-primary focus:ring-0" required>
           <option value="">Pilih Program</option>
           <option value="baca-tulis">Baca Tulis Roudhoh</option>
           <option value="jari-aljabar">Jari Aljabar</option>
         </select>
       </div>
-      <div class="form-group-modern">
-        <select name="jadwal" id="popupJadwalSelect" required>
+      <div>
+        <select name="jadwal" id="popupJadwalSelect" class="w-full rounded-xl border-2 border-gray-200 p-3 font-bold text-text-main bg-white focus:border-primary focus:ring-0" required>
           <option value="">Pilih Jadwal Les</option>
         </select>
       </div>
-      <div id="popupFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
-      <button type="submit" class="submit-btn-modern">Daftar Kelas Gratis</button>
+      <div id="popupFormFeedback" class="text-center font-bold text-sm"></div>
+      <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-black py-4 rounded-xl shadow-lg hover:shadow-xl transition-all btn-bubbly mt-2">Daftar Kelas Gratis</button>
     </form>
   </div>
 </div>
 
-<!-- Facilities Section -->
-<section id="facilities" class="program-age-section">
-  <div class="container">
-    <h2 class="section-title">Fasilitas Kami</h2>
-    
-    <div class="program-age-grid">
-      <div class="program-age-card">
-        <img src="images/guru-terlatih.jpg" alt="Guru Terlatih">
-        <div class="program-age-overlay">
-          <h3>Guru Terlatih</h3>
-          <p>Dibimbing oleh guru profesional yang terlatih</p>
-        </div>
-      </div>
-
-      <div class="program-age-card">
-        <img src="images/ruang-kelas-ber-ac.jpg" alt="Ruang Kelas Ber-AC">
-        <div class="program-age-overlay">
-          <h3>Ruang Kelas Ber-AC</h3>
-          <p>Suasana belajar nyaman dengan AC</p>
-        </div>
-      </div>
-
-      <div class="program-age-card">
-        <img src="images/kelas-semi-privat.jpg" alt="Semi Privat">
-        <div class="program-age-overlay">
-          <h3>Semi Privat</h3>
-          <p>1 kelas hanya 4 siswa</p>
-        </div>
-      </div>
-
-      <div class="program-age-card">
-        <img src="images/metode-pembelajran-interaktif.jpg" alt="Metode Pembelajaran">
-        <div class="program-age-overlay">
-          <h3>Metode Pembelajaran</h3>
-          <p>Cerdas, mudah, dan menyenangkan</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact-registration" class="contact-registration-section">
-  <div class="container">
-    <h2 class="section-title">Kontak & Pendaftaran</h2>
-    <div class="contact-registration-grid">
-      <!-- Contact Info -->
-      <div class="contact-info">
-        <h3>Hubungi Kami</h3>
-        <div class="contact-cards">
-          <a href="https://wa.me/6282115555264" class="contact-card">
-            <i class="fab fa-whatsapp"></i>
-            <div>
-              <span>+62 821-1555-5264</span>
+<footer class="bg-primary text-white py-16 border-t-8 border-accent relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-footer-pattern"></div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
+            <!-- Brand -->
+            <div class="md:col-span-1">
+                <div class="flex items-center gap-4 justify-center md:justify-start mb-6">
+                    <div class="flex items-center justify-center size-12 rounded-2xl bg-white text-primary shadow-lg rotate-3">
+                        <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black block leading-none">Rumbel<br>Dirgantara</span>
+                    </div>
+                </div>
+                <p class="text-white/80 font-medium leading-relaxed mb-6">
+                    Membantu anak Indonesia belajar dengan cara yang menyenangkan dan penuh makna.
+                </p>
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-primary flex items-center justify-center transition-all">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-primary flex items-center justify-center transition-all">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white hover:text-primary flex items-center justify-center transition-all">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
             </div>
-          </a>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-black text-lg mb-6 text-accent">Menu</h4>
+                <ul class="space-y-3 font-bold text-white/80">
+                    <li><a href="#home" class="hover:text-white transition-colors">Beranda</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                    <li><a href="#methods" class="hover:text-white transition-colors">Program Belajar</a></li>
+                    <li><a href="#facilities" class="hover:text-white transition-colors">Fasilitas</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors">Kontak</a></li>
+                </ul>
+            </div>
+
+            <!-- Programs -->
+            <div>
+                <h4 class="font-black text-lg mb-6 text-accent">Program</h4>
+                <ul class="space-y-3 font-bold text-white/80">
+                    <li><a href="baca-tulis.html" class="hover:text-white transition-colors">Baca Tulis Roudhoh</a></li>
+                    <li><a href="jari-aljabar.html" class="hover:text-white transition-colors">Jari Aljabar</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors opacity-50 cursor-not-allowed">English Kids (Coming Soon)</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-black text-lg mb-6 text-accent">Hubungi Kami</h4>
+                <ul class="space-y-4 font-medium text-white/80">
+                    <li class="flex gap-3 justify-center md:justify-start">
+                        <span class="material-symbols-outlined mt-1">location_on</span>
+                        <span>Jl. Dirgantara No. 12,<br>Halim Perdanakusuma,<br>Jakarta Timur</span>
+                    </li>
+                    <li class="flex gap-3 justify-center md:justify-start items-center">
+                        <span class="material-symbols-outlined">call</span>
+                        <span>+62 821-1555-5264</span>
+                    </li>
+                    <li class="flex gap-3 justify-center md:justify-start items-center">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span>info@rumbeldirgantara.com</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <!-- Registration Form -->
-      <div class="registration-form">
-        <h3>Daftar Program</h3>
-        <form id="indexRegistrationForm" class="registration-form">
-          <div class="form-group">
-            <input type="text" name="fullname" required placeholder="Nama Lengkap">
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" required placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
-          </div>
-          <div class="form-group">
-            <select name="program" id="programSelect" required onchange="updateJadwal()">
-              <option value="">Pilih Program</option>
-              <option value="baca-tulis">Baca Tulis Roudhoh</option>
-              <option value="jari-aljabar">Jari Aljabar</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select name="jadwal" id="jadwalSelect" required>
-              <option value="">Pilih Jadwal Les</option>
-            </select>
-          </div>
-          <div id="indexFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
-          <button type="submit" class="submit-btn">Daftar Sekarang</button>
-        </form>
-      </div>
+        <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-bold text-white/60">
+            <p>© 2026 Rumah Belajar Dirgantara. All Rights Reserved.</p>
+            <a href="https://rumbeldirgantara.com/admin/login.php?logout=1" class="flex items-center gap-2 hover:text-white transition-colors opacity-80 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined text-lg">lock</span>
+                Akses Admin
+            </a>
+        </div>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h4>KURSUS KAMI</h4>
-      <ul>
-        <li>Kursus Matematika Anak 3-6 Tahun</li>
-        <li>Kursus Matematika Anak 7-9 Tahun</li>
-        <li>Kursus Matematika Remaja 10-14 Tahun</li>
-        <li>Kursus Matematika Remaja 15-18 Tahun (SMA)</li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h4>PROMO SAAT INI</h4>
-      <ul>
-        <li>Diskon Kursus Matematika</li>
-        <li>Free Demo Class</li>
-        <li>Kelas Trial</li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h4>CABANG KAMI</h4>
-      <ul>
-        <li>Jari Aljabar Jakarta</li>
-        <li>Jari Aljabar Bandung</li>
-        <li>Jari Aljabar Yogyakarta</li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h4>SAYA MAU BELAJAR</h4>
-      <ul>
-        <li>Perkalian Cepat</li>
-        <li>Pembagian Mudah</li>
-        <li>Matematika Dasar</li>
-        <li>Matematika Lanjutan</li>
-        <li>Perhitungan Dasar</li>
-      </ul>
-    </div>
-    <div class="footer-socials">
-      <a href="https://www.facebook.com/jarialjabar" target="_blank" aria-label="Facebook">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://www.instagram.com/rumahbelajardirgantara?utm_source=qr" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.youtube.com/channel/jarialjabar" target="_blank" aria-label="YouTube">
-        <i class="fab fa-youtube"></i>
-      </a>
-    </div>
-  </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-  AOS.init();
-</script>
 <script src="script.js"></script>
 <script src="popup.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
+        } else {
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
+        }
+    }
+    
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    // Initial call to set jadwal if browser autocompletes
+    if(typeof updateJadwal === 'function') {
+        const pSelect = document.getElementById('programSelect');
+        if(pSelect && pSelect.value) {
+            updateJadwal();
+        }
+    }
+</script>
+
 </body>
 </html>

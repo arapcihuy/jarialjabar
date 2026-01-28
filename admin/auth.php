@@ -2,8 +2,23 @@
 // Fungsi untuk memulai session dengan aman
 function startSession() {
     if (session_status() === PHP_SESSION_NONE) {
-session_start();
+        // Set secure session parameters
+        session_set_cookie_params([
+            'lifetime' => 0, // Session cookie persists until browser closed
+            'path' => '/',
+            'domain' => '', // Default domain
+            'secure' => true, // Only send over HTTPS
+            'httponly' => true, // Prevent JS access to session cookie
+            'samesite' => 'Strict' // Prevent CSRF
+        ]);
+        session_start();
     }
+    
+    // Add Security Headers
+    header("X-Frame-Options: DENY");
+    header("X-Content-Type-Options: nosniff");
+    header("X-XSS-Protection: 1; mode=block");
+
     // Session timeout: 15 menit
     $timeout = 900; // 15*60 detik
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {

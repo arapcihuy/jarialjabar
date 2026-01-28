@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // Optional: close menu when clicking outside
     document.addEventListener('click', function(e) {
-      if(isOpen && !dropdownMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      if(dropdownMenu.classList.contains('open') && !dropdownMenu.contains(e.target) && !menuToggle.contains(e.target)) {
         dropdownMenu.classList.remove('open');
         document.body.classList.remove('menu-open');
         dropdownMenu.style.display = 'none';
@@ -78,52 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Enhanced smooth scrolling function
-  function smoothScrollTo(targetY, duration = 800) {
-    const startY = window.pageYOffset;
-    const difference = targetY - startY;
-    const startTime = performance.now();
-    
-    function step() {
-      const currentTime = performance.now();
-      const elapsed = currentTime - startTime;
-      
-      if (elapsed < duration) {
-        // Easing function - easeInOutQuad
-        let progress = elapsed / duration;
-        progress = progress < 0.5
-          ? 2 * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-          
-        window.scrollTo(0, startY + difference * progress);
-        requestAnimationFrame(step);
-      } else {
-        window.scrollTo(0, targetY);
-      }
-    }
-    
-    requestAnimationFrame(step);
-  }
-  
-  // Expose smoothScrollTo globally for other scripts
-  window.smoothScrollTo = smoothScrollTo;
-  
-  // Helper function to get element position
-  function getOffsetTop(element) {
-    let top = 0;
-    while (element) {
-      top += element.offsetTop;
-      element = element.offsetParent;
-    }
-    return top;
-  }
+  // Native smooth scrolling is handled by CSS (scroll-behavior: smooth)
+  // We only need to handle buttons that aren't <a> tags or need special logic
 
-  // Back-to-top button with smooth scrolling
+  // Back-to-top button
   const backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
     backToTop.addEventListener('click', function(e) {
       e.preventDefault();
-      smoothScrollTo(0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
     
     window.addEventListener('scroll', function() {
@@ -135,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
   }
   
-  // "Daftar Sekarang" button with smooth scrolling
+  // "Daftar Sekarang" button and other custom triggers
   const heroCta = document.querySelector('.hero-cta');
   if (heroCta) {
     heroCta.addEventListener('click', function(e) {
@@ -143,55 +109,41 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetId = this.getAttribute('data-target') || 'daftar';
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
-        const targetPosition = getOffsetTop(targetElement);
-        smoothScrollTo(targetPosition);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     });
   }
 
-  // Handle all elements with data-smooth="true" attribute
+  // Handle other elements with data-smooth that are NOT standard links
   document.querySelectorAll('[data-smooth="true"]').forEach(element => {
-    if (!element.classList.contains('hero-cta')) {
-      element.addEventListener('click', function(e) {
-        e.preventDefault();
-        let targetId;
-        
-        if (this.hasAttribute('href') && this.getAttribute('href').startsWith('#')) {
-          targetId = this.getAttribute('href').substring(1);
-        } else if (this.hasAttribute('data-target')) {
-          targetId = this.getAttribute('data-target');
-        }
-        
-        if (targetId) {
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            const targetPosition = getOffsetTop(targetElement);
-            smoothScrollTo(targetPosition);
-          }
-        } else if (this.classList.contains('back-to-top')) {
-          smoothScrollTo(0);
-        }
-      });
+    // If it's a standard link with href, let CSS handle it (remove JS listener)
+    if (element.tagName === 'A' && element.hasAttribute('href') && element.getAttribute('href').startsWith('#')) {
+      return; 
     }
-  });
 
-  // All anchor links with smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    // Skip if already handled by data-smooth
-    if (anchor.hasAttribute('data-smooth')) return;
-    
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href').substring(1);
-      if (!targetId) return;
+    // Only add listener for non-links or special cases
+    element.addEventListener('click', function(e) {
+      e.preventDefault();
+      let targetId;
       
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        const targetPosition = getOffsetTop(targetElement);
-        smoothScrollTo(targetPosition);
+      if (this.hasAttribute('data-target')) {
+        targetId = this.getAttribute('data-target');
+      }
+      
+      if (targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (this.classList.contains('back-to-top')) {
+         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
+
+  // REMOVED: Global a[href^="#"] listener
+  // We now rely on CSS 'scroll-behavior: smooth' for standard anchor links
+  // This removes the "lag" or delay caused by the custom JS animation loop.
 
   // Logo click handler - return to homepage
   const logoContainer = document.querySelector('.logo-container');
@@ -217,14 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
   forms.forEach(form => {
     // Skip forms that have their own handlers
     if (
-      form.id === 'jariAljabarForm' ||
-      form.id === 'bacaTulisForm' ||
-      form.id === 'popupRegistrationForm' ||
-      form.id === 'indexRegistrationForm'
+      form.id === 'popupRegistrationForm'
     ) {
-      if (form.id === 'indexRegistrationForm') {
-        console.log('DEBUG: Handler global SKIP indexRegistrationForm');
-      }
       return;
     }
 
@@ -266,7 +212,9 @@ document.addEventListener('DOMContentLoaded', function() {
           try {
             const obj = JSON.parse(text);
             if (obj && obj.message) msg = obj.message;
-          } catch {}
+          } catch {
+            // Ignore parse error
+          }
           feedbackDiv.textContent = msg || 'Terjadi kesalahan. Silakan coba lagi.';
           feedbackDiv.style.backgroundColor = '#f8d7da';
           feedbackDiv.style.color = '#721c24';
@@ -289,22 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Initialize popup if it exists
-  const openBtn = document.getElementById('openPopup');
-  const closeBtn = document.getElementById('closePopup');
-  const popup = document.getElementById('popupForm');
-  
-  if (openBtn && popup) {
-    openBtn.addEventListener('click', function() {
-      popup.style.display = 'block';
-    });
-  }
-  
-  if (closeBtn && popup) {
-    closeBtn.addEventListener('click', function() {
-      popup.style.display = 'none';
-    });
-  }
+
   
   // Initialize any special handling for the Baca Tulis page
   if (document.body.classList.contains('baca-tulis-page')) {
@@ -330,23 +263,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize the jadwal dropdowns if they exist
   const programSelect = document.getElementById('programSelect');
-  const popupProgramSelect = document.getElementById('popupProgramSelect');
   
   if (programSelect) {
-    programSelect.addEventListener('change', updateJadwal);
+    programSelect.addEventListener('change', function() {
+        updateJadwal();
+    });
     // Initialize on page load if there's a default value
     if (programSelect.value) {
       updateJadwal();
     }
   }
   
-  if (popupProgramSelect) {
-    popupProgramSelect.addEventListener('change', updatePopupJadwal);
-    // Initialize on page load if there's a default value
-    if (popupProgramSelect.value) {
-      updatePopupJadwal();
-    }
-  }
+
   
   // Fix method-card images
   // Find all method-card images
@@ -432,30 +360,10 @@ function updateJadwal() {
   }
 }
 
-// Function to update popup jadwal options based on selected program
-function updatePopupJadwal() {
-  const programSelect = document.getElementById('popupProgramSelect');
-  const jadwalSelect = document.getElementById('popupJadwalSelect');
-  
-  if (!programSelect || !jadwalSelect) return;
-  
-  // Clear existing options
-  jadwalSelect.innerHTML = '<option value="">Pilih Jadwal Les</option>';
-  
-  if (programSelect.value === 'baca-tulis') {
-    // Add schedules for Baca Tulis
-    addOption(jadwalSelect, 'senin-rabu', 'Senin & Rabu (15:00 - 16:30)');
-    addOption(jadwalSelect, 'selasa-kamis', 'Selasa & Kamis (15:00 - 16:30)');
-    addOption(jadwalSelect, 'jumat-sabtu', 'Jumat & Sabtu (10:00 - 11:30)');
-  } else if (programSelect.value === 'jari-aljabar') {
-    // Add schedules for Jari Aljabar
-    addOption(jadwalSelect, 'senin-rabu', 'Senin & Rabu (16:30 - 18:00)');
-    addOption(jadwalSelect, 'selasa-kamis', 'Selasa & Kamis (16:30 - 18:00)');
-    addOption(jadwalSelect, 'jumat-sabtu', 'Jumat & Sabtu (13:00 - 14:30)');
-  }
-  
-  console.log('Popup jadwal updated:', programSelect.value);
-}
+// Expose function globally for inline HTML handlers
+window.updateJadwal = updateJadwal;
+
+
 
 // Helper function to add options to select element
 function addOption(selectElement, value, text) {
@@ -463,32 +371,4 @@ function addOption(selectElement, value, text) {
   option.value = value;
   option.textContent = text;
   selectElement.appendChild(option);
-}
-
-// Helper function to show form submission messages
-function showMessage(form, type, message) {
-  const overlay = document.createElement('div');
-  overlay.className = `${type}-overlay`;
-  
-  const content = `
-    <div class="${type}-content">
-      <div class="${type}-icon">
-        <i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i>
-      </div>
-      <h3>${type === 'success' ? 'Pendaftaran Berhasil!' : 'Gagal Mengirim'}</h3>
-      <p>${message || (type === 'success' ? 
-        'Terima kasih telah mendaftar. Kami akan segera menghubungi Anda.' : 
-        'Maaf, terjadi kesalahan. Silakan coba lagi nanti.')}</p>
-    </div>
-  `;
-  
-  overlay.innerHTML = content;
-  form.appendChild(overlay);
-  
-  setTimeout(function() {
-    overlay.classList.add('fade-out');
-    setTimeout(function() {
-      overlay.remove();
-    }, 500);
-  }, 2000);
 }

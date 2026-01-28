@@ -1,9 +1,18 @@
 <?php
     // Database configuration
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'REDACTED_USER_CHANGE_ME');
-    define('DB_PASS', 'REDACTED_PASSWORD_CHANGE_ME');
-    define('DB_NAME', 'REDACTED_DB_CHANGE_ME');
+    $is_local = ($_SERVER['SERVER_NAME'] ?? '') === 'localhost' || ($_SERVER['SERVER_NAME'] ?? '') === '127.0.0.1';
+
+    if ($is_local) {
+        define('DB_HOST', '127.0.0.1');
+        define('DB_USER', 'root');
+        define('DB_PASS', 'root'); // Try 'root' as common default
+        define('DB_NAME', 'jarialjabar_local');
+    } else {
+        define('DB_HOST', 'localhost');
+        define('DB_USER', 'REDACTED_USER_CHANGE_ME');
+        define('DB_PASS', 'REDACTED_PASSWORD_CHANGE_ME');
+        define('DB_NAME', 'REDACTED_DB_CHANGE_ME');
+    }
 
     // Application settings
     define('MAX_LOGIN_ATTEMPTS', 5);

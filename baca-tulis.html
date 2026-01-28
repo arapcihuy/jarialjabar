@@ -1,512 +1,485 @@
 <!DOCTYPE html>
-<html lang="id" class="no-smooth-scroll">
+<html class="light" lang="id">
 <head>
-  <meta name="google-site-verification" content="5xXh86A6nZo7DNvBObV9kBUX6CEhmGjaSdEgt0eb9k8" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Baca Tulis Roudhoh - Metode Belajar Membaca dengan Cepat</title>
-  
-  <!-- Organization schema for Google logo in search results -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "url": "https://jarialjabar.com/",
-    "logo": "https://jarialjabar.com/images/logo-jari-aljabar.jpeg"
-  }
-  </script>
-  
-  <!-- Load fix script FIRST - must be above everything else -->
-  <script src="fix.js"></script>
-  <!-- Add these lines inside the <head> section of each HTML file -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<script src="mobile-fixes.js" defer></script>
-<script src="responsive-fixes.js" defer></script>
-  
-  <!-- Regular stylesheets -->
-  <link rel="stylesheet" href="style.css?v=1.0">
-  <link rel="stylesheet" href="baca-tulis-styles.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Baca Tulis Roudhoh - Metode belajar membaca dan menulis cepat dan menyenangkan untuk anak usia dini di Rumah Belajar Dirgantara.">
+    <meta name="keywords" content="baca tulis, belajar membaca, les baca tulis, roudhoh, anak tk, paud, halim perdanakusuma">
+    <meta name="author" content="Rumah Belajar Dirgantara">
+    <title>Baca Tulis Roudhoh - Rumah Belajar Dirgantara</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Quicksand:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="mobile-fixes.js" defer></script>
+    <script src="responsive-fixes.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00C2CB", 
+                        "primary-dark": "#009DA3",
+                        "secondary": "#FF9F43",
+                        "secondary-dark": "#E67E22",
+                        "accent": "#FFDE59",
+                        "accent-dark": "#F4C724",
+                        "background-light": "#FFFDF9",
+                        "background-alt": "#F0FCFD",
+                        "text-main": "#2D3436",
+                        "text-muted": "#636E72",
+                    },
+                    fontFamily: {
+                        "display": ["Quicksand", "sans-serif"],
+                        "body": ["Nunito", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "2.5rem",
+                    },
+                    boxShadow: {
+                        "soft": "0 8px 30px -4px rgba(0, 0, 0, 0.08)",
+                        "hover": "0 15px 35px -5px rgba(0, 194, 203, 0.25)",
+                        "card": "0 8px 0 0 rgba(0,0,0,0.05)",
+                        "btn": "0 4px 0 0 rgba(0,0,0,0.15)",
+                        "btn-pressed": "0 0px 0 0 rgba(0,0,0,0)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFFDF9;
+            background-image: radial-gradient(#00C2CB 0.5px, transparent 0.5px), radial-gradient(#FF9F43 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            background-attachment: fixed;
+        }
+        @supports (scroll-behavior: smooth) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+        }
+        .btn-bubbly {
+            transition: all 0.1s;
+            box-shadow: 0 5px 0 0 rgba(0,0,0,0.15);
+        }
+        .btn-bubbly:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 0 rgba(0,0,0,0);
+        }
+        /* Mobile Menu */
+        #mobileMenu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: top left;
+        }
+        #mobileMenu.hidden {
+            display: none;
+        }
+        #mobileMenu.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Floating Letters Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .floating-letter {
+            position: absolute;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 900;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .anim-dur-4 { animation-duration: 4s; }
+        .anim-dur-5 { animation-duration: 5s; }
+        .anim-dur-6 { animation-duration: 6s; }
+        .anim-dur-7 { animation-duration: 7s; }
+        
+         .bg-footer-pattern {
+            background-image: radial-gradient(white 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        
+        .feedback-msg {
+            display: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="baca-tulis-page">
+<body class="text-text-main font-body antialiased overflow-x-hidden selection:bg-accent selection:text-text-main">
+<header class="sticky top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] mx-auto bg-white/90 backdrop-blur-md rounded-full shadow-soft border-2 border-gray-100">
+        <div class="flex h-16 items-center justify-between px-6">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
+                <div class="flex items-center justify-center size-10 rounded-full bg-primary text-white shadow-btn group-hover:rotate-12 transition-transform">
+                    <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+                </div>
+                <h2 class="text-primary text-xl font-bold tracking-tight group-hover:text-secondary transition-colors">Rumbel Dirgantara</h2>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-2">
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="index.html">Home</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#stages">Tahapan</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#alphabet">Huruf</a>
+                <a class="px-4 py-2 rounded-full text-text-main hover:bg-background-alt hover:text-primary font-bold text-sm transition-all" href="#methods">Metode</a>
+            </nav>
+            <div class="hidden md:flex">
+                <a href="#daftar" class="bg-secondary hover:bg-secondary-dark text-white px-6 py-2 rounded-full text-sm font-bold btn-bubbly">
+                    Daftar Sekarang
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-primary bg-primary/10 rounded-full" id="mobileMenuBtn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div class="hidden md:hidden absolute top-20 left-0 w-full bg-white rounded-2xl shadow-xl border-2 border-gray-100 p-4 flex-col gap-2" id="mobileMenu">
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="index.html">Home</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#stages" onclick="toggleMobileMenu()">Tahapan</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#alphabet" onclick="toggleMobileMenu()">Huruf</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#methods" onclick="toggleMobileMenu()">Metode</a>
+            <a class="block px-4 py-3 rounded-xl hover:bg-background-alt font-bold text-text-main" href="#daftar" onclick="toggleMobileMenu()">Daftar</a>
+        </div>
+    </div>
+</header>
 
-<!-- Hero Section with Built-in Navigation -->
-<section class="reading-hero">
-  <!-- Simple Navigation Bar - Replace with new version without phone number -->
-  <div class="page-navigation">
-    <a href="/" class="back-home">
-      <i class="fas fa-arrow-left"></i> Kembali ke Beranda
-    </a>
-    <!-- Phone contact removed -->
-  </div>
-
-  <!-- Floating Letters Background -->
-  <div class="floating-letters">
-    <span class="letter-symbol letter1">A</span>
-    <span class="letter-symbol letter2">B</span>
-    <span class="letter-symbol letter3">C</span>
-    <span class="letter-symbol letter4">D</span>
-    <span class="letter-symbol letter5">E</span>
-    <span class="letter-symbol letter6">F</span>
-    <span class="letter-symbol letter7">G</span>
-    <span class="letter-symbol letter8">H</span>
-    <span class="letter-symbol letter9">I</span>
-    <span class="letter-symbol letter10">J</span>
-    <span class="letter-symbol letter11">K</span>
-    <span class="letter-symbol letter12">L</span>
-    <span class="letter-symbol letter13">M</span>
-  </div>
-  
-  <div class="hero-content">
-    <span class="hero-badge">Metode Inovatif</span>
-    <h1 class="animated-title">Baca Tulis Roudhoh</h1>
-    <p class="hero-subtitle">Belajar Membaca dan Menulis Menyenangkan dengan Metode Cantol Roudhoh</p>
-    
-    <div class="benefit-cards">
-      <div class="benefit-card">
-        <div class="card-icon">📚</div>
-        <h3>Metode Cepat</h3>
-        <p>Belajar membaca dalam 32 jam</p>
-      </div>
-      <div class="benefit-card">
-        <div class="card-icon">🎮</div>
-        <h3>Menyenangkan</h3>
-        <p>Belajar sambil bermain</p>
-      </div>
-      <div class="benefit-card">
-        <div class="card-icon">🧠</div>
-        <h3>Mudah Diingat</h3>
-        <p>Metode cantol meningkatkan daya ingat</p>
-      </div>
+<section class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+    <!-- Floating Letters Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <span class="floating-letter text-9xl top-20 left-10 text-primary anim-dur-4">A</span>
+        <span class="floating-letter text-8xl top-40 right-20 text-secondary anim-dur-5">B</span>
+        <span class="floating-letter text-9xl bottom-20 left-1/4 text-accent anim-dur-6">C</span>
+        <span class="floating-letter text-8xl bottom-40 right-1/3 text-primary-dark anim-dur-7">D</span>
     </div>
 
-    <!-- Button with smooth scrolling -->
-    <button class="hero-cta" data-target="daftar" data-smooth="true">Daftar Sekarang</button>
-  </div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-amber-900 border-2 border-amber-900/10 w-fit rotate-[-2deg] shadow-sm mb-6">
+            <span class="material-symbols-outlined text-lg">school</span>
+            <span class="text-sm font-extrabold uppercase tracking-wide">Metode Tercepat!</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-text-main leading-[1.1] tracking-tight mb-6">
+            Baca Tulis <span class="text-primary relative inline-block">Roudhoh</span>
+        </h1>
+        <p class="text-text-muted text-xl font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+            Belajar membaca dan menulis jadi petualangan seru! 32 jam bisa membaca dengan metode cantol yang menyenangkan.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-primary hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">📚</span>
+                <h3 class="font-bold text-xl mb-2">Cepat & Efektif</h3>
+                <p class="text-text-muted">Anak bisa membaca dalam waktu relatif singkat.</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-secondary hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">🎮</span>
+                <h3 class="font-bold text-xl mb-2">Belajar = Bermain</h3>
+                <p class="text-text-muted">Suasana kelas ceria, anak tidak merasa terbebani.</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] shadow-soft border-b-8 border-accent hover:-translate-y-2 transition-transform">
+                <span class="text-4xl mb-4 block">🧠</span>
+                <h3 class="font-bold text-xl mb-2">Mudah Diingat</h3>
+                <p class="text-text-muted">Metode cantol melekat kuat di ingatan anak.</p>
+            </div>
+        </div>
+        
+        <a href="#daftar" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-2xl font-black text-xl btn-bubbly transition-all shadow-xl hover:shadow-2xl">
+            🚀 Daftar Sekarang
+        </a>
+    </div>
 </section>
 
-<!-- Wave Separator -->
-<div class="wave-separator">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="200%" y2="0%">
-                <stop offset="0%" style="stop-color:#FF6347;" />
-                <stop offset="25%" style="stop-color:#3CB371;" />
-                <stop offset="50%" style="stop-color:#4169E1;" />
-                <stop offset="75%" style="stop-color:#FFA500;" />
-                <stop offset="100%" style="stop-color:#FF6347;" />
-            </linearGradient>
-        </defs>
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="url(#waveGradient)" class="wave1"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="url(#waveGradient)" class="wave2"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="url(#waveGradient)" class="wave3"></path>
-    </svg>
-</div>
-
-<!-- Learning Stages Section with Interactive Elements -->
-<section class="learning-stages">
-  <!-- Floating Letters Background -->
-  <div class="floating-letters">
-    <span class="letter-symbol letter1">A</span>
-    <span class="letter-symbol letter2">B</span>
-    <span class="letter-symbol letter3">C</span>
-    <span class="letter-symbol letter4">D</span>
-    <span class="letter-symbol letter5">E</span>
-    <span class="letter-symbol letter6">F</span>
-    <span class="letter-symbol letter7">G</span>
-    <span class="letter-symbol letter8">H</span>
-    <span class="letter-symbol letter9">I</span>
-    <span class="letter-symbol letter10">J</span>
-    <span class="letter-symbol letter11">K</span>
-    <span class="letter-symbol letter12">L</span>
-    <span class="letter-symbol letter13">M</span>
-  </div>
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title blue">Tahapan Belajar Membaca yang Menyenangkan</h2>
+<!-- Learning Stages -->
+<section class="py-24 bg-background-alt relative" id="stages">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-text-main mb-4">Tahapan Belajar</h2>
+            <p class="text-xl text-text-muted font-medium">Langkah demi langkah menuju lancar membaca.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Stage Cards -->
+            <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-blue-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-blue-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">1</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Kartu Cantol</h3>
+                    <p class="text-text-muted text-sm font-bold">Mengenal 2 suku kata dengan bantuan gambar seru.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-green-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-green-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">2</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Gabung Kata</h3>
+                    <p class="text-text-muted text-sm font-bold">Menggabungkan 2 suku kata menjadi kata bermakna.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-yellow-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">3</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Huruf Vokal</h3>
+                    <p class="text-text-muted text-sm font-bold">Mengenal a, i, u, e, o dan ng, ny.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-purple-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-purple-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">4</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Imbuhan</h3>
+                    <p class="text-text-muted text-sm font-bold">Belajar imbuhan untuk memperkaya kosakata.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-red-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-red-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">5</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Menulis</h3>
+                    <p class="text-text-muted text-sm font-bold">Praktik menulis kata 2 suku kata dengan benar.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-pink-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-pink-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">6</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Dikte</h3>
+                    <p class="text-text-muted text-sm font-bold">Mendengarkan dan menulis kata yang diucapkan.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-indigo-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-indigo-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">7</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Susun Kata</h3>
+                    <p class="text-text-muted text-sm font-bold">Menyusun suku kata acak menjadi kata.</p>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-[2rem] border-4 border-gray-100 relative group hover:border-teal-400 transition-colors">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-teal-500 rounded-xl text-white flex items-center justify-center font-black text-xl shadow-lg rotate-12 group-hover:rotate-0 transition-transform">8</div>
+                <div class="mt-4">
+                    <h3 class="font-black text-lg text-text-main mb-2">Logika</h3>
+                    <p class="text-text-muted text-sm font-bold">Melatih logika dengan benda sehari-hari.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="stages-timeline">
-      <div class="stages-grid">
-  <!-- Stage 1 -->
-  <div class="stage-card" data-aos="fade-up">
-    <div class="stage-number">1</div>
-    <h3>Mengenal 2 suku kata dengan kartu cantol</h3>
-    <p>Menggunakan kartu cantol untuk mengenali dan memahami pola suku kata dasar</p>
-    <div class="stage-icon">
-      <i class="fas fa-book-open"></i>
-    </div>
-  </div>
-
-  <!-- Stage 2 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="100">
-    <div class="stage-number">2</div>
-    <h3>Menggabungkan 2 suku kata</h3>
-    <p>Berlatih menggabungkan suku kata menjadi kata-kata sederhana dan bermakna</p>
-    <div class="stage-icon">
-      <i class="fas fa-pencil-alt"></i>
-    </div>
-  </div>
-
-  <!-- Stage 3 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="200">
-    <div class="stage-number">3</div>
-    <h3>Mengenal konsonan aiueo dan ng, ny</h3>
-    <p>Mempelajari konsonan dasar dan kombinasi khusus seperti ng dan ny</p>
-    <div class="stage-icon">
-      <i class="fas fa-font"></i>
-    </div>
-  </div>
-
-  <!-- Stage 4 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="300">
-    <div class="stage-number">4</div>
-    <h3>Mengenal huruf imbuhan</h3>
-    <p>Belajar tentang berbagai imbuhan untuk memperkaya kosakata</p>
-    <div class="stage-icon">
-      <i class="fas fa-plus-circle"></i>
-    </div>
-  </div>
-  
-  <!-- Stage 5 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="400">
-    <div class="stage-number">5</div>
-    <h3>Menulis 2 suku kata</h3>
-    <p>Praktik menulis kata yang terdiri dari dua suku kata dengan benar</p>
-    <div class="stage-icon">
-      <i class="fas fa-pen"></i>
-    </div>
-  </div>
-  
-  <!-- Stage 6 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="500">
-    <div class="stage-number">6</div>
-    <h3>Belajar dikte</h3>
-    <p>Berlatih mendengarkan dan menulis kata-kata yang didiktekan</p>
-    <div class="stage-icon">
-      <i class="fas fa-headphones"></i>
-    </div>
-  </div>
-  
-  <!-- Stage 7 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="600">
-    <div class="stage-number">7</div>
-    <h3>Menyusun kata</h3>
-    <p>Latihan menyusun dan membuat kata-kata dari suku kata yang diberikan</p>
-    <div class="stage-icon">
-      <i class="fas fa-puzzle-piece"></i>
-    </div>
-  </div>
-  
-  <!-- Stage 8 -->
-  <div class="stage-card" data-aos="fade-up" data-aos-delay="700">
-    <div class="stage-number">8</div>
-    <h3>Melatih logika</h3>
-    <p>Mengenal benda-benda yang berkaitan dengan kehidupan sehari-hari</p>
-    <div class="stage-icon">
-      <i class="fas fa-brain"></i>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
 </section>
 
-<!-- Alphabet Fun Section -->
-<section class="alphabet-section">
-  <div class="container">
-    <h2 class="section-title red">Belajar Huruf dengan Cantol Roudhoh</h2>
-    <p class="section-description">Metode cantol menggunakan gambar dan cerita untuk memudahkan anak mengingat huruf</p>
-    
-    <div class="alphabet-container">
-      <div class="alphabet-letter" data-sound="a">A<span class="cantol">ayam</span></div>
-      <div class="alphabet-letter" data-sound="b">B<span class="cantol">baju</span></div>
-      <div class="alphabet-letter" data-sound="c">C<span class="cantol">cabe</span></div>
-      <div class="alphabet-letter" data-sound="d">D<span class="cantol">dasi</span></div>
-      <div class="alphabet-letter" data-sound="e">E<span class="cantol">ekor</span></div>
-      <div class="alphabet-letter" data-sound="f">F<span class="cantol">foto</span></div>
-      <div class="alphabet-letter" data-sound="g">G<span class="cantol">gajah</span></div>
-      <div class="alphabet-letter" data-sound="h">H<span class="cantol">harimau</span></div>
-      <div class="alphabet-letter" data-sound="j">J<span class="cantol">jagung</span></div>
-      <div class="alphabet-letter" data-sound="k">K<span class="cantol">kaki</span></div>
-      <div class="alphabet-letter" data-sound="l">L<span class="cantol">laba laba</span></div>
-      <div class="alphabet-letter" data-sound="m">M<span class="cantol">matahari</span></div>
-      <div class="alphabet-letter" data-sound="n">N<span class="cantol">nyamuk</span></div>
-      <div class="alphabet-letter" data-sound="p">P<span class="cantol">payung</span></div>
-      <div class="alphabet-letter" data-sound="r">R<span class="cantol">rambutan</span></div>
-      <div class="alphabet-letter" data-sound="s">S<span class="cantol">sapi</span></div>
-      <div class="alphabet-letter" data-sound="t">T<span class="cantol">tali</span></div>
-      <div class="alphabet-letter" data-sound="v">V<span class="cantol">vas</span></div>
-      <div class="alphabet-letter" data-sound="w">W<span class="cantol">wayang</span></div>
-      <div class="alphabet-letter" data-sound="y">Y<span class="cantol">yana</span></div>
-      <div class="alphabet-letter" data-sound="z">Z<span class="cantol">zahra</span></div>
+<!-- Alphabet Grid -->
+<section class="py-24 bg-white relative" id="alphabet">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="bg-primary/10 text-primary font-black px-4 py-2 rounded-full uppercase tracking-wider text-sm mb-4 inline-block">Metode Cantol</span>
+            <h2 class="text-4xl font-black text-text-main mb-4">Kenalan sama Huruf Yuk!</h2>
+            <p class="text-xl text-text-muted font-medium">Setiap huruf punya cerita dan gambar sendiri.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-4">
+            <!-- Letters -->
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-primary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-primary group-hover:rotate-12 transition-transform">A</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Ayam</span>
+            </div>
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-secondary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-secondary group-hover:-rotate-12 transition-transform">B</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Baju</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-accent hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-accent-dark group-hover:rotate-12 transition-transform">C</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Cabe</span>
+            </div>
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-primary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-primary group-hover:rotate-12 transition-transform">D</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Dasi</span>
+            </div>
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-secondary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-secondary group-hover:-rotate-12 transition-transform">E</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Ekor</span>
+            </div>
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-accent hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-accent-dark group-hover:rotate-12 transition-transform">F</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Foto</span>
+            </div>
+            <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-primary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-primary group-hover:rotate-12 transition-transform">G</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Gajah</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-secondary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-secondary group-hover:-rotate-12 transition-transform">H</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Harimau</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-accent hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-accent-dark group-hover:rotate-12 transition-transform">J</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Jagung</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-primary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-primary group-hover:rotate-12 transition-transform">K</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Kaki</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-secondary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-secondary group-hover:-rotate-12 transition-transform">L</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Laba2</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-accent hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-accent-dark group-hover:rotate-12 transition-transform">M</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Mata</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-primary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-primary group-hover:rotate-12 transition-transform">N</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Nyamuk</span>
+            </div>
+             <div class="aspect-square bg-background-alt rounded-2xl flex flex-col items-center justify-center border-2 border-gray-100 hover:border-secondary hover:scale-110 transition-all cursor-pointer group">
+                <span class="text-4xl font-black text-secondary group-hover:-rotate-12 transition-transform">P</span>
+                <span class="text-xs font-bold text-text-muted mt-1">Payung</span>
+            </div>
+            <!-- More letters can be added here with same pattern -->
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- Teaching Methods Section -->
-<section class="teaching-methods">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title yellow">Metode Pembelajaran Menyenangkan</h2>
-    </div>
-    
-    <div class="program-age-grid">
-      <!-- Method 1 -->
-      <div class="program-age-card">
-        <img src="images/belajar-cerita.jpg" alt="Belajar dengan Cerita">
-        <div class="program-age-overlay">
-          <h3>Belajar dengan Cerita</h3>
-          <p>Menggunakan cerita menarik untuk memperkenalkan huruf-huruf kepada anak</p>
+<!-- Teaching Methods -->
+<section class="py-24 bg-background-alt" id="methods">
+     <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-card group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/belajar-cerita.jpg" alt="Belajar Cerita" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="absolute bottom-6 left-6 text-white text-2xl font-black">Belajar dengan Cerita</h3>
+                </div>
+                <div class="p-8">
+                    <p class="text-text-muted font-bold text-lg">Menggunakan cerita menarik untuk memperkenalkan huruf-huruf kepada anak, sehingga mudah diingat.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-card group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/bermain-belajar.jpg" alt="Bermain" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <h3 class="absolute bottom-6 left-6 text-white text-2xl font-black">Bermain Sambil Belajar</h3>
+                </div>
+                <div class="p-8">
+                    <p class="text-text-muted font-bold text-lg">Aktivitas permainan seru yang membuat anak tidak sadar sedang belajar membaca dengan cepat.</p>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Method 2 -->
-      <div class="program-age-card">
-        <img src="images/bermain-belajar.jpg" alt="Bermain Sambil Belajar">
-        <div class="program-age-overlay">
-          <h3>Bermain Sambil Belajar</h3>
-          <p>Aktivitas permainan yang membuat anak tidak sadar sedang belajar membaca</p>
-        </div>
-      </div>
-    </div>
-  </div>
+     </div>
 </section>
 
-<!-- Registration Section -->
-<section id="daftar" class="registration-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title green">Daftar Program Baca Tulis Roudhoh</h2>
+<!-- Registration Form -->
+<section class="py-24 bg-white relative" id="daftar">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 text-left">
+             <div>
+                <h2 class="text-4xl font-black text-text-main mb-6">Paket Belajar Hemat</h2>
+                <div class="bg-gradient-to-br from-primary to-primary-dark rounded-[2.5rem] p-8 text-white shadow-xl relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-black mb-4">Program Reguler</h3>
+                        <ul class="space-y-3 font-bold text-lg">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Usia 4-7 Tahun</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> 16 Pertemuan (2 Bulan)</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> 2x Seminggu @ 60 Menit</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Modul & Alat Tulis</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> Sertifikat Kelulusan</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 text-9xl opacity-20 rotate-12">📚</div>
+                </div>
+            </div>
+            
+            <div class="bg-white border-4 border-gray-100 rounded-[2.5rem] p-8 shadow-card">
+                <h2 class="text-3xl font-black text-text-main mb-2">Daftar Sekarang!</h2>
+                 <p class="text-text-muted mb-6 font-bold">Amankan kursi untuk buah hati Anda.</p>
+                 
+                 <form id="bacaTulisForm" class="space-y-4">
+                    <input type="hidden" name="program" value="baca-tulis">
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="fullname" placeholder="Nama Lengkap Anak" type="text" required />
+                    </div>
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="email" placeholder="Email Orang Tua" type="email" required />
+                    </div>
+                    <div>
+                        <input class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main placeholder:text-gray-300 transition-colors" name="whatsapp" placeholder="Nomor WhatsApp (62xxx)" type="tel" required />
+                    </div>
+                    <div>
+                        <select name="jadwal" aria-label="Pilih Jadwal Les" class="w-full rounded-2xl border-2 border-gray-200 focus:border-primary focus:ring-0 p-4 font-bold text-text-main bg-white" required>
+                            <option value="">Pilih Jadwal Les</option>
+                            <option value="senin-rabu-15">Senin & Rabu 15:00-16:00</option>
+                            <option value="senin-rabu-16">Senin & Rabu 16:00-17:00</option>
+                            <option value="selasa-kamis-15">Selasa & Kamis 15:00-16:00</option>
+                            <option value="selasa-kamis-16">Selasa & Kamis 16:00-17:00</option>
+                            <option value="jumat-sabtu-10">Jumat & Sabtu 10:00-11:00</option>
+                            <option value="jumat-sabtu-14">Jumat & Sabtu 14:00-15:00</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-feedback feedback-msg"></div>
+                    
+                    <button class="w-full bg-secondary hover:bg-secondary-dark text-white font-black text-lg py-5 rounded-2xl btn-bubbly transition-all mt-2 submit-btn" type="submit">
+                        Kirim Pendaftaran
+                    </button>
+                 </form>
+            </div>
+        </div>
     </div>
-    
-    <div class="registration-container">
-      <div class="program-info">
-        <div class="info-card">
-          <h3>Program Baca Tulis Roudhoh</h3>
-          <ul>
-            <li>Untuk anak usia 4-7 tahun</li>
-            <li>16 pertemuan (2 bulan)</li>
-            <li>2x pertemuan per minggu</li>
-            <li>Durasi 60 menit per pertemuan</li>
-            <li>Buku panduan dan materi belajar</li>
-            <li>Sertifikat kelulusan</li>
-          </ul>
-        </div>
-      </div>
-
-      <form id="bacaTulisForm" class="registration-form">
-        <div class="form-group">
-          <input type="text" name="fullname" required placeholder="Nama Lengkap">
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" required placeholder="Email">
-        </div>
-        <div class="form-group">
-          <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
-        </div>
-        <input type="hidden" name="program" value="baca-tulis">
-        <div class="form-group">
-          <select name="jadwal" required>
-            <option value="">Pilih Jadwal Les</option>
-            <option value="senin-rabu-15">Senin & Rabu 15:00-16:00</option>
-            <option value="senin-rabu-16">Senin & Rabu 16:00-17:00</option>
-            <option value="selasa-kamis-15">Selasa & Kamis 15:00-16:00</option>
-            <option value="selasa-kamis-16">Selasa & Kamis 16:00-17:00</option>
-            <option value="jumat-sabtu-10">Jumat & Sabtu 10:00-11:00</option>
-            <option value="jumat-sabtu-14">Jumat & Sabtu 14:00-15:00</option>
-          </select>
-        </div>
-        <div id="formFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
-        <button type="submit" class="submit-btn">Daftar Sekarang</button>
-      </form>
-    </div>
-  </div>
 </section>
 
-<div class="back-to-top" data-smooth="true">
-  <i class="fas fa-arrow-up"></i>
-</div>
+<footer class="bg-primary text-white py-16 border-t-8 border-accent relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-footer-pattern"></div>
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center justify-center size-12 rounded-2xl bg-white text-primary shadow-lg rotate-3">
+                    <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                </div>
+                <div>
+                    <span class="text-2xl font-black block">Rumbel Dirgantara</span>
+                    <span class="text-sm font-bold text-white/80">Baca Tulis & Jari Aljabar</span>
+                </div>
+            </div>
+            <div class="text-sm font-medium text-white/80">
+                © 2023 Rumah Belajar Dirgantara.
+            </div>
+        </div>
+    </div>
+</footer>
 
-<!-- Replace the existing script blocks at the end with this new script -->
+<script src="script.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Simple, elegant title animation
-    const animatedTitle = document.querySelector('.animated-title');
-    if (animatedTitle) {
-      const titleText = animatedTitle.textContent;
-      let titleHtml = '';
-      
-      // Create individual letter spans with staggered delays
-      for (let i = 0; i < titleText.length; i++) {
-        const delay = i * 0.05;
-        if (titleText[i] === ' ') {
-          titleHtml += ' ';
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
         } else {
-          titleHtml += `<span style="display:inline-block; opacity:0; transform:translateY(20px);">${titleText[i]}</span>`;
+            menu.classList.add('hidden');
+            menu.classList.remove('flex');
         }
-      }
-      
-      animatedTitle.innerHTML = titleHtml;
-      
-      // Animate each letter with a clean fade-in and subtle rise
-      const letters = animatedTitle.querySelectorAll('span');
-      letters.forEach((letter, index) => {
-        setTimeout(() => {
-          letter.style.transition = 'opacity 0.4s ease, transform 0.5s ease';
-          letter.style.opacity = '1';
-          letter.style.transform = 'translateY(0)';
-        }, index * 50);
-      });
     }
-    
-    // Form submission with AJAX
-    const form = document.getElementById('bacaTulisForm');
-    const feedbackDiv = document.getElementById('formFeedback');
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Show loading state
-        const submitBtn = form.querySelector('.submit-btn');
-        const originalBtnText = submitBtn.textContent;
-        submitBtn.textContent = 'Mengirim...';
-        submitBtn.disabled = true;
-        
-        const formData = new FormData(form);
-        const data = new URLSearchParams(formData);
-        
-        fetch('submit_registration.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: data
-        })
-        .then(response => response.text().then(text => {
-          try {
-            return JSON.parse(text);
-          } catch {
-            return text;
-          }
-        }))
-        .then(result => {
-          feedbackDiv.style.display = 'block';
-          if (typeof result === 'object' && result !== null) {
-            if (result.status === 'success') {
-              feedbackDiv.textContent = result.message || 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
-              feedbackDiv.style.backgroundColor = '#d4edda';
-              feedbackDiv.style.color = '#155724';
-              feedbackDiv.style.border = '1px solid #c3e6cb';
-              form.reset();
-            } else {
-              feedbackDiv.textContent = result.message || 'Terjadi kesalahan. Silakan coba lagi.';
-              feedbackDiv.style.backgroundColor = '#f8d7da';
-              feedbackDiv.style.color = '#721c24';
-              feedbackDiv.style.border = '1px solid #f5c6cb';
-            }
-          } else {
-            if (typeof result === 'string' && (result.toLowerCase().includes('berhasil') || result.toLowerCase().includes('success'))) {
-              feedbackDiv.textContent = 'Pendaftaran berhasil! Kami akan segera menghubungi Anda.';
-              feedbackDiv.style.backgroundColor = '#d4edda';
-              feedbackDiv.style.color = '#155724';
-              feedbackDiv.style.border = '1px solid #c3e6cb';
-              form.reset();
-            } else {
-              feedbackDiv.textContent = result;
-              feedbackDiv.style.backgroundColor = '#f8d7da';
-              feedbackDiv.style.color = '#721c24';
-              feedbackDiv.style.border = '1px solid #f5c6cb';
-            }
-          }
-        })
-        .catch(error => {
-          feedbackDiv.style.display = 'block';
-          feedbackDiv.textContent = 'Terjadi kesalahan. Silakan coba lagi.';
-          feedbackDiv.style.backgroundColor = '#f8d7da';
-          feedbackDiv.style.color = '#721c24';
-          feedbackDiv.style.border = '1px solid #f5c6cb';
-        })
-        .finally(() => {
-          // Reset button state
-          submitBtn.textContent = originalBtnText;
-          submitBtn.disabled = false;
-        });
-      });
-    }
-    
-    // Simple, elegant ripple effect for buttons
-    const buttons = document.querySelectorAll('.hero-cta, .submit-btn');
-    buttons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
-      });
-    });
-    
-    // Smooth scroll for hash links
-    document.querySelectorAll('a[href^="#"], [data-target]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('data-target') || this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // Simple back-to-top button
-    const backToTop = document.querySelector('.back-to-top');
-    if (backToTop) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTop.classList.add('show');
-        } else {
-          backToTop.classList.remove('show');
-        }
-      });
-      
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-    
-    // Simple hover effect for alphabet letters
-    const alphabetLetters = document.querySelectorAll('.alphabet-letter');
-    alphabetLetters.forEach(letter => {
-      letter.addEventListener('mouseenter', function() {
-        // Add subtle scale effect
-        this.style.transform = 'translateY(-5px) scale(1.05)';
-      });
-      
-      letter.addEventListener('mouseleave', function() {
-        // Reset to original state
-        this.style.transform = '';
-      });
-    });
-  });
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
 </script>
 </body>
 </html>

@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 // Ambil data POST (FormData)
 $fullname = $conn->real_escape_string(trim($_POST['fullname'] ?? ''));
 $email = $conn->real_escape_string(trim($_POST['email'] ?? ''));
-$whatsapp = $conn->real_escape_string(trim($_POST['whatsapp'] ?? ''));
+$whatsapp = preg_replace('/[^0-9]/', '', $conn->real_escape_string(trim($_POST['whatsapp'] ?? '')));
 $les_program = $conn->real_escape_string(trim($_POST['program'] ?? ''));
 $notes = $conn->real_escape_string(trim($_POST['jadwal'] ?? ''));
 
