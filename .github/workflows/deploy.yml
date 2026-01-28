@@ -21,8 +21,8 @@ jobs:
           # protocol: ftp # Biarkan auto-detect
           security: loose # Penting untuk shared hosting (Hostinger/Niagahoster)
           port: 21
-          # Folder di hosting (sesuai screenshot: public_html)
-          server-dir: public_html/
+          # Folder di hosting (langsung ke root FTP akun ini)
+          server-dir: ./
           # Folder di proyek kita (root)
           local-dir: ./
           # File yang tidak perlu di-upload
