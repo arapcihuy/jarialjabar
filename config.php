@@ -1,9 +1,18 @@
 <?php
     // Database configuration
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'u800708762_jariuser');
-    define('DB_PASS', 'Rasyid1oke');
-    define('DB_NAME', 'u800708762_jarialjabar');
+    $is_local = ($_SERVER['SERVER_NAME'] ?? '') === 'localhost' || ($_SERVER['SERVER_NAME'] ?? '') === '127.0.0.1';
+
+    if ($is_local) {
+        define('DB_HOST', '127.0.0.1');
+        define('DB_USER', 'root');
+        define('DB_PASS', 'root'); // Try 'root' as common default
+        define('DB_NAME', 'jarialjabar_local');
+    } else {
+        define('DB_HOST', 'localhost');
+        define('DB_USER', 'u800708762_jariuser');
+        define('DB_PASS', 'Rasyid1oke');
+        define('DB_NAME', 'u800708762_jarialjabar');
+    }
 
     // Application settings
     define('MAX_LOGIN_ATTEMPTS', 5);

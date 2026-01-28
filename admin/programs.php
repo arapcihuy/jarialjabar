@@ -44,182 +44,136 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Get all programs
 $programs = $conn->query("SELECT * FROM programs ORDER BY name");
 
-$conn->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Programs</title>
+    <title>Manage Programs - Jari Aljabar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        .sidebar {
-            min-height: 100vh;
-            background: #343a40;
-            color: white;
-        }
-        .nav-link {
-            color: rgba(255,255,255,.8);
-        }
-        .nav-link:hover {
-            color: white;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="modern.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 px-0 sidebar">
-                <div class="p-3">
-                    <div class="text-center mb-3">
-                        <?php if (file_exists($_SERVER['DOCUMENT_ROOT'].'/logo-jari-aljabar.jpeg')): ?>
-                            <img src="/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
-                        <?php elseif (file_exists($_SERVER['DOCUMENT_ROOT'].'/images/logo-jari-aljabar.jpeg')): ?>
-                            <img src="/images/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
-                        <?php else: ?>
-                            <div style="color:red;font-size:12px;">Logo tidak ditemukan!</div>
-                        <?php endif; ?>
-                    </div>
-                    <h4>Admin Panel</h4>
-                    <hr>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php">
-                                <i class="bi bi-speedometer2"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="registrations.php">
-                                <i class="bi bi-person-plus"></i> Registrations
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="programs.php">
-                                <i class="bi bi-book"></i> Programs
-                            </a>
-                        </li>
-                        <?php if (isAdmin()): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users.php">
-                                <i class="bi bi-people"></i> Users
-                            </a>
-                        </li>
-                        <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php">
-                                <i class="bi bi-box-arrow-right"></i> Logout
-                            </a>
-                        </li>
-                    </ul>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <?php include 'sidebar.php'; ?>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h1 class="h3 fw-bold text-dark mb-1">Manajemen Program</h1>
+                    <p class="text-muted mb-0">Atur paket bimbingan belajar yang tersedia.</p>
                 </div>
+                <button type="button" class="btn btn-primary d-flex align-items-center gap-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#addProgramModal">
+                    <i class="fas fa-plus"></i> Tambah Program
+                </button>
             </div>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Manage Programs</h2>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProgramModal">
-                        <i class="bi bi-plus"></i> Add New Program
-                    </button>
+            <?php if (isset($success)): ?>
+                <div class="alert alert-success border-0 shadow-sm bg-green-50 text-green-700 mb-4 fade show" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> <?php echo $success; ?>
                 </div>
+            <?php endif; ?>
 
-                <?php if (isset($success)): ?>
-                    <div class="alert alert-success"><?php echo $success; ?></div>
-                <?php endif; ?>
+            <?php if (isset($error)): ?>
+                <div class="alert alert-danger border-0 shadow-sm bg-red-50 text-red-700 mb-4 fade show" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
 
-                <?php if (isset($error)): ?>
-                    <div class="alert alert-danger"><?php echo $error; ?></div>
-                <?php endif; ?>
-
-                <!-- Programs Table -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+            <!-- Programs Table -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">Nama Program</th>
+                                    <th>Deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Durasi</th>
+                                    <th>Status</th>
+                                    <th class="text-end pe-4">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($programs->num_rows === 0): ?>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Price</th>
-                                        <th>Duration</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <td colspan="6" class="text-center py-5 text-muted">Belum ada program tersedia.</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($program = $programs->fetch_assoc()): ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($program['name']); ?></td>
-                                        <td><?php echo htmlspecialchars($program['description']); ?></td>
-                                        <td>Rp <?php echo number_format($program['price'], 0, ',', '.'); ?></td>
-                                        <td><?php echo htmlspecialchars($program['duration']); ?></td>
-                                        <td>
-                                            <span class="badge bg-<?php echo $program['is_active'] ? 'success' : 'danger'; ?>">
-                                                <?php echo $program['is_active'] ? 'Active' : 'Inactive'; ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProgramModal<?php echo $program['id']; ?>">
-                                                Edit
-                                            </button>
-                                        </td>
-                                    </tr>
+                                <?php else: while ($program = $programs->fetch_assoc()): ?>
+                                <tr>
+                                    <td class="ps-4 fw-bold text-dark"><?php echo htmlspecialchars($program['name']); ?></td>
+                                    <td class="text-muted small" style="max-width: 300px;"><?php echo htmlspecialchars($program['description']); ?></td>
+                                    <td class="fw-bold text-primary">Rp <?php echo number_format($program['price'], 0, ',', '.'); ?></td>
+                                    <td><span class="badge bg-light text-dark border fw-normal"><?php echo htmlspecialchars($program['duration']); ?></span></td>
+                                    <td>
+                                        <span class="badge bg-soft-<?php echo $program['is_active'] ? 'success' : 'danger'; ?> text-<?php echo $program['is_active'] ? 'success' : 'danger'; ?> rounded-pill px-3">
+                                            <?php echo $program['is_active'] ? 'Aktif' : 'Nonaktif'; ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <button type="button" class="btn btn-sm btn-light border text-primary" data-bs-toggle="modal" data-bs-target="#editProgramModal<?php echo $program['id']; ?>">
+                                            <i class="fas fa-edit me-1"></i> Edit
+                                        </button>
+                                    </td>
+                                </tr>
 
-                                    <!-- Edit Modal -->
-                                    <div class="modal fade" id="editProgramModal<?php echo $program['id']; ?>" tabindex="-1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Program</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="editProgramModal<?php echo $program['id']; ?>" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content border-0 shadow-lg">
+                                            <div class="modal-header border-bottom-0 pb-0">
+                                                <h5 class="modal-title fw-bold">Edit Program</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body pt-4">
                                                 <form method="POST">
-                                                    <div class="modal-body">
-                                                        <input type="hidden" name="action" value="edit">
-                                                        <input type="hidden" name="id" value="<?php echo $program['id']; ?>">
-                                                        
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Name</label>
-                                                            <input type="text" class="form-control" name="name" value="<?php echo htmlspecialchars($program['name']); ?>" required>
-                                                        </div>
-                                                        
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Description</label>
-                                                            <textarea class="form-control" name="description" rows="3" required><?php echo htmlspecialchars($program['description']); ?></textarea>
-                                                        </div>
-                                                        
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Price</label>
+                                                    <input type="hidden" name="action" value="edit">
+                                                    <input type="hidden" name="id" value="<?php echo $program['id']; ?>">
+                                                    
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold small text-muted text-uppercase">Nama Program</label>
+                                                        <input type="text" class="form-control" name="name" value="<?php echo htmlspecialchars($program['name']); ?>" required>
+                                                    </div>
+                                                    
+                                                    <div class="mb-3">
+                                                        <label class="form-label fw-bold small text-muted text-uppercase">Deskripsi</label>
+                                                        <textarea class="form-control" name="description" rows="3" required><?php echo htmlspecialchars($program['description']); ?></textarea>
+                                                    </div>
+                                                    
+                                                    <div class="row g-3 mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="form-label fw-bold small text-muted text-uppercase">Harga (Rp)</label>
                                                             <input type="number" class="form-control" name="price" value="<?php echo $program['price']; ?>" required>
                                                         </div>
-                                                        
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Duration</label>
-                                                            <input type="text" class="form-control" name="duration" value="<?php echo htmlspecialchars($program['duration']); ?>" required>
-                                                        </div>
-                                                        
-                                                        <div class="mb-3">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" name="is_active" id="is_active<?php echo $program['id']; ?>" <?php echo $program['is_active'] ? 'checked' : ''; ?>>
-                                                                <label class="form-check-label" for="is_active<?php echo $program['id']; ?>">Active</label>
-                                                            </div>
+                                                        <div class="col-md-6">
+                                                            <label class="form-label fw-bold small text-muted text-uppercase">Durasi</label>
+                                                            <input type="text" class="form-control" name="duration" value="<?php echo htmlspecialchars($program['duration']); ?>" required placeholder="Contoh: 12 Pertemuan">
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    
+                                                    <div class="mb-4 form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input" name="is_active" id="is_active<?php echo $program['id']; ?>" <?php echo $program['is_active'] ? 'checked' : ''; ?>>
+                                                        <label class="form-check-label fw-bold" for="is_active<?php echo $program['id']; ?>">Status Aktif</label>
+                                                    </div>
+
+                                                    <div class="d-grid gap-2">
+                                                        <button type="submit" class="btn btn-primary py-2 fw-bold">Simpan Perubahan</button>
+                                                        <button type="button" class="btn btn-light py-2 text-muted" data-bs-dismiss="modal">Batal</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                </div>
+                                <?php endwhile; endif; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -228,48 +182,47 @@ $conn->close();
 
     <!-- Add Program Modal -->
     <div class="modal fade" id="addProgramModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add New Program</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold"><i class="fas fa-plus-circle me-2"></i> Tambah Program Baru</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <form method="POST">
-                    <div class="modal-body">
+                <div class="modal-body p-4">
+                    <form method="POST">
                         <input type="hidden" name="action" value="add">
                         
                         <div class="mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" required>
+                            <label class="form-label fw-bold">Nama Program</label>
+                            <input type="text" class="form-control" name="name" placeholder="Contoh: Paket Intensif SD" required>
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" name="description" rows="3" required></textarea>
+                            <label class="form-label fw-bold">Deskripsi</label>
+                            <textarea class="form-control" name="description" rows="3" placeholder="Jelaskan detail program..." required></textarea>
                         </div>
                         
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label class="form-label">Duration</label>
-                            <input type="text" class="form-control" name="duration" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="is_active" id="is_active_new" checked>
-                                <label class="form-check-label" for="is_active_new">Active</label>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Harga (Rp)</label>
+                                <input type="number" class="form-control" name="price" placeholder="0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Durasi</label>
+                                <input type="text" class="form-control" name="duration" placeholder="Contoh: 1 Bulan" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Program</button>
-                    </div>
-                </form>
+                        
+                        <div class="mb-4 form-check form-switch">
+                            <input type="checkbox" class="form-check-input" name="is_active" id="is_active_new" checked>
+                            <label class="form-check-label fw-bold" for="is_active_new">Status Aktif</label>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary py-2 fw-bold">Tambah Program</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

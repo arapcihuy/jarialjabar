@@ -42,150 +42,143 @@ $recent_registrations = $conn->query("
     <title>Dashboard Admin - Jari Aljabar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        .sidebar {
-            min-height: 100vh;
-            background: #343a40;
-            color: white;
-        }
-        .nav-link {
-            color: rgba(255,255,255,.8);
-        }
-        .nav-link:hover {
-            color: white;
-        }
-        .stat-card {
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link href="modern.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 px-0 sidebar">
-                <div class="p-3">
-                    <div class="text-center mb-3">
-                        <?php if (file_exists($_SERVER['DOCUMENT_ROOT'].'/logo-jari-aljabar.jpeg')): ?>
-                            <img src="/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
-                        <?php elseif (file_exists($_SERVER['DOCUMENT_ROOT'].'/images/logo-jari-aljabar.jpeg')): ?>
-                            <img src="/images/logo-jari-aljabar.jpeg" alt="Logo Jari Aljabar" style="max-width:180px;max-height:180px;">
-                        <?php else: ?>
-                            <div style="color:red;font-size:12px;">Logo tidak ditemukan!</div>
-                        <?php endif; ?>
-                    </div>
-                    <h4>Admin Panel</h4>
-                    <hr>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="dashboard.php">
-                                <i class="bi bi-speedometer2"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="pendaftar.php">
-                                <i class="bi bi-person-plus"></i> Pendaftar
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="programs.php">
-                                <i class="bi bi-book"></i> Program
-                            </a>
-                        </li>
-                        <?php if ($_SESSION['role'] === 'admin'): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users.php">
-                                <i class="bi bi-people"></i> Users
-                            </a>
-                        </li>
-                        <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php">
-                                <i class="bi bi-box-arrow-right"></i> Logout
-                            </a>
-                        </li>
-                    </ul>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <?php include 'sidebar.php'; ?>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h1 class="h3 fw-bold text-dark mb-1">Dashboard Overview</h1>
+                    <p class="text-muted mb-0">Selamat datang kembali, <span class="fw-bold text-primary"><?php echo htmlspecialchars($_SESSION['fullname']); ?></span>! 👋</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <span class="px-3 py-2 bg-white rounded-pill shadow-sm border text-sm text-muted">
+                        <i class="bi bi-calendar-event me-2"></i> <?php echo date('d M Y'); ?>
+                    </span>
                 </div>
             </div>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Dashboard</h2>
+            <!-- Statistics -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-value text-primary"><?php echo $stats['total']; ?></div>
+                        <div class="stat-label">Total Pendaftar</div>
+                        <div class="stat-icon bg-soft-primary">
+                            <i class="bi bi-people"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-value text-warning"><?php echo $stats['pending']; ?></div>
+                        <div class="stat-label">Menunggu Persetujuan</div>
+                        <div class="stat-icon bg-soft-warning">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-value text-success"><?php echo $stats['approved']; ?></div>
+                        <div class="stat-label">Pendaftar Diterima</div>
+                        <div class="stat-icon bg-soft-success">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-value text-danger"><?php echo $stats['rejected']; ?></div>
+                        <div class="stat-label">Pendaftar Ditolak</div>
+                        <div class="stat-icon bg-soft-danger">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Registrations -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                     <div>
-                        Welcome, <?php echo htmlspecialchars($_SESSION['fullname']); ?>
+                        <h5 class="fw-bold mb-0 text-dark">Pendaftaran Terbaru</h5>
+                        <small class="text-muted">10 pendaftar terakhir yang masuk sistem.</small>
                     </div>
+                    <a href="export_excel.php" class="btn btn-success btn-sm px-3 rounded-pill" target="_blank">
+                        <i class="bi bi-file-earmark-excel me-2"></i>Export Excel
+                    </a>
                 </div>
-
-                <!-- Statistics -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="stat-card bg-primary text-white">
-                            <h3><?php echo $stats['total']; ?></h3>
-                            <p class="mb-0">Total Pendaftar</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="stat-card bg-warning text-white">
-                            <h3><?php echo $stats['pending']; ?></h3>
-                            <p class="mb-0">Menunggu</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="stat-card bg-success text-white">
-                            <h3><?php echo $stats['approved']; ?></h3>
-                            <p class="mb-0">Disetujui</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="stat-card bg-danger text-white">
-                            <h3><?php echo $stats['rejected']; ?></h3>
-                            <p class="mb-0">Ditolak</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Registrations -->
-                <div class="card mt-4">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Pendaftar Terbaru</h5>
-                        <a href="export_excel.php" class="btn btn-success" target="_blank"><i class="bi bi-download"></i> Export ke Excel</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Program</th>
-                                        <th>Status</th>
-                                        <th>Tanggal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($reg = $recent_registrations->fetch_assoc()): ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($reg['fullname']); ?></td>
-                                        <td><?php echo htmlspecialchars($reg['email']); ?></td>
-                                        <td><?php echo htmlspecialchars($reg['les_program']); ?></td>
-                                        <td>
-                                            <span class="badge bg-<?php 
-                                                echo $reg['status'] === 'approved' ? 'success' : 
-                                                    ($reg['status'] === 'rejected' ? 'danger' : 'warning'); 
-                                            ?>">
-                                                <?php echo ucfirst($reg['status']); ?>
-                                            </span>
-                                        </td>
-                                        <td><?php echo date('d M Y H:i', strtotime($reg['created_at'])); ?></td>
-                                    </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">Nama Lengkap</th>
+                                    <th>Program Pilihan</th>
+                                    <th>Tanggal Daftar</th>
+                                    <th>Status</th>
+                                    <th class="text-end pe-4">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($reg = $recent_registrations->fetch_assoc()): ?>
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-initial rounded-circle bg-soft-primary text-primary fw-bold d-flex align-items-center justify-content-center me-3" style="width: 36px; height: 36px; font-size: 0.9rem;">
+                                                <?php echo strtoupper(substr($reg['fullname'], 0, 1)); ?>
+                                            </div>
+                                            <div>
+                                                <div class="fw-bold text-dark"><?php echo htmlspecialchars($reg['fullname']); ?></div>
+                                                <div class="small text-muted"><?php echo htmlspecialchars($reg['email']); ?></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="fw-medium text-dark"><?php echo htmlspecialchars($reg['les_program']); ?></span>
+                                    </td>
+                                    <td class="text-muted">
+                                        <i class="bi bi-calendar3 me-2 text-muted opacity-50"></i>
+                                        <?php echo date('d M Y', strtotime($reg['created_at'])); ?>
+                                        <small class="d-block text-muted" style="font-size: 0.75rem;"><?php echo date('H:i', strtotime($reg['created_at'])); ?> WIB</small>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                            $statusClass = match($reg['status']) {
+                                                'approved' => 'success',
+                                                'rejected' => 'danger',
+                                                default => 'warning'
+                                            };
+                                            $statusIcon = match($reg['status']) {
+                                                'approved' => 'check-circle-fill',
+                                                'rejected' => 'x-circle-fill',
+                                                default => 'clock-fill'
+                                            };
+                                        ?>
+                                        <span class="badge bg-soft-<?php echo $statusClass; ?> text-<?php echo $statusClass; ?> px-3 py-2 rounded-pill">
+                                            <i class="bi bi-<?php echo $statusIcon; ?> me-1"></i>
+                                            <?php echo ucfirst($reg['status']); ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <a href="pendaftar.php" class="btn btn-sm btn-light border text-muted">Detail</a>
+                                    </td>
+                                </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                        <?php if ($recent_registrations->num_rows === 0): ?>
+                            <div class="text-center py-5 text-muted">
+                                <img src="https://cdn-icons-png.flaticon.com/512/7486/7486776.png" width="60" class="opacity-25 mb-3" alt="Empty">
+                                <p>Belum ada data pendaftaran.</p>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

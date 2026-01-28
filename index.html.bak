@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="5xXh86A6nZo7DNvBObV9kBUX6CEhmGjaSdEgt0eb9k8" />
+    <meta charset="UTF-8">
+    <!-- SEO Meta Tags (Update Fokus Keyword) -->
+    <meta name="description" content="Jari Aljabar Halim adalah bagian dari RumahBelajar Dirgantara, media edukasi kreatif dan interaktif. Kunjungi situs kami untuk daftar dan mulai belajar bersama.">
+    <meta name="keywords" content="jari aljabar halim, rudhoh halim, daftar jarialjabar halim, daftar rumahbelajar dirgantara, rumabelajar dirgantara, rumahbelajar dirgantara">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Jari Aljabar Halim">
+    <meta property="og:title" content="Jari Aljabar Halim - RumahBelajar Dirgantara">
+    <meta property="og:description" content="Gabung dengan komunitas belajar Jari Aljabar Halim, bagian dari RumahBelajar Dirgantara. Pendaftaran terbuka untuk semua kalangan.">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jari Aljabar adalah media pembelajaran matematika interaktif untuk semua usia. Belajar matematika jadi mudah, menyenangkan, dan gratis!">
+    <meta name="keywords" content="jari aljabar, belajar matematika, matematika interaktif, media belajar, edukasi online, matematika dasar, aljabar">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Jari Aljabar Team">
+    <meta property="og:title" content="Jari Aljabar - Belajar Matematika Interaktif">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jari-aljabar.web.app/">
+    <meta property="og:image" content="https://jari-aljabar.web.app/images/logo-jari-aljabar.jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>rumbeldirgantara.com</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <!-- Make sure Font Awesome loads BEFORE any icons are used -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Add these lines inside the <head> section of each HTML file -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<script src="mobile-fixes.js" defer></script>
+<script src="responsive-fixes.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<div class="background-container">
+  <video autoplay loop muted playsinline class="background-video">
+    <source src="videos/background-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="background-image"></div>
+</div>
+<body>
+  <header>
+  <nav class="topnav" id="myTopnav">
+    <div class="dropdown">
+      <button class="dropbtn" id="menuDropdownBtn">
+        <i class="fa fa-bars"></i> Menu
+      </button>
+      <div class="dropdown-content" id="mainDropdown">
+        <a href="#home"><i class="fa fa-home"></i> Beranda</a>
+        <a href="#about"><i class="fa fa-info-circle"></i> Tentang Kami</a>
+        <a href="#program">
+          <i class="fa fa-graduation-cap"></i> Program & Metode
+          <span class="subtext">Baca Tulis Roudhoh & Jari Aljabar</span>
+        </a>
+        <a href="#facilities">
+          <i class="fa fa-building"></i> Fasilitas
+          <span class="subtext">Fasilitas Pembelajaran</span>
+        </a>
+        <a href="#contact-registration"><i class="fa fa-address-book"></i> Kontak & Pendaftaran</a>
+        <a href="/admin/login.php"><i class="fa fa-user-lock"></i> Login Admin</a>
+      </div>
+    </div>
+    <a href="#" class="logo-navbar">
+      <img src="images/logo-jari-aljabar.jpeg" alt="Logo" style="height:150px !important;width:auto;max-width:260px;object-fit:contain !important;">
+    </a>
+    <div class="topnav-right">
+      <div class="contact-container">
+        <button class="contact-toggle" aria-label="Kontak">
+          <i class="fa fa-phone"></i>
+        </button>
+        <div class="contact-dropdown">
+          <a class="contact-item" href="mailto:email@domain.com"><i class="fa fa-envelope"></i> info@rumbeldirgantara.com</a>
+          <a class="contact-item" href="tel:08123456789"><i class="fa fa-phone"></i> 0812-3456-789</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Overlay untuk menu mobile -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<script>
+// Fungsi untuk toggle dropdown sebagai sidebar
+function toggleDropdown() {
+  var dropdown = document.getElementById('mainDropdown');
+  var overlay = document.getElementById('menuOverlay');
+  if (dropdown && overlay) {
+    dropdown.classList.toggle('show');
+    overlay.classList.toggle('show');
+  }
+}
+
+// Event listener saat DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('menuDropdownBtn');
+  var dropdown = document.getElementById('mainDropdown');
+  var overlay = document.getElementById('menuOverlay');
+
+  if (btn && dropdown && overlay) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleDropdown();
+    });
+    overlay.addEventListener('click', function() {
+      dropdown.classList.remove('show');
+      overlay.classList.remove('show');
+    });
+    // Close dropdown if click outside (desktop fallback)
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target) && !btn.contains(e.target) && !overlay.contains(e.target)) {
+        dropdown.classList.remove('show');
+        overlay.classList.remove('show');
+      }
+    });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var logoLink = document.querySelector('.logo-navbar');
+  if (logoLink) {
+    logoLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
+</script>
+
+<!-- Home/Beranda Section -->
+<section id="home" class="hero-section">
+  <div class="hero-content">
+    <h1>Belajar dengan Ikhlas dan Menyenangkan</h1>
+    <p>Rumah Belajar Dirgantara menyediakan bimbingan belajar mulai dari anak usia 4 tahun hingga jenjang sekolah dasar dengan metode inovatif.</p>
+  </div>
+</section>
+
+<!-- New Section: Additional Video -->
+<section class="additional-video-section">
+  <video autoplay loop muted playsinline class="additional-video-player">
+    <source src="videos/vidio.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+
+<!-- New Section: Maksud dan Tujuan Rumbel -->
+<section id="purpose" class="purpose-section">
+  <div class="container" style="max-width: 1100px; margin: 0 auto;">
+    <div class="animated-brains-container">
+      <div class="animated-brain brain-1"></div>
+      <div class="animated-brain brain-2"></div>
+      <div class="animated-brain brain-3"></div>
+      <div class="animated-brain brain-4"></div>
+      <div class="animated-brain brain-5"></div>
+      <div class="animated-brain brain-6"></div>
+      <div class="animated-brain brain-7"></div>
+      <div class="animated-brain brain-8"></div>
+      <div class="animated-brain brain-9"></div>
+      <div class="animated-brain brain-10"></div>
+    </div>
+    <h2 style="text-align:center; color:#ff7300; font-size:2.5rem; font-weight:900; margin-bottom:0;">KENAPA HARUS</h2>
+    <h1 class="rbd-title-with-logo">
+      <span class="logo-behind-text">
+        <img src="images/Cropped_Image.png" alt="Logo RBD">
+      </span>
+      <span class="rbd-title-text">Rumah Belajar Dirgantara?</span>
+    </h1>
+    <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+      <!-- Owner Photo Placeholder -->
+      <div style="width:110px; height:110px; border-radius:50%; border:5px solid #ff7300; overflow:hidden; margin-bottom:10px; background:#eee; display:flex; align-items:center; justify-content:center; background-image:url('images/wiwik_latifah.jpg'); background-size:cover; background-position:center;">
+      </div>
+      <div style="text-align:center;">
+        <strong>Owner of Rumbel Dirgantara</strong><br>
+        <span style="font-weight:600;"> Wiwik Latifah </span>
+      </div>
+    </div>
+    <div style="text-align:center; max-width:900px; margin:0 auto 30px;">
+      <span style="font-weight:bold;">Rumah Belajar Dirgantara</span> memiliki tujuan untuk membantu anak yang masih kesulitan dalam membaca dan berhitung.<br>
+      Sehingga metode <span style="font-weight:bold;">Jari Aljabar</span> dan <span style="font-weight:bold;">Roudhoh</span> yang kami padukan dapat menciptakan suasana belajar lebih mudah, menyenangkan dan Membantu otak bekerja secara seimbang.
+    </div>
+    <div class="program-age-grid" style="margin-top:30px;">
+      <!-- Card 1: Dapat Mengasah Pola Pikir Anak -->
+      <div class="program-age-card">
+        <img src="images/purpose_idea.jpg" alt="Dapat Mengasah Pola Pikir Anak">
+        <div class="program-age-overlay">
+          <h3>Dapat Mengasah Pola Pikir Anak</h3>
+        </div>
+      </div>
+      <!-- Card 2: Menumbuhkan Rasa Ingin Tahu dan Kreativitas -->
+      <div class="program-age-card">
+        <img src="images/purpose_creative.jpg" alt="Menumbuhkan Rasa Ingin Tahu dan Kreativitas">
+        <div class="program-age-overlay">
+          <h3>Menumbuhkan Rasa Ingin Tahu dan Kreativitas</h3>
+        </div>
+      </div>
+      <!-- Card 3: Menciptakan Kemampuan Abstraksi Akademis -->
+      <div class="program-age-card">
+        <img src="images/purpose_academic.jpg" alt="Menciptakan Kemampuan Abstraksi Akademis">
+        <div class="program-age-overlay">
+          <h3>Menciptakan Kemampuan Abstraksi Akademis</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Replace program section with simplified version -->
+<section id="program" class="program-method-section">
+  <div class="container">
+    <h2 class="section-title">Metode Pembelajaran</h2>
+    
+    <div class="simple-methods-grid">
+      <a href="baca-tulis.html" class="simple-method-card">
+        <div class="simple-method-image">
+          <img src="images/baca-tulis-roudhoh.jpg" alt="Baca Tulis Roudhoh">
+        </div>
+        <div class="simple-method-content">
+          <h3>Baca Tulis Roudhoh</h3>
+          <p>Menggunakan metode cantol roudhoh untuk membaca dengan mudah dan cepat.</p>
+        </div>
+      </a>
+
+      <a href="jari-aljabar.html" class="simple-method-card">
+        <div class="simple-method-image">
+          <img src="images/jari-aljabar.jpg" alt="Jari Aljabar">
+        </div>
+        <div class="simple-method-content">
+          <h3>Jari Aljabar</h3>
+          <p>Metode belajar matematika menggunakan jari tangan tanpa alat bantu.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Add modal markup -->
+<div id="registrationModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Daftar Program</h2>
+    <form id="mainRegistrationForm" class="registration-form">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" name="fullname" required placeholder="Masukkan nama lengkap">
+      </div>
+      
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="Masukkan email">
+      </div>
+      
+      <div class="form-group">
+        <label>Nomor WhatsApp</label>
+        <input type="tel" name="whatsapp" required placeholder="Masukkan nomor WhatsApp">
+      </div>
+      
+      <div class="form-group">
+        <select name="jadwal" required>
+          <option value="">Pilih Jadwal Les</option>
+          <option value="senin-rabu">Senin & Rabu</option>
+          <option value="selasa-kamis">Selasa & Kamis</option>
+          <option value="jumat-sabtu">Jumat & Sabtu</option>
+        </select>
+      </div>
+      <input type="hidden" name="program" id="selectedProgram">
+      <div id="mainFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
+      <button type="submit" class="submit-btn">Daftar Sekarang</button>
+    </form>
+  </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="about-container">
+    <div class="about-content">
+      <h2>Tentang Kami</h2>
+      <p>Rumah Belajar Dirgantara adalah jasa pendidikan yang bergerak di bidang bimbingan belajar.</p>
+      <p>Program dimulai dari anak usia 4 tahun menggunakan metode Cantol Roudhoh untuk membaca, serta Jari Aljabar untuk matematika.</p>
+      <p>Pembelajaran Bahasa Inggris dan pelajaran sekolah lainnya juga tersedia.</p>
+    </div>
+    <div class="about-image">
+      <img src="images/about-dirgantara.jpg" alt="Tentang Rumah Belajar Dirgantara">
+    </div>
+  </div>
+</section>
+
+<section id="jari-aljabar-overview" class="overview-section">
+  <div class="container">
+    <!-- Judul Bagian -->
+    <h1 class="section-title">Jari Aljabar</h1>
+    <h3 class="section-subtitle">Metode Belajar dengan Sistem Pengajaran Terbaik</h3>
+    <p class="section-description">
+      Berdasarkan pengalaman panjang sejak 2007, Jari Aljabar telah berfokus pada pengembangan metode pembelajaran yang 
+      mempermudah anak-anak dalam memahami konsep matematika secara cepat, menyenangkan, dan efektif. Dengan pendekatan 
+      inovatif, Jari Aljabar membantu anak-anak meningkatkan kepercayaan diri mereka dalam belajar matematika.
+    </p>
+
+    <!-- Statistik -->
+    <div class="statistics">
+      <div class="stat-item">
+        <h2>2007</h2>
+        <p>Didirikan di Indonesia</p>
+      </div>
+      <div class="stat-item">
+        <h2>90%</h2>
+        <p>Mengurangi Kesalahan Hitung dengan Metode Praktis</p>
+      </div>
+      <div class="stat-item">
+        <h2>500+</h2>
+        <p>Siswa yang Terbantu</p>
+      </div>
+    </div>
+</section>
+
+  <section id="learning-system" class="learning-system-section">
+    <div class="container">
+      <h1 class="section-title">Sistem Belajar Kami</h1>
+      <div class="learning-system-content">
+        <div class="learning-diagram">
+          <img src="images/jari-aljabar-diagram.png" alt="Learning Diagram">
+        </div>
+        <div class="learning-description">
+          <h2>Sistem Pembelajaran Jari Aljabar</h2>
+          <p>
+            Rumah Belajar Dirgantara menggunakan pendekatan inovatif untuk membantu siswa memahami konsep matematika dengan cepat dan menyenangkan melalui metode Jari Aljabar. Sistem ini melibatkan:
+          </p>
+          <ul>
+            <li><strong>Ringkas:</strong> Materi disusun secara sederhana agar lebih mudah dipahami.</li>
+            <li><strong>Aktif:</strong> Mendorong siswa untuk terlibat dalam proses belajar interaktif.</li>
+            <li><strong>Harmoni:</strong> Menyeimbangkan teori dan praktik agar pembelajaran lebih efektif.</li>
+            <li><strong>Mudah:</strong> Konsep diajarkan secara bertahap agar lebih gampang diikuti.</li>
+            <li><strong>Aplikatif:</strong> Fokus pada penerapan dalam kehidupan nyata untuk pemahaman lebih baik.</li>
+            <li><strong>Terpadu:</strong> Mengintegrasikan berbagai sumber belajar dan teknologi untuk hasil maksimal.</li>
+          </ul>
+          <p>
+            Dengan sistem ini, anak-anak tidak hanya belajar tetapi juga membangun kepercayaan diri mereka.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guru-profesional" class="guru-profesional-section">
+    <div class="container">
+      <h1 class="section-title">Guru Profesional</h1>
+      <div class="guru-content">
+        <!-- Video Section -->
+        <div class="guru-video">
+          <video controls>
+            <source src="videos/jari-aljabar-guru.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video tag.
+          </video>
+          <p>
+            Guru kami telah melalui pelatihan intensif dan seleksi ketat. Hanya mereka yang memiliki keahlian mengajar terbaik yang bergabung dengan Jari Aljabar.
+          </p>
+        </div>
+  
+        <!-- Certificate Section -->
+        <div class="guru-certificate">
+          <img src="images/certificate-jari-aljabar.png" alt="Sertifikat Guru Jari Aljabar">
+          <h3>Kualifikasi Guru Jari Aljabar</h3>
+          <p>
+            Semua guru kami memiliki sertifikat pelatihan metode Jari Aljabar. Mereka terlatih untuk:
+          </p>
+          <ul>
+            <li>Menggunakan alat bantu pengajaran interaktif.</li>
+            <li>Meningkatkan pemahaman anak dalam matematika praktis.</li>
+            <li>Memberikan suasana belajar yang menyenangkan dan efektif.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="strategic-locations" class="strategic-section">
+    <div class="container">
+      <div class="location-content">
+        <div class="location-text">
+          <h2>Lokasi Strategis & Tempat Kursus yang Nyaman</h2>
+          <p>
+            Jari Aljabar memiliki pusat pelatihan di berbagai kota yang strategis, membuatnya mudah diakses. Dengan fasilitas
+            modern dan lingkungan yang nyaman, kami memastikan pengalaman belajar yang menyenangkan bagi anak-anak.
+          </p>
+          <a href="https://g.co/kgs/edyL9K5" 
+             class="learn-more-btn" 
+             target="_blank"
+             onclick="window.open(this.href, '_blank'); return false;">
+             Kenali lebih dekat dengan lokasi kami
+          </a>
+        </div>
+        <div class="location-image">
+          <img src="images/location.jpg" alt="Lokasi Jari Aljabar">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ <!-- Sticky Footer -->
+<div class="sticky-footer">
+  <a href="https://wa.me/6282115555264" class="whatsapp-btn">
+      <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="javascript:void(0)" class="try-class-btn" id="openPopup">Yuk, Coba Kelas Gratis!</a>
+</div>
+
+<!-- Popup -->
+<div id="popupForm" class="popup-overlay" style="display: none;">
+  <div class="popup-content modern-popup">
+    <span class="closePopup close-btn">×</span>
+    <div class="popup-header">
+      <img src="images/maskot.png" alt="maskot" class="popup-image">
+      <h2>Coba Kelas Gratis!</h2>
+      <p>Isi formulir di bawah ini untuk mencoba kelas gratis bersama kami.</p>
+    </div>
+    <form id="popupRegistrationForm" class="popup-form-modern">
+      <div class="form-group-modern">
+        <input type="text" name="fullname" required placeholder="Nama Lengkap">
+      </div>
+      <div class="form-group-modern">
+        <input type="email" name="email" required placeholder="Email">
+      </div>
+      <div class="form-group-modern">
+        <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
+      </div>
+      <div class="form-group-modern">
+        <select name="program" id="popupProgramSelect" required>
+          <option value="">Pilih Program</option>
+          <option value="baca-tulis">Baca Tulis Roudhoh</option>
+          <option value="jari-aljabar">Jari Aljabar</option>
+        </select>
+      </div>
+      <div class="form-group-modern">
+        <select name="jadwal" id="popupJadwalSelect" required>
+          <option value="">Pilih Jadwal Les</option>
+        </select>
+      </div>
+      <div id="popupFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
+      <button type="submit" class="submit-btn-modern">Daftar Kelas Gratis</button>
+    </form>
+  </div>
+</div>
+
+<!-- Facilities Section -->
+<section id="facilities" class="program-age-section">
+  <div class="container">
+    <h2 class="section-title">Fasilitas Kami</h2>
+    
+    <div class="program-age-grid">
+      <div class="program-age-card">
+        <img src="images/guru-terlatih.jpg" alt="Guru Terlatih">
+        <div class="program-age-overlay">
+          <h3>Guru Terlatih</h3>
+          <p>Dibimbing oleh guru profesional yang terlatih</p>
+        </div>
+      </div>
+
+      <div class="program-age-card">
+        <img src="images/ruang-kelas-ber-ac.jpg" alt="Ruang Kelas Ber-AC">
+        <div class="program-age-overlay">
+          <h3>Ruang Kelas Ber-AC</h3>
+          <p>Suasana belajar nyaman dengan AC</p>
+        </div>
+      </div>
+
+      <div class="program-age-card">
+        <img src="images/kelas-semi-privat.jpg" alt="Semi Privat">
+        <div class="program-age-overlay">
+          <h3>Semi Privat</h3>
+          <p>1 kelas hanya 4 siswa</p>
+        </div>
+      </div>
+
+      <div class="program-age-card">
+        <img src="images/metode-pembelajran-interaktif.jpg" alt="Metode Pembelajaran">
+        <div class="program-age-overlay">
+          <h3>Metode Pembelajaran</h3>
+          <p>Cerdas, mudah, dan menyenangkan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact-registration" class="contact-registration-section">
+  <div class="container">
+    <h2 class="section-title">Kontak & Pendaftaran</h2>
+    <div class="contact-registration-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Hubungi Kami</h3>
+        <div class="contact-cards">
+          <a href="https://wa.me/6282115555264" class="contact-card">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+              <span>+62 821-1555-5264</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <div class="registration-form">
+        <h3>Daftar Program</h3>
+        <form id="indexRegistrationForm" class="registration-form">
+          <div class="form-group">
+            <input type="text" name="fullname" required placeholder="Nama Lengkap">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" required placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="tel" name="whatsapp" required placeholder="Nomor WhatsApp">
+          </div>
+          <div class="form-group">
+            <select name="program" id="programSelect" required onchange="updateJadwal()">
+              <option value="">Pilih Program</option>
+              <option value="baca-tulis">Baca Tulis Roudhoh</option>
+              <option value="jari-aljabar">Jari Aljabar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="jadwal" id="jadwalSelect" required>
+              <option value="">Pilih Jadwal Les</option>
+            </select>
+          </div>
+          <div id="indexFormFeedback" class="form-feedback" style="display:none; margin: 10px 0; padding: 10px; border-radius: 4px;"></div>
+          <button type="submit" class="submit-btn">Daftar Sekarang</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>KURSUS KAMI</h4>
+      <ul>
+        <li>Kursus Matematika Anak 3-6 Tahun</li>
+        <li>Kursus Matematika Anak 7-9 Tahun</li>
+        <li>Kursus Matematika Remaja 10-14 Tahun</li>
+        <li>Kursus Matematika Remaja 15-18 Tahun (SMA)</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>PROMO SAAT INI</h4>
+      <ul>
+        <li>Diskon Kursus Matematika</li>
+        <li>Free Demo Class</li>
+        <li>Kelas Trial</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>CABANG KAMI</h4>
+      <ul>
+        <li>Jari Aljabar Jakarta</li>
+        <li>Jari Aljabar Bandung</li>
+        <li>Jari Aljabar Yogyakarta</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>SAYA MAU BELAJAR</h4>
+      <ul>
+        <li>Perkalian Cepat</li>
+        <li>Pembagian Mudah</li>
+        <li>Matematika Dasar</li>
+        <li>Matematika Lanjutan</li>
+        <li>Perhitungan Dasar</li>
+      </ul>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/jarialjabar" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/rumahbelajardirgantara?utm_source=qr" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/jarialjabar" target="_blank" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script src="script.js"></script>
+<script src="popup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
