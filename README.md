@@ -1,45 +1,46 @@
-[![Lihat Website Live](https://img.shields.io/badge/Website%20Live-jari--aljabar.web.app-orange?style=for-the-badge&logo=firebase)](https://jari-aljabar.web.app)
+# Jari Aljabar - Jurnalistik SMAN 1 Cibinong
 
-# 👋 Selamat Datang di Jarilajabr!
+Website profil resmi untuk organisasi ekstrakurikuler **Jurnalistik (Jari Aljabar)** di SMAN 1 Cibinong. Website ini berfungsi sebagai media informasi, publikasi karya, dan dokumentasi kegiatan jurnalistik sekolah.
 
-Ini website resmi dari **Jarilajabr**, tempat les asik yang ada di **Halim, Jakarta Timur**.  
-Buat kamu yang lagi cari tempat les berhitung atau belajar baca buat anak-anak, pas banget mampir ke sini!
+![Banner](img/banner.jpg)
 
----
+## 📰 Tentang Jari Aljabar
 
-## ✨ Apa itu Jarilajabr?
+Jari Aljabar adalah wadah bagi siswa-siswi SMAN 1 Cibinong untuk mengembangkan bakat di bidang:
+- Jurnalistik & Penulisan Berita
+- Fotografi
+- Layout & Desain Grafis
+- Public Speaking & Reportase
 
-Jarilajabr tuh tempat les yang beda dari yang lain. Kita pake metode belajar yang **seru, gampang dipahami, dan bikin anak-anak semangat belajar**.
+## ✨ Fitur Website
 
-Yang bisa kamu temuin di sini:
-- 🧠 Les berhitung pakai metode jari yang unik
-- 📖 Les baca-tulis buat anak usia dini sampai SD
-- 👩‍🏫 Pengajar ramah, sabar, dan berpengalaman
-- 📍 Lokasi strategis di Halim, Jakarta Timur
+- **Profil Organisasi:** Sejarah, visi-misi, dan struktur organisasi.
+- **Galeri Kegiatan:** Dokumentasi foto kegiatan liputan dan event.
+- **Artikel & Berita:** Publikasi karya tulis anggota.
+- **Informasi Pendaftaran:** Info rekrutmen anggota baru.
 
----
+## 🛠️ Teknologi
 
-## 🔥 Coba Lihat Websitenya!
+Project ini dibangun menggunakan web technologies standar:
 
-Langsung aja cek website kami di sini:
+- **HTML5:** Struktur konten semantik
+- **CSS3:** Styling dan responsive layout
+- **JavaScript:** Interaktivitas sederhana
 
-🔗 **[https://jari-aljabar.web.app](https://jari-aljabar.web.app)**
+## 🚀 Cara Menjalankan
 
----
-
-## ⚙️ Teknologi yang Dipakai
-
-Website ini dibangun pakai:
-- HTML, CSS, dan JavaScript
-- Firebase Hosting
-- VS Code buat ngoding-nya
-
----
-
-## 🚀 Cara Coba di Laptop Sendiri
-
-Kalau mau buka secara lokal:
+Cukup buka file `index.html` di browser Anda.
 
 ```bash
+# Clone repository
 git clone https://github.com/arapcihuy/jarialjabar.git
+
+# Buka folder
 cd jarialjabar
+
+# Open index.html
+open index.html
+```
+
+---
+© Jari Aljabar SMAN 1 Cibinong
