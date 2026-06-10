@@ -10,12 +10,11 @@ firebase-debug.*.log*
 # Firebase cache
 .firebase/
 
-# Firebase config
+# Firebase config — keep private, only share .firebaserc.example
+.firebaserc
 
-# Uncomment this if you'd like others to create their own Firebase project.
-# For a team working on the same Firebase project(s), it is recommended to leave
-# it commented so all members can deploy to the same project(s) in .firebaserc.
-# .firebaserc
+# macOS
+.DS_Store
 
 # Runtime data
 pids
