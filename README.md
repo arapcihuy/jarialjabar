@@ -1,46 +1,86 @@
-# Jari Aljabar - Jurnalistik SMAN 1 Cibinong
+# Jari Aljabar — Website Organisasi Jurnalistik
 
-Website profil resmi untuk organisasi ekstrakurikuler **Jurnalistik (Jari Aljabar)** di SMAN 1 Cibinong. Website ini berfungsi sebagai media informasi, publikasi karya, dan dokumentasi kegiatan jurnalistik sekolah.
+[![CodeQL](https://github.com/arapcihuy/jarialjabar/actions/workflows/codeql.yml/badge.svg)](https://github.com/arapcihuy/jarialjabar/actions/workflows/codeql.yml)
+[![GitHub repo](https://img.shields.io/badge/GitHub-arapcihuy%2Fjarialjabar-blue?logo=github)](https://github.com/arapcihuy/jarialjabar)
+[![Static Site](https://img.shields.io/badge/Type-Static%20Website-orange)](#)
+
+Website profil resmi untuk organisasi ekstrakurikuler Jurnalistik — Jari Aljabar, SMAN 1 Cibinong. Proyek ini berfungsi sebagai media informasi organisasi, publikasi karya, dan dokumentasi kegiatan siswa.
 
 ![Banner](img/banner.jpg)
 
-## 📰 Tentang Jari Aljabar
+## Ringkasan
 
-Jari Aljabar adalah wadah bagi siswa-siswi SMAN 1 Cibinong untuk mengembangkan bakat di bidang:
-- Jurnalistik & Penulisan Berita
-- Fotografi
-- Layout & Desain Grafis
-- Public Speaking & Reportase
+- Kategori: Website profil organisasi
+- Stack: HTML, CSS, JavaScript
+- Fokus: company/profile website, responsive layout, content publishing
+- Status: Portfolio project
 
-## ✨ Fitur Website
+## Fitur
 
-- **Profil Organisasi:** Sejarah, visi-misi, dan struktur organisasi.
-- **Galeri Kegiatan:** Dokumentasi foto kegiatan liputan dan event.
-- **Artikel & Berita:** Publikasi karya tulis anggota.
-- **Informasi Pendaftaran:** Info rekrutmen anggota baru.
+- Profil organisasi
+- Visi, misi, dan struktur organisasi
+- Galeri kegiatan
+- Artikel dan berita
+- Informasi pendaftaran anggota
+- Layout responsif untuk desktop dan mobile
 
-## 🛠️ Teknologi
+## Teknologi
 
-Project ini dibangun menggunakan web technologies standar:
+- HTML5 untuk struktur konten
+- CSS3 untuk styling dan responsive layout
+- JavaScript untuk interaktivitas ringan
 
-- **HTML5:** Struktur konten semantik
-- **CSS3:** Styling dan responsive layout
-- **JavaScript:** Interaktivitas sederhana
-
-## 🚀 Cara Menjalankan
-
-Cukup buka file `index.html` di browser Anda.
+## Instalasi
 
 ```bash
-# Clone repository
 git clone https://github.com/arapcihuy/jarialjabar.git
-
-# Buka folder
 cd jarialjabar
-
-# Open index.html
-open index.html
 ```
 
----
-© Jari Aljabar SMAN 1 Cibinong
+Jalankan lokal:
+
+```bash
+# macOS
+open index.html
+
+# atau gunakan static server
+python3 -m http.server 8000
+```
+
+Buka:
+
+```text
+http://localhost:8000
+```
+
+## Struktur Umum
+
+```text
+.
+├── index.html
+├── css/
+├── js/
+└── img/
+```
+
+## Security Notes
+
+- Hindari menyimpan data pribadi siswa di repository publik.
+- Optimalkan gambar sebelum commit.
+- Validasi link eksternal dan file asset.
+- Aktifkan GitHub CodeQL untuk pemeriksaan otomatis.
+
+## Roadmap
+
+- Halaman artikel dinamis
+- Optimasi SEO dan Open Graph
+- Form pendaftaran anggota
+- Deployment ke GitHub Pages
+
+## Author
+
+Rasyid Achmad Fauzi — https://github.com/arapcihuy
+
+## License
+
+Internal/educational use. Sesuaikan lisensi jika proyek dipublikasikan ulang.
