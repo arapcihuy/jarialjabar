@@ -1,86 +1,40 @@
-# Jari Aljabar — Website Organisasi Jurnalistik
+# 👋 Jarilajabr — Les Berhitung & Baca Anak
 
-[![CodeQL](https://github.com/arapcihuy/jarialjabar/actions/workflows/codeql.yml/badge.svg)](https://github.com/arapcihuy/jarialjabar/actions/workflows/codeql.yml)
-[![GitHub repo](https://img.shields.io/badge/GitHub-arapcihuy%2Fjarialjabar-blue?logo=github)](https://github.com/arapcihuy/jarialjabar)
-[![Static Site](https://img.shields.io/badge/Type-Static%20Website-orange)](#)
+[![Firebase Hosting](https://img.shields.io/badge/Hosting-Firebase-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Website profil resmi untuk organisasi ekstrakurikuler Jurnalistik — Jari Aljabar, SMAN 1 Cibinong. Proyek ini berfungsi sebagai media informasi organisasi, publikasi karya, dan dokumentasi kegiatan siswa.
+Website resmi **Jarilajabr** — tempat les berhitung & baca-tulis untuk anak usia dini sampai SD di Halim, Jakarta Timur.
 
-![Banner](img/banner.jpg)
+🌐 **[jari-aljabar.web.app](https://jari-aljabar.web.app)**
 
-## Ringkasan
+---
 
-- Kategori: Website profil organisasi
-- Stack: HTML, CSS, JavaScript
-- Fokus: company/profile website, responsive layout, content publishing
-- Status: Portfolio project
+## ✨ Apa itu Jarilajabr?
 
-## Fitur
+Jarilajabr tuh tempat les yang beda dari yang lain. Kita pake metode belajar yang **seru, gampang dipahami, dan bikin anak-anak semangat belajar**.
 
-- Profil organisasi
-- Visi, misi, dan struktur organisasi
-- Galeri kegiatan
-- Artikel dan berita
-- Informasi pendaftaran anggota
-- Layout responsif untuk desktop dan mobile
+- 🧠 Les berhitung pakai metode jari yang unik
+- 📖 Les baca-tulis buat anak usia dini sampai SD
+- 👩‍🏫 Pengajar ramah, sabar, dan berpengalaman
+- 📍 Lokasi strategis di Halim, Jakarta Timur
 
-## Teknologi
+## 🛠️ Tech Stack
 
-- HTML5 untuk struktur konten
-- CSS3 untuk styling dan responsive layout
-- JavaScript untuk interaktivitas ringan
+- HTML, CSS, JavaScript
+- Firebase Hosting
 
-## Instalasi
+## 🚀 Local Development
 
 ```bash
 git clone https://github.com/arapcihuy/jarialjabar.git
 cd jarialjabar
+# Buka index.html langsung di browser
 ```
 
-Jalankan lokal:
+## 📄 License
 
-```bash
-# macOS
-open index.html
+MIT
 
-# atau gunakan static server
-python3 -m http.server 8000
-```
+## 👤 Author
 
-Buka:
-
-```text
-http://localhost:8000
-```
-
-## Struktur Umum
-
-```text
-.
-├── index.html
-├── css/
-├── js/
-└── img/
-```
-
-## Security Notes
-
-- Hindari menyimpan data pribadi siswa di repository publik.
-- Optimalkan gambar sebelum commit.
-- Validasi link eksternal dan file asset.
-- Aktifkan GitHub CodeQL untuk pemeriksaan otomatis.
-
-## Roadmap
-
-- Halaman artikel dinamis
-- Optimasi SEO dan Open Graph
-- Form pendaftaran anggota
-- Deployment ke GitHub Pages
-
-## Author
-
-Rasyid Achmad Fauzi — https://github.com/arapcihuy
-
-## License
-
-Internal/educational use. Sesuaikan lisensi jika proyek dipublikasikan ulang.
+**arapcihuy** — [github.com/arapcihuy](https://github.com/arapcihuy)
