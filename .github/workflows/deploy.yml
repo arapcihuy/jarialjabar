@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # deploy manual dari tab Actions tanpa commit kosong
 
 jobs:
   web-deploy:
@@ -11,6 +12,43 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v5
+
+      - name: 🔎 Cek secrets FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          missing=0
+          for v in FTP_SERVER FTP_USERNAME FTP_PASSWORD; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Secret $v kosong. Isi di Settings > Secrets and variables > Actions."
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "::error::Deploy dibatalkan: secret FTP belum lengkap."
+            exit 1
+          fi
+          echo "Ketiga secret FTP terisi."
+
+      - name: 🔌 Uji login FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          set +e
+          out=$(curl --silent --show-error --connect-timeout 20 --max-time 60 \
+            --user "$FTP_USERNAME:$FTP_PASSWORD" "ftp://$FTP_SERVER/" 2>&1)
+          rc=$?
+          if [ $rc -ne 0 ]; then
+            echo "::error::Login FTP gagal (curl rc=$rc): $out"
+            echo "Petunjuk: kode 530 = username/password ditolak hosting. Ganti kredensial di panel hosting, lalu update secret FTP_USERNAME / FTP_PASSWORD."
+            echo "Petunjuk: connection refused atau timeout = hosting blokir FTP dari IP GitHub Actions, atau akun hanya menerima SFTP (port 22) / FTPS eksplisit."
+            exit 1
+          fi
+          echo "Login FTP OK."
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
