@@ -1,9 +1,12 @@
 name: Deploy to Hosting
+# Deploy FTP dimatikan dari push sampai kredensial hosting diperbaiki (issue #1).
+# Alasannya: secret FTP_USERNAME/FTP_PASSWORD terakhir diubah 28 Jan 2026 dan
+# server menjawab 530 Login incorrect, jadi setiap push ke main hanya
+# menghasilkan run merah tanpa satu file pun tersinkron. Workflow ini tidak
+# dihapus: setelah password FTP diganti dan secret diperbarui, cukup kembalikan
+# blok `push` di bawah atau jalankan lewat tombol Run workflow.
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # deploy manual dari tab Actions tanpa commit kosong
+  workflow_dispatch: # deploy manual; aktifkan lagi trigger push setelah secret benar
 
 jobs:
   web-deploy:
